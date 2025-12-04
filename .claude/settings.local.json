@@ -3,7 +3,13 @@
     "allow": [
       "Bash(git --version)",
       "Bash(git rev-parse:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(.specify/scripts/bash/create-phr.sh:*)",
+      "Bash(gh auth:*)"
     ],
     "deny": [],
     "ask": []
