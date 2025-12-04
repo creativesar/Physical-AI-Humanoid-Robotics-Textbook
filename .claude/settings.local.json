@@ -9,7 +9,10 @@
       "Bash(git push:*)",
       "Bash(gh pr create:*)",
       "Bash(.specify/scripts/bash/create-phr.sh:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "WebSearch",
+      "Bash(claude mcp add:*)",
+      "mcp__context7__resolve-library-id"
     ],
     "deny": [],
     "ask": []
