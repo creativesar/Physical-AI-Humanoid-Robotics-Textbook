@@ -1,0 +1,55 @@
+---
+title: "8.4 Plugins"
+sidebar_label: "8.4 Plugins"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the role of plugins in extending Gazebo's functionality.
+- Differentiate between different types of plugins (world, model, sensor, system).
+- Use existing Gazebo plugins to control a robot or simulate a sensor.
+- Write a simple Gazebo plugin to apply a force to a model.
+- Load plugins in a URDF/SDF file or from the command line.
+
+## 1. What are Gazebo Plugins?
+
+Gazebo plugins are shared libraries that can be loaded at runtime to extend the functionality of Gazebo. Plugins allow you to control almost every aspect of the simulation, from applying forces to models to generating custom sensor data.
+
+## 2. Types of Plugins
+
+There are several types of plugins in Gazebo, each with a different purpose:
+- **World Plugin:** Interacts with the entire world (e.g., to control the physics properties).
+- **Model Plugin:** Attaches to a specific model (e.g., to implement a custom controller).
+- **Sensor Plugin:** Attaches to a sensor (e.g., to simulate a new type of sensor).
+- **System Plugin:** A general-purpose plugin that can be used to add new functionality to Gazebo.
+
+... more content to be added here ...
+
+## 3. Using Existing Plugins
+
+Gazebo comes with a variety of pre-built plugins that you can use in your simulations. For example, the `gazebo_ros_diff_drive` plugin can be used to control a differential drive robot using ROS 2 messages.
+
+... more content to be added here ...
+
+## 4. Writing a Simple Plugin
+
+Let's write a simple "hello world" plugin that applies a constant force to a model.
+
+... more content to be added here ...
+
+## 5. Loading Plugins
+
+Plugins can be loaded in a URDF or SDF file, or they can be specified on the command line when you start Gazebo.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

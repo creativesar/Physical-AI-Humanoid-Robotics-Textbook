@@ -1,0 +1,26 @@
+{
+  "id": "digital-twin-workstation/15.5-networking-setup",
+  "title": "15.5 Networking Setup",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/15-digital-twin-workstation/15.5-networking-setup.mdx",
+  "sourceDirName": "15-digital-twin-workstation",
+  "slug": "/digital-twin-workstation/15.5-networking-setup",
+  "permalink": "/docs/digital-twin-workstation/15.5-networking-setup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "15.5 Networking Setup",
+    "sidebar_label": "15.5 Networking Setup"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "15.4 ROS Workstation",
+    "permalink": "/docs/digital-twin-workstation/15.4-ros-workstation"
+  },
+  "next": {
+    "title": "15.6 Multi-Machine Sync",
+    "permalink": "/docs/digital-twin-workstation/15.6-multi-machine-sync"
+  }
+}

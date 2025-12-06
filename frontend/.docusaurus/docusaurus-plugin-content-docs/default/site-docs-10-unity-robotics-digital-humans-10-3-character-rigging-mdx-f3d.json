@@ -1,0 +1,26 @@
+{
+  "id": "unity-robotics-digital-humans/10.3-character-rigging",
+  "title": "10.3 Character Rigging",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/10-unity-robotics-digital-humans/10.3-character-rigging.mdx",
+  "sourceDirName": "10-unity-robotics-digital-humans",
+  "slug": "/unity-robotics-digital-humans/10.3-character-rigging",
+  "permalink": "/docs/unity-robotics-digital-humans/10.3-character-rigging",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "10.3 Character Rigging",
+    "sidebar_label": "10.3 Character Rigging"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "10.2 Unity-ROS2 Integration",
+    "permalink": "/docs/unity-robotics-digital-humans/10.2-unity-ros2-integration"
+  },
+  "next": {
+    "title": "10.4 Motion Retargeting",
+    "permalink": "/docs/unity-robotics-digital-humans/10.4-motion-retargeting"
+  }
+}

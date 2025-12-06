@@ -1,0 +1,26 @@
+{
+  "id": "navigation-path-planning-nav2/12.1-nav2-architecture",
+  "title": "12.1 Nav2 Architecture",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/12-navigation-path-planning-nav2/12.1-nav2-architecture.mdx",
+  "sourceDirName": "12-navigation-path-planning-nav2",
+  "slug": "/navigation-path-planning-nav2/12.1-nav2-architecture",
+  "permalink": "/docs/navigation-path-planning-nav2/12.1-nav2-architecture",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "12.1 Nav2 Architecture",
+    "sidebar_label": "12.1 Nav2 Architecture"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "11.6 SLAM Pipelines",
+    "permalink": "/docs/visual-slam-vslam/11.6-slam-pipelines"
+  },
+  "next": {
+    "title": "12.2 Localization",
+    "permalink": "/docs/navigation-path-planning-nav2/12.2-localization"
+  }
+}

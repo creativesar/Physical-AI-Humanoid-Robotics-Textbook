@@ -1,0 +1,59 @@
+---
+title: "12.4 Global & Local Planning"
+sidebar_label: "12.4 Global & Local Planning"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Differentiate between global and local path planning in Nav2.
+- Understand the algorithms used by global planners (e.g., A*, Dijkstra).
+- Understand the algorithms used by local planners (e.g., DWA, TEB).
+- Configure and tune global and local planners in Nav2.
+- Analyze the behavior of different planners in various environments.
+
+## 1. Introduction to Path Planning
+
+Path planning is the process of finding a collision-free path for a robot from a starting point to a goal point. Nav2 employs a two-tiered approach to path planning: global planning and local planning.
+
+## 2. Global Planning
+
+The global planner is responsible for finding a long-term, collision-free path from the robot's current location to its ultimate goal, considering the entire map. Global planners typically use graph search algorithms.
+
+### Common Global Planning Algorithms:
+- **A* (A-star):** A popular and efficient search algorithm that finds the shortest path in a graph.
+- **Dijkstra's Algorithm:** Finds the shortest paths between nodes in a graph.
+
+... more content to be added here ...
+
+## 3. Local Planning
+
+The local planner operates in real-time, taking the global path as a guide and generating short-term, dynamically feasible trajectories that avoid unexpected obstacles and respect the robot's kinematics and dynamics.
+
+### Common Local Planning Algorithms:
+- **DWA (Dynamic Window Approach):** Samples many possible trajectories and evaluates them based on a cost function.
+- **TEB (Timed-Elastic Band):** Optimizes a trajectory in terms of execution time, path length, and obstacle avoidance.
+
+... more content to be added here ...
+
+## 4. Configuring Planners in Nav2
+
+Nav2 allows you to select and configure different global and local planners based on your robot's characteristics and the environment it operates in.
+
+... more content to be added here ...
+
+## 5. Analyzing Planner Behavior
+
+Understanding how different planners behave in various scenarios is crucial for selecting and tuning them effectively.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

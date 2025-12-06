@@ -1,0 +1,75 @@
+---
+title: "6.4 Gait Cycle Fundamentals"
+sidebar_label: "6.4 Gait Cycle Fundamentals"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the phases of the human gait cycle.
+- Describe the key events in a walking gait, such as heel strike and toe-off.
+- Understand how the concepts of the gait cycle are applied to humanoid robots.
+- Differentiate between different types of gaits (e.g., walking, running, hopping).
+- Analyze the stability of a robot during the different phases of the gait cycle.
+
+## 1. The Human Gait Cycle
+
+The human gait cycle is the sequence of events that occurs between two consecutive heel strikes of the same foot. It is typically divided into two main phases:
+
+- **Stance Phase:** The period when the foot is in contact with the ground.
+- **Swing Phase:** The period when the foot is in the air.
+
+Understanding the human gait cycle is a crucial starting point for designing humanoid walking patterns.
+
+<Mermaid chart={`
+gantt
+    title Human Gait Cycle
+    dateFormat  X
+    axisFormat %s
+
+    section Stance Phase
+    Heel Strike : 0, 1
+    Foot Flat : 1, 2
+    Mid-Stance : 2, 3
+    Heel-Off : 3, 4
+    Toe-Off : 4, 5
+
+    section Swing Phase
+    Initial Swing : 5, 6
+    Mid-Swing : 6, 7
+    Terminal Swing : 7, 8
+`} />
+
+## 2. Phases of the Gait Cycle
+
+Let's break down the phases of the gait cycle in more detail.
+
+... more content to be added here ...
+
+## 3. Applying Gait Concepts to Humanoid Robots
+
+The principles of the human gait cycle are adapted for humanoid robots to generate bipedal locomotion. This involves planning trajectories for the robot's feet and CoM to mimic the phases of human walking.
+
+... more content to be added here ...
+
+## 4. Different Types of Gaits
+
+Besides walking, there are other types of gaits that can be implemented on humanoid robots, each with its own dynamics and stability challenges.
+
+... more content to be added here ...
+
+## 5. Stability During the Gait Cycle
+
+The stability of a humanoid robot changes throughout the gait cycle. The most challenging phase is the single-support phase, when the robot is standing on only one foot.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

@@ -1,0 +1,54 @@
+---
+title: "4.4 Inertial & Collision Models"
+sidebar_label: "4.4 Inertial & Collision Models"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the importance of accurate inertial and collision models in robotics.
+- Define the `<inertial>` element in URDF, including mass and inertia tensor.
+- Define the `<collision>` element in URDF using simple geometric shapes.
+- Understand the difference between `<visual>` and `<collision>` geometries.
+- Create more realistic robot models for simulation and collision detection.
+
+## 1. Why Inertial and Collision Models Matter
+
+For a robot to be accurately simulated and to interact safely with its environment, its physical properties must be well-defined. This is where inertial and collision models come in.
+
+- **Inertial Models:** Describe the mass and rotational inertia of each link. They are essential for dynamic simulations, allowing the physics engine to calculate how the robot moves under the influence of forces and torques.
+- **Collision Models:** Define the physical boundaries of each link for collision detection. They are used to prevent the robot from colliding with itself or with objects in the environment.
+
+## 2. The `<inertial>` Element
+
+The `<inertial>` element specifies the mass and inertia tensor of a link.
+
+... more content to be added here ...
+
+## 3. The `<collision>` Element
+
+The `<collision>` element defines the shape of the link for the physics engine. It is often a simplified version of the `<visual>` geometry to improve performance.
+
+... more content to be added here ...
+
+## 4. Visual vs. Collision Geometries
+
+It's common for the `<visual>` and `<collision>` geometries of a link to be different. The visual model can be highly detailed (e.g., a complex mesh), while the collision model is typically a simpler shape (e.g., a cylinder or a box) that approximates the link's geometry.
+
+... more content to be added here ...
+
+## 5. Modeling a Robot with Realistic Properties
+
+Let's enhance our robotic arm model by adding more accurate inertial and collision properties.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

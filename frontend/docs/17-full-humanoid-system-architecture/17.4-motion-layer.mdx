@@ -1,0 +1,60 @@
+---
+title: "17.4 Motion Layer"
+sidebar_label: "17.4 Motion Layer"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the function of the motion layer in a humanoid robot.
+- Differentiate between locomotion and manipulation components within the motion layer.
+- Describe how motion primitives and trajectories are generated and executed.
+- Understand the role of inverse kinematics and dynamics in motion generation.
+- Appreciate the complexities of smooth, coordinated, and safe motion for humanoids.
+
+## 1. Introduction to the Motion Layer
+
+The motion layer is responsible for the physical movement of the humanoid robot. It takes high-level commands or planned trajectories from the control layer and translates them into executable joint commands for the robot's actuators. This layer encompasses both locomotion (moving the robot's body through the environment) and manipulation (interacting with objects using arms/hands).
+
+## 2. Locomotion Components
+
+For a humanoid, locomotion primarily involves bipedal walking, but can also include other gaits like running or hopping. Key aspects include:
+- **Gait Planning:** Generating stable and efficient footstep and Center of Mass (CoM) trajectories.
+- **Balance Control:** Actively maintaining stability during single and double support phases.
+- **Foot Placement Control:** Precisely placing the feet to avoid obstacles and adapt to terrain changes.
+
+... more content to be added here ...
+
+## 3. Manipulation Components
+
+The manipulation capabilities of a humanoid allow it to interact with its environment. This involves:
+- **Reach Planning:** Generating collision-free paths for the arms to reach target objects.
+- **Grabbing/Grasping:** Controlling the hand/gripper to firmly grasp objects.
+- **Force Control:** Applying controlled forces during interaction with objects or the environment.
+
+... more content to be added here ...
+
+## 4. Motion Generation and Execution
+
+Motion in humanoids often relies on:
+- **Inverse Kinematics (IK):** To calculate the joint angles required to achieve a desired end-effector (foot, hand) pose.
+- **Inverse Dynamics (ID):** To compute the joint torques needed to produce specific motions while accounting for the robot's mass and inertia.
+- **Trajectory Generation:** Creating smooth, dynamically feasible paths for joints or end-effectors.
+
+... more content to be added here ...
+
+## 5. Coordination and Whole-Body Control
+
+The motion layer works closely with the control layer to achieve coordinated whole-body movements. This means that locomotion and manipulation tasks are not executed in isolation but are integrated to ensure overall stability and task accomplishment.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

@@ -1,0 +1,28 @@
+{
+  "id": "robotics-mechatronics-fundamentals/motors-actuators-servos",
+  "title": "2.3 Motors, Actuators, and Servos",
+  "description": "Motors, Actuators, and Servos: Powering Robotic Motion",
+  "source": "@site/docs/2-robotics-mechatronics-fundamentals/2.3-motors-actuators-servos.mdx",
+  "sourceDirName": "2-robotics-mechatronics-fundamentals",
+  "slug": "/robotics-mechatronics-fundamentals/motors-actuators-servos",
+  "permalink": "/docs/robotics-mechatronics-fundamentals/motors-actuators-servos",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "id": "motors-actuators-servos",
+    "title": "2.3 Motors, Actuators, and Servos",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2.2 Mechanical Structure of Robots",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/mechanical-structure-of-robots"
+  },
+  "next": {
+    "title": "2.4 Power Systems",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/power-systems"
+  }
+}

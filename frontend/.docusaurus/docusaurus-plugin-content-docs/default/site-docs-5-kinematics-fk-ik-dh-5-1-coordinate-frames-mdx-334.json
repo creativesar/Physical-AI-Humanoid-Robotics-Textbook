@@ -1,0 +1,26 @@
+{
+  "id": "kinematics-fk-ik-dh/5.1-coordinate-frames",
+  "title": "5.1 Coordinate Frames",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/5-kinematics-fk-ik-dh/5.1-coordinate-frames.mdx",
+  "sourceDirName": "5-kinematics-fk-ik-dh",
+  "slug": "/kinematics-fk-ik-dh/5.1-coordinate-frames",
+  "permalink": "/docs/kinematics-fk-ik-dh/5.1-coordinate-frames",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "5.1 Coordinate Frames",
+    "sidebar_label": "5.1 Coordinate Frames"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "4.6 SDF & Conversions",
+    "permalink": "/docs/urdf-robot-description-models/4.6-sdf-and-conversions"
+  },
+  "next": {
+    "title": "5.2 Forward Kinematics",
+    "permalink": "/docs/kinematics-fk-ik-dh/5.2-forward-kinematics"
+  }
+}

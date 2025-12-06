@@ -1,0 +1,26 @@
+{
+  "id": "jetson-robotics-hardware-setup/16.1-jetson-models",
+  "title": "16.1 Jetson Models",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/16-jetson-robotics-hardware-setup/16.1-jetson-models.mdx",
+  "sourceDirName": "16-jetson-robotics-hardware-setup",
+  "slug": "/jetson-robotics-hardware-setup/16.1-jetson-models",
+  "permalink": "/docs/jetson-robotics-hardware-setup/16.1-jetson-models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "16.1 Jetson Models",
+    "sidebar_label": "16.1 Jetson Models"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "15.6 Multi-Machine Sync",
+    "permalink": "/docs/digital-twin-workstation/15.6-multi-machine-sync"
+  },
+  "next": {
+    "title": "16.2 Flashing Jetson",
+    "permalink": "/docs/jetson-robotics-hardware-setup/16.2-flashing-jetson"
+  }
+}

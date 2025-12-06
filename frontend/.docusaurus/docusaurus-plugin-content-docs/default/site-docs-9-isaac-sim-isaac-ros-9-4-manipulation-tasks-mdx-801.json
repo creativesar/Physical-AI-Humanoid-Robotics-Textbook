@@ -1,0 +1,26 @@
+{
+  "id": "isaac-sim-isaac-ros/9.4-manipulation-tasks",
+  "title": "9.4 Manipulation Tasks",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/9-isaac-sim-isaac-ros/9.4-manipulation-tasks.mdx",
+  "sourceDirName": "9-isaac-sim-isaac-ros",
+  "slug": "/isaac-sim-isaac-ros/9.4-manipulation-tasks",
+  "permalink": "/docs/isaac-sim-isaac-ros/9.4-manipulation-tasks",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "9.4 Manipulation Tasks",
+    "sidebar_label": "9.4 Manipulation Tasks"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "9.3 Scene Composition",
+    "permalink": "/docs/isaac-sim-isaac-ros/9.3-scene-composition"
+  },
+  "next": {
+    "title": "9.5 Perception Pipelines",
+    "permalink": "/docs/isaac-sim-isaac-ros/9.5-perception-pipelines"
+  }
+}

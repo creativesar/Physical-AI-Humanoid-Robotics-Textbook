@@ -1,0 +1,63 @@
+---
+title: "17.3 Control Layer"
+sidebar_label: "17.3 Control Layer"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the role and complexity of the control layer in a humanoid robot.
+- Describe different levels of control (e.g., joint-level, operational-space, whole-body).
+- Identify common control strategies (e.g., PID, MPC, impedance control).
+- Understand how the control layer interfaces with perception and motion layers.
+- Appreciate the challenges of robust and dynamic control for humanoids.
+
+## 1. Introduction to the Control Layer
+
+The control layer is the "brain" of the humanoid robot, responsible for translating high-level commands and task plans into low-level motor commands that actuate the robot's joints. It constantly processes sensor feedback to ensure that the robot performs its intended actions accurately, stably, and safely.
+
+## 2. Levels of Control
+
+Control in humanoid robotics can be conceptualized at different levels:
+- **Joint-Level Control:** Focuses on controlling individual joint positions, velocities, or torques (e.g., using PID controllers).
+- **Operational-Space Control:** Commands are given in terms of end-effector pose (position and orientation) or other task-relevant spaces.
+- **Whole-Body Control:** Coordinates the motion of all joints to achieve multiple tasks simultaneously, considering the robot's entire kinematic and dynamic structure.
+
+... more content to be added here ...
+
+## 3. Common Control Strategies
+
+- **PID Control:** Widely used for joint-level control due to its simplicity and effectiveness.
+- **Model Predictive Control (MPC):** Optimal control strategy that predicts future states and plans control actions over a horizon. Used for dynamic tasks like walking.
+- **Impedance Control:** Regulates the robot's dynamic interaction with the environment, making it compliant or stiff as needed.
+- **Inverse Dynamics Control:** Calculates the joint torques required to achieve a desired acceleration, often used in whole-body control.
+
+... more content to be added here ...
+
+## 4. Interface with Perception and Motion Layers
+
+- **From Perception:** The control layer receives processed environmental information (e.g., obstacle locations, object poses) from the perception layer.
+- **To Motion:** It sends desired joint trajectories, velocities, or torques to the motion layer for execution.
+- **Feedback:** Continuously receives feedback (e.g., joint angles, IMU data) from the robot's sensors to close the control loop.
+
+... more content to be added here ...
+
+## 5. Challenges in Humanoid Control
+
+Robust and dynamic control for humanoids is challenging due to:
+- **High Degrees of Freedom and Redundancy:** Complex optimization problems.
+- **Underactuation and Hybrid Dynamics:** Managing contact with the environment.
+- **Real-time Performance:** Control loops often run at high frequencies.
+- **Robustness to Disturbances:** Maintaining stability against external forces.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

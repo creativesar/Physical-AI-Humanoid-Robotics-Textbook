@@ -1,0 +1,26 @@
+{
+  "id": "navigation-path-planning-nav2/12.3-mapping",
+  "title": "12.3 Mapping",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/12-navigation-path-planning-nav2/12.3-mapping.mdx",
+  "sourceDirName": "12-navigation-path-planning-nav2",
+  "slug": "/navigation-path-planning-nav2/12.3-mapping",
+  "permalink": "/docs/navigation-path-planning-nav2/12.3-mapping",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "12.3 Mapping",
+    "sidebar_label": "12.3 Mapping"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "12.2 Localization",
+    "permalink": "/docs/navigation-path-planning-nav2/12.2-localization"
+  },
+  "next": {
+    "title": "12.4 Global & Local Planning",
+    "permalink": "/docs/navigation-path-planning-nav2/12.4-global-and-local-planning"
+  }
+}

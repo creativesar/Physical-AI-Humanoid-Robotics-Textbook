@@ -1,0 +1,26 @@
+{
+  "id": "isaac-sim-isaac-ros/9.2-ros-bridge",
+  "title": "9.2 ROS Bridge",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/9-isaac-sim-isaac-ros/9.2-ros-bridge.mdx",
+  "sourceDirName": "9-isaac-sim-isaac-ros",
+  "slug": "/isaac-sim-isaac-ros/9.2-ros-bridge",
+  "permalink": "/docs/isaac-sim-isaac-ros/9.2-ros-bridge",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "9.2 ROS Bridge",
+    "sidebar_label": "9.2 ROS Bridge"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "9.1 Isaac Sim Overview",
+    "permalink": "/docs/isaac-sim-isaac-ros/9.1-isaac-sim-overview"
+  },
+  "next": {
+    "title": "9.3 Scene Composition",
+    "permalink": "/docs/isaac-sim-isaac-ros/9.3-scene-composition"
+  }
+}

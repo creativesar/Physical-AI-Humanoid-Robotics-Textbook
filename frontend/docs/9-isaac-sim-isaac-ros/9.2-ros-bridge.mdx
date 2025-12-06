@@ -1,0 +1,62 @@
+---
+title: "9.2 ROS Bridge"
+sidebar_label: "9.2 ROS Bridge"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand how Isaac Sim integrates with ROS and ROS 2.
+- Use the Isaac Sim ROS Bridge to connect your simulation to a ROS 2 network.
+- Publish data from Isaac Sim to ROS 2 topics (e.g., sensor data, robot state).
+- Subscribe to ROS 2 topics to control a robot in Isaac Sim.
+- Configure the ROS Bridge for your specific application.
+
+## 1. The Isaac Sim ROS Bridge
+
+The Isaac Sim ROS Bridge provides a seamless connection between Isaac Sim and ROS/ROS 2. It allows you to send data and commands between the simulator and your ROS nodes, enabling you to use the full ROS ecosystem with Isaac Sim.
+
+<Mermaid chart={`
+graph TD
+    A[ROS 2 Node] -- ROS 2 Topic --> B(Isaac Sim ROS Bridge);
+    B -- Isaac Sim Topic --> C[Isaac Sim];
+    C -- Simulation Data --> B;
+    B -- ROS 2 Topic --> A;
+`} />
+
+## 2. Enabling the ROS Bridge
+
+The ROS Bridge is a built-in feature of Isaac Sim that can be enabled and configured through the user interface or through a Python script.
+
+... more content to be added here ...
+
+## 3. Publishing Data from Isaac Sim
+
+Isaac Sim can publish a wide variety of data to ROS 2 topics, including:
+- Sensor data (camera images, LiDAR point clouds, IMU data)
+- Robot state (joint states, link poses)
+- Simulation state (time, physics properties)
+
+... more content to be added here ...
+
+## 4. Controlling a Robot in Isaac Sim from ROS 2
+
+You can control your simulated robot by publishing messages to ROS 2 topics that the Isaac Sim ROS Bridge is subscribed to. For example, you can send joint commands or velocity commands to control the robot's motion.
+
+... more content to be added here ...
+
+## 5. Configuring the ROS Bridge
+
+The ROS Bridge is highly configurable. You can specify which topics to bridge, the message types to use, and the frequency of the bridge.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

@@ -1,0 +1,54 @@
+---
+title: "5.6 Kinematic Chains"
+sidebar_label: "5.6 Kinematic Chains"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the concept of a kinematic chain.
+- Differentiate between open and closed kinematic chains.
+- Model a robot's structure as a kinematic chain.
+- Understand how kinematic chains are represented in URDF.
+- Analyze the kinematics of simple and complex robotic systems.
+
+## 1. What is a Kinematic Chain?
+
+A kinematic chain is a sequence of rigid bodies (links) connected by joints. In robotics, a robot's structure is typically modeled as a kinematic chain, from its base link to its end-effector.
+
+## 2. Open vs. Closed Kinematic Chains
+
+There are two main types of kinematic chains:
+
+- **Open Kinematic Chains:** In an open chain, each link is connected to at most two other links, and there is a single starting link and a single ending link. Most robotic arms are open chains.
+- **Closed Kinematic Chains:** In a closed chain, there are one or more loops, meaning that a link can be connected to more than two other links. Parallel robots and humanoid robots with two legs on the ground are examples of closed chains.
+
+... more content to be added here ...
+
+## 3. Representing Kinematic Chains in URDF
+
+URDF is primarily designed for representing open kinematic chains (tree structures). The `<parent>` and `<child>` tags within the `<joint>` element define the structure of the chain.
+
+... more content to be added here ...
+
+## 4. Analyzing Kinematic Chains
+
+The analysis of kinematic chains involves solving the forward and inverse kinematics problems for the entire chain. For open chains, this is relatively straightforward. For closed chains, the analysis is more complex due to the additional constraints imposed by the loops.
+
+... more content to be added here ...
+
+## 5. Examples of Kinematic Chains in Robotics
+
+Let's look at some examples of kinematic chains for different types of robots, including robotic arms, mobile robots, and humanoids.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

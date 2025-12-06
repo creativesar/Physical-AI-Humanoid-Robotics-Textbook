@@ -1,0 +1,59 @@
+---
+title: "5.2 Forward Kinematics"
+sidebar_label: "5.2 Forward Kinematics"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the concept of forward kinematics.
+- Calculate the position and orientation of a robot's end-effector given its joint angles.
+- Apply homogeneous transformation matrices to solve forward kinematics problems.
+- Implement a simple forward kinematics solver in Python.
+- Understand the relationship between a robot's URDF and its forward kinematics.
+
+## 1. What is Forward Kinematics?
+
+Forward kinematics (FK) is the process of calculating the position and orientation of a robot's end-effector (e.g., its hand or gripper) from its joint parameters (e.g., the angles of its joints).
+
+Given a set of joint angles, the forward kinematics equations will tell you where the end-effector is in space.
+
+<Mermaid chart={`
+graph TD
+    A[Joint Angles (θ₁, θ₂, ...)] --> B{Forward Kinematics};
+    B --> C[End-Effector Pose (Position & Orientation)];
+`} />
+
+## 2. The Forward Kinematics Problem
+
+The forward kinematics problem can be solved by composing the transformation matrices of each link in the robot's kinematic chain, from the base to the end-effector.
+
+... more content to be added here ...
+
+## 3. Solving Forward Kinematics with Transformation Matrices
+
+By multiplying the transformation matrices of each joint and link, we can find the overall transformation from the base of the robot to its end-effector.
+
+... more content to be added here ...
+
+## 4. Implementing Forward Kinematics in Python
+
+Let's write a Python script to calculate the forward kinematics for a simple robotic arm.
+
+... more content to be added here ...
+
+## 5. Forward Kinematics in ROS 2
+
+In ROS 2, packages like `robot_state_publisher` can automatically solve the forward kinematics for you based on your robot's URDF and joint states.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

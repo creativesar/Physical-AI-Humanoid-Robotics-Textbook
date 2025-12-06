@@ -1,0 +1,61 @@
+---
+title: "9.6 Isaac ROS Packages"
+sidebar_label: "9.6 Isaac ROS Packages"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the purpose and benefits of Isaac ROS.
+- Identify key Isaac ROS packages and their functionalities.
+- Install and configure Isaac ROS packages for your robotics projects.
+- Integrate Isaac ROS components into your ROS 2 applications for accelerated perception and navigation.
+- Leverage GPU acceleration for common robotics algorithms using Isaac ROS.
+
+## 1. Introduction to Isaac ROS
+
+Isaac ROS is a collection of hardware-accelerated ROS 2 packages developed by NVIDIA. It provides high-performance components for various robotics tasks, including perception, navigation, and simulation, by leveraging the power of NVIDIA GPUs.
+
+The goal of Isaac ROS is to enable developers to build more capable and efficient robotics applications by offloading computationally intensive tasks to the GPU.
+
+## 2. Key Isaac ROS Packages
+
+Isaac ROS includes a variety of packages, each designed to accelerate a specific robotics function:
+
+- **`isaac_ros_common`**: Provides common utilities and tools for other Isaac ROS packages.
+- **`isaac_ros_image_pipeline`**: Offers GPU-accelerated image processing primitives (e.g., rectification, debayering, resizing).
+- **`isaac_ros_object_detection`**: Provides components for real-time object detection using pre-trained or custom deep learning models.
+- **`isaac_ros_argus`**: Integrates with NVIDIA Jetson's ISP (Image Signal Processor) for optimized camera input.
+- **`isaac_ros_apriltag`**: GPU-accelerated AprilTag detection for robust pose estimation.
+- **`isaac_ros_stereo_image_proc`**: High-performance stereo depth estimation.
+- **`isaac_ros_rslam`**: Real-time visual SLAM (Simultaneous Localization and Mapping).
+
+... more content to be added here ...
+
+## 3. Installation and Configuration
+
+Installing Isaac ROS typically involves setting up your NVIDIA Jetson or a GPU-enabled workstation and then installing the specific Isaac ROS packages you need.
+
+... more content to be added here ...
+
+## 4. Integrating Isaac ROS into ROS 2 Applications
+
+Isaac ROS packages integrate seamlessly into your existing ROS 2 graphs. You can replace CPU-bound nodes with their GPU-accelerated Isaac ROS counterparts to improve performance.
+
+... more content to be added here ...
+
+## 5. Leveraging GPU Acceleration
+
+This section will demonstrate how Isaac ROS utilizes GPU resources to speed up computations, explaining the underlying mechanisms that enable this acceleration.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

@@ -1,0 +1,65 @@
+---
+title: "6.5 PD/PID/MPC Controllers"
+sidebar_label: "6.5 PD/PID/MPC Controllers"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the principles of feedback control.
+- Describe the components of a PID (Proportional-Integral-Derivative) controller.
+- Implement a simple PD or PID controller for a robotic joint.
+- Understand the concept of Model Predictive Control (MPC) and its advantages.
+- Compare and contrast different control strategies for humanoid robots.
+
+## 1. Introduction to Feedback Control
+
+Feedback control is a fundamental concept in robotics. It involves using sensor feedback to adjust the robot's actions to achieve a desired outcome. This allows the robot to be robust to disturbances and uncertainties.
+
+<Mermaid chart={`
+graph TD
+    A[Desired State] --> B{Controller};
+    B -- Control Action --> C{Robot};
+    C -- Sensor Feedback --> D[Actual State];
+    D --> B;
+`} />
+
+## 2. PD and PID Controllers
+
+PID controllers are a widely used type of feedback controller. They calculate a control action based on three components:
+
+- **Proportional (P):** The error between the desired and actual state.
+- **Integral (I):** The accumulated error over time.
+- **Derivative (D):** The rate of change of the error.
+
+A PD controller is a simplified version that only uses the proportional and derivative terms.
+
+... more content to be added here ...
+
+## 3. Implementing a PID Controller
+
+Let's implement a simple PID controller in Python to control the position of a single joint.
+
+... more content to be added here ...
+
+## 4. Model Predictive Control (MPC)
+
+Model Predictive Control (MPC) is a more advanced control technique that uses a dynamic model of the robot to predict its future behavior and to calculate an optimal sequence of control actions. MPC is particularly well-suited for complex systems like humanoid robots.
+
+... more content to be added here ...
+
+## 5. Comparing Control Strategies
+
+Different control strategies have different strengths and weaknesses. The choice of controller depends on the specific application and the complexity of the robot.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

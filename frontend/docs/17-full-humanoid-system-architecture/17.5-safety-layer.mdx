@@ -1,0 +1,70 @@
+---
+title: "17.5 Safety Layer"
+sidebar_label: "17.5 Safety Layer"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the critical importance of a dedicated safety layer in humanoid robotics.
+- Identify potential hazards and risks associated with humanoid operation.
+- Describe various safety mechanisms and their implementation (e.g., emergency stops, collision detection, safe trajectory planning).
+- Understand the principles of human-robot collaboration and interaction safety.
+- Design a basic safety protocol for a humanoid robot system.
+
+## 1. Introduction to the Safety Layer
+
+The safety layer is a paramount component of any humanoid robotics system, designed to prevent harm to humans, damage to the robot, and catastrophic system failures. Given the size, power, and complexity of humanoids, a robust and redundant safety architecture is non-negotiable, especially in environments shared with humans.
+
+## 2. Potential Hazards and Risks
+
+Humanoid robots present several potential hazards:
+- **Impact from movement:** High speeds and heavy limbs can cause injury.
+- **Pinching/Crushing:** Body parts getting caught in joints.
+- **Falling:** The robot itself falling can cause damage to itself or surroundings.
+- **Unexpected behavior:** Unforeseen actions due to software bugs or sensor errors.
+- **Electrical hazards:** Exposed wiring or power sources.
+
+... more content to be added here ...
+
+## 3. Safety Mechanisms
+
+A multi-layered approach to safety typically includes:
+- **Emergency Stop (E-Stop):** Immediate power cutoff to actuators.
+- **Physical Limits:** Mechanical stops on joints, current limits on motors.
+- **Software Limits:** Joint position/velocity/torque limits enforced in software.
+- **Collision Detection and Avoidance:** Real-time monitoring for impending collisions (self-collision, environment collision).
+- **Safe Trajectory Planning:** Ensuring planned paths are collision-free and respect dynamic limits.
+- **Proximity Sensors:** For detecting nearby objects or humans.
+- **Failsafe States:** Defined safe configurations the robot reverts to on error.
+
+... more content to be added here ...
+
+## 4. Human-Robot Collaboration (HRC) Safety
+
+When humanoids are designed to work closely with humans, specific HRC safety standards and principles apply:
+- **Speed and Separation Monitoring:** Adjusting robot speed based on human proximity.
+- **Power and Force Limiting:** Ensuring the robot's contact forces remain below safe thresholds.
+- **Collaborative Zones:** Designated areas where human and robot can share space.
+
+... more content to be added here ...
+
+## 5. Designing a Safety Protocol
+
+Developing a comprehensive safety protocol involves:
+- **Risk Assessment:** Identifying all potential hazards.
+- **Safety System Design:** Choosing and implementing appropriate mechanisms.
+- **Validation and Verification:** Thoroughly testing all safety features.
+- **Emergency Procedures:** Defining clear steps for human operators in case of an incident.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

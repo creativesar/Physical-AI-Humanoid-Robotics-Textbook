@@ -1,0 +1,26 @@
+{
+  "id": "humanoid-locomotion-motion-generation/13.6-safety-and-constraints",
+  "title": "13.6 Safety & Constraints",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/13-humanoid-locomotion-motion-generation/13.6-safety-and-constraints.mdx",
+  "sourceDirName": "13-humanoid-locomotion-motion-generation",
+  "slug": "/humanoid-locomotion-motion-generation/13.6-safety-and-constraints",
+  "permalink": "/docs/humanoid-locomotion-motion-generation/13.6-safety-and-constraints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "13.6 Safety & Constraints",
+    "sidebar_label": "13.6 Safety & Constraints"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "13.5 Simulation-to-Real Transfer",
+    "permalink": "/docs/humanoid-locomotion-motion-generation/13.5-simulation-to-real-transfer"
+  },
+  "next": {
+    "title": "14.1 Multimodal Models",
+    "permalink": "/docs/vision-language-action-robotics/14.1-multimodal-models"
+  }
+}
