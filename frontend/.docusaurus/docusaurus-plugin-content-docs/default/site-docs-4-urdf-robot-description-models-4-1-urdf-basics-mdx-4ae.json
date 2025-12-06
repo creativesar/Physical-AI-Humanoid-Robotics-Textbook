@@ -1,0 +1,26 @@
+{
+  "id": "urdf-robot-description-models/4.1-urdf-basics",
+  "title": "4.1 URDF Basics",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/4-urdf-robot-description-models/4.1-urdf-basics.mdx",
+  "sourceDirName": "4-urdf-robot-description-models",
+  "slug": "/urdf-robot-description-models/4.1-urdf-basics",
+  "permalink": "/docs/urdf-robot-description-models/4.1-urdf-basics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "4.1 URDF Basics",
+    "sidebar_label": "4.1 URDF Basics"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3.6 ROS 2 Communication Patterns",
+    "permalink": "/docs/ros2-foundations/3.6-ros2-communication-patterns"
+  },
+  "next": {
+    "title": "4.2 Links & Joints",
+    "permalink": "/docs/urdf-robot-description-models/4.2-links-and-joints"
+  }
+}

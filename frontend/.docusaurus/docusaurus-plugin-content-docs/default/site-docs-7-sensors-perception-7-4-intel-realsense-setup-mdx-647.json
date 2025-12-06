@@ -1,0 +1,26 @@
+{
+  "id": "sensors-perception/7.4-intel-realsense-setup",
+  "title": "7.4 Intel RealSense Setup",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/7-sensors-perception/7.4-intel-realsense-setup.mdx",
+  "sourceDirName": "7-sensors-perception",
+  "slug": "/sensors-perception/7.4-intel-realsense-setup",
+  "permalink": "/docs/sensors-perception/7.4-intel-realsense-setup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "7.4 Intel RealSense Setup",
+    "sidebar_label": "7.4 Intel RealSense Setup"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "7.3 RGB & Depth Cameras",
+    "permalink": "/docs/sensors-perception/7.3-rgb-and-depth-cameras"
+  },
+  "next": {
+    "title": "7.5 Sensor Fusion",
+    "permalink": "/docs/sensors-perception/7.5-sensor-fusion"
+  }
+}

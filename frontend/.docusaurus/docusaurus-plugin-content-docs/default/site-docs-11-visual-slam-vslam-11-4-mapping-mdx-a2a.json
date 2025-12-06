@@ -1,0 +1,26 @@
+{
+  "id": "visual-slam-vslam/11.4-mapping",
+  "title": "11.4 Mapping",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/11-visual-slam-vslam/11.4-mapping.mdx",
+  "sourceDirName": "11-visual-slam-vslam",
+  "slug": "/visual-slam-vslam/11.4-mapping",
+  "permalink": "/docs/visual-slam-vslam/11.4-mapping",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "11.4 Mapping",
+    "sidebar_label": "11.4 Mapping"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "11.3 Pose Estimation",
+    "permalink": "/docs/visual-slam-vslam/11.3-pose-estimation"
+  },
+  "next": {
+    "title": "11.5 Loop Closure",
+    "permalink": "/docs/visual-slam-vslam/11.5-loop-closure"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "sensors-perception/7.1-imus",
+  "title": "7.1 IMUs",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/7-sensors-perception/7.1-imus.mdx",
+  "sourceDirName": "7-sensors-perception",
+  "slug": "/sensors-perception/7.1-imus",
+  "permalink": "/docs/sensors-perception/7.1-imus",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "7.1 IMUs",
+    "sidebar_label": "7.1 IMUs"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "6.6 Whole-Body Control",
+    "permalink": "/docs/robot-dynamics-humanoid-control/6.6-whole-body-control"
+  },
+  "next": {
+    "title": "7.2 LiDAR",
+    "permalink": "/docs/sensors-perception/7.2-lidar"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "jetson-robotics-hardware-setup/16.2-flashing-jetson",
+  "title": "16.2 Flashing Jetson",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/16-jetson-robotics-hardware-setup/16.2-flashing-jetson.mdx",
+  "sourceDirName": "16-jetson-robotics-hardware-setup",
+  "slug": "/jetson-robotics-hardware-setup/16.2-flashing-jetson",
+  "permalink": "/docs/jetson-robotics-hardware-setup/16.2-flashing-jetson",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "16.2 Flashing Jetson",
+    "sidebar_label": "16.2 Flashing Jetson"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "16.1 Jetson Models",
+    "permalink": "/docs/jetson-robotics-hardware-setup/16.1-jetson-models"
+  },
+  "next": {
+    "title": "16.3 Installing ROS 2",
+    "permalink": "/docs/jetson-robotics-hardware-setup/16.3-installing-ros2"
+  }
+}

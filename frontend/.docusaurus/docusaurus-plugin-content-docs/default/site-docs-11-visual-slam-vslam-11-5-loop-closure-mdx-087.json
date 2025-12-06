@@ -1,0 +1,26 @@
+{
+  "id": "visual-slam-vslam/11.5-loop-closure",
+  "title": "11.5 Loop Closure",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/11-visual-slam-vslam/11.5-loop-closure.mdx",
+  "sourceDirName": "11-visual-slam-vslam",
+  "slug": "/visual-slam-vslam/11.5-loop-closure",
+  "permalink": "/docs/visual-slam-vslam/11.5-loop-closure",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "11.5 Loop Closure",
+    "sidebar_label": "11.5 Loop Closure"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "11.4 Mapping",
+    "permalink": "/docs/visual-slam-vslam/11.4-mapping"
+  },
+  "next": {
+    "title": "11.6 SLAM Pipelines",
+    "permalink": "/docs/visual-slam-vslam/11.6-slam-pipelines"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "full-humanoid-system-architecture/17.5-safety-layer",
+  "title": "17.5 Safety Layer",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/17-full-humanoid-system-architecture/17.5-safety-layer.mdx",
+  "sourceDirName": "17-full-humanoid-system-architecture",
+  "slug": "/full-humanoid-system-architecture/17.5-safety-layer",
+  "permalink": "/docs/full-humanoid-system-architecture/17.5-safety-layer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "17.5 Safety Layer",
+    "sidebar_label": "17.5 Safety Layer"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "17.4 Motion Layer",
+    "permalink": "/docs/full-humanoid-system-architecture/17.4-motion-layer"
+  },
+  "next": {
+    "title": "17.6 Integration Blueprint",
+    "permalink": "/docs/full-humanoid-system-architecture/17.6-integration-blueprint"
+  }
+}

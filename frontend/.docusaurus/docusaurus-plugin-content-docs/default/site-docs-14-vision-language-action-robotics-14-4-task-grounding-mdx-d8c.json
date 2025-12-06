@@ -1,0 +1,26 @@
+{
+  "id": "vision-language-action-robotics/14.4-task-grounding",
+  "title": "14.4 Task Grounding",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/14-vision-language-action-robotics/14.4-task-grounding.mdx",
+  "sourceDirName": "14-vision-language-action-robotics",
+  "slug": "/vision-language-action-robotics/14.4-task-grounding",
+  "permalink": "/docs/vision-language-action-robotics/14.4-task-grounding",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "14.4 Task Grounding",
+    "sidebar_label": "14.4 Task Grounding"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "14.3 Policy Learning",
+    "permalink": "/docs/vision-language-action-robotics/14.3-policy-learning"
+  },
+  "next": {
+    "title": "14.5 VLA Pipelines",
+    "permalink": "/docs/vision-language-action-robotics/14.5-vla-pipelines"
+  }
+}

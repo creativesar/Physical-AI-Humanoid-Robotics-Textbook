@@ -1,0 +1,26 @@
+{
+  "id": "robot-dynamics-humanoid-control/6.5-pd-pid-mpc-controllers",
+  "title": "6.5 PD/PID/MPC Controllers",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/6-robot-dynamics-humanoid-control/6.5-pd-pid-mpc-controllers.mdx",
+  "sourceDirName": "6-robot-dynamics-humanoid-control",
+  "slug": "/robot-dynamics-humanoid-control/6.5-pd-pid-mpc-controllers",
+  "permalink": "/docs/robot-dynamics-humanoid-control/6.5-pd-pid-mpc-controllers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "6.5 PD/PID/MPC Controllers",
+    "sidebar_label": "6.5 PD/PID/MPC Controllers"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "6.4 Gait Cycle Fundamentals",
+    "permalink": "/docs/robot-dynamics-humanoid-control/6.4-gait-cycle-fundamentals"
+  },
+  "next": {
+    "title": "6.6 Whole-Body Control",
+    "permalink": "/docs/robot-dynamics-humanoid-control/6.6-whole-body-control"
+  }
+}

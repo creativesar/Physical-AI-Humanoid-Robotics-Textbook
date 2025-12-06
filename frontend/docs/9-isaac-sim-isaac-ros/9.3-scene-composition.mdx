@@ -1,5 +1,5 @@
 ---
-title: "9.3 Scene Composition"
+title: "9.3 Scene Composition: Building Virtual Worlds"
 sidebar_label: "9.3 Scene Composition"
 ---
 
@@ -8,44 +8,119 @@ import Mermaid from '@theme/Mermaid';
 ## Learning Outcomes
 
 After completing this section, you will be able to:
-- Understand the concept of scene composition in Isaac Sim.
-- Create and manage complex simulation environments.
-- Add and configure lights, cameras, and other objects in a scene.
-- Import assets from various sources, including USD files and the Omniverse content browser.
-- Use Python scripting to procedurally generate scenes.
+- Understand the concept of "Scene Composition" in Isaac Sim and how USD facilitates it.
+- Master the tools for importing and organizing assets (robots, props, environments) into a stage.
+- effectively use the "Reference" and "Payload" mechanisms in USD to build scalable and efficient scenes.
+- Manipulate object properties (transforms, physics, materials) via both the GUI and Python API.
+- Create procedural scenes by programmatically placing and randomizing objects.
+- Set up cameras and sensors within the scene to generate training data.
 
-## 1. Composing a Scene in Isaac Sim
+## 1. The Art of Scene Composition
 
-A scene in Isaac Sim is a collection of all the elements in your simulation, including robots, environments, lights, and cameras. Isaac Sim provides a powerful and flexible set of tools for composing and managing scenes.
+Scene composition is the process of assembling individual assets—robots, objects, lights, environments—into a cohesive digital world. In **Isaac Sim**, this process is fundamentally built upon **USD (Universal Scene Description)**, which allows for a powerful, non-destructive, and layered workflow.
 
-## 2. The Stage
+Unlike traditional monolithic scene files, USD allows you to:
+-   **Layer:** Apply changes (deltas) on top of base assets without modifying the original files.
+-   **Reference:** Reuse the same asset (e.g., a chair model) multiple times in a scene efficiently.
+-   **Variant:** Swiftly switch between different versions of an asset (e.g., a robot with different grippers) within the same scene.
 
-The "Stage" is the main container for all the objects in your scene. You can think of it as a hierarchical representation of your simulation world.
+For **humanoid robotics**, this allows you to create a "Base Lab Environment" and then easily create dozens of variations (e.g., "Cluttered Lab," "Dark Lab," "Lab with Obstacles") for testing your robot's robustness without duplicating data.
 
-... more content to be added here ...
+## 2. Importing and Organizing Assets
 
-## 3. Adding and Configuring Objects
+Isaac Sim leverages the **NVIDIA Nucleus** server and local file systems to manage assets.
 
-You can add objects to your scene from the Isaac Sim content browser, or you can import them from external files (e.g., USD, FBX, OBJ). Once an object is in the scene, you can modify its properties, such as its position, orientation, scale, and material.
+### 2.1 Importing Assets via GUI
+You can import USD, OBJ, FBX, and URDF files directly.
+1.  **Content Browser:** Navigate to your asset folder (local or Nucleus).
+2.  **Drag and Drop:** Simply drag an asset file from the Content Browser into the Viewport or Stage window.
+3.  **Import Dialog:** For non-USD formats (like URDF), an importer dialog will appear, allowing you to configure import settings (e.g., fixing joint limits, scale).
 
-... more content to be added here ...
+### 2.2 Organizing with XForms
+Use `XForm` (Transform) prims to group related objects. This is analogous to "Empty" objects in Blender or Unity.
+-   **Right-click in Stage -> Create -> XForm**.
+-   Parent your models under this XForm to move them together.
+
+### 2.3 References vs. Payloads (Critical USD Concept)
+-   **References:** When you "Add Reference," you pull in the content of another USD file. This is the standard way to compose scenes.
+-   **Payloads:** A payload is a "deferred reference." You can choose *not* to load payloads until needed. This is crucial for massive scenes (e.g., a whole city) where you only need to load the room the robot is currently in to save memory.
+
+## 3. Procedural Scene Generation (Python API)
+
+For AI training, hand-crafting scenes is insufficient. You need thousands of variations. Isaac Sim's Python API allows for procedural generation.
+
+**Example: Randomly Scattering Cubes**
+```python
+import numpy as np
+from omni.isaac.core.prims import XFormPrim
+from omni.isaac.core.utils.prims import create_prim
+from omni.isaac.core.utils.stage import get_current_stage
+from pxr import UsdGeom, Gf
+
+def scatter_cubes(n_cubes=10):
+    stage = get_current_stage()
+    
+    for i in range(n_cubes):
+        prim_path = f"/World/Cube_{i}"
+        # Create a cube visual
+        create_prim(
+            prim_path=prim_path,
+            prim_type="Cube",
+            attributes={"size": 0.5}
+        )
+        
+        # Random position
+        x = np.random.uniform(-2.0, 2.0)
+        y = np.random.uniform(-2.0, 2.0)
+        z = 0.25 # On the ground
+        
+        # Apply pose
+        cube_prim = XFormPrim(prim_path)
+        cube_prim.set_world_pose(position=np.array([x, y, z]))
+
+scatter_cubes(5)
+```
 
 ## 4. Lighting and Cameras
 
-Proper lighting and camera placement are essential for creating photorealistic simulations. Isaac Sim provides a variety of light types and camera models that you can use to create the perfect shot.
+A scene is not complete without proper lighting and sensors.
 
-... more content to be added here ...
+### 4.1 Lighting
+-   **Dome Light:** Provides omnidirectional, HDR-based environmental lighting. Good for general outdoor or soft indoor lighting.
+-   **Distant Light:** Simulates the sun.
+-   **Sphere/Rect/Disk Lights:** For local light sources (lamps, screens).
 
-## 5. Procedural Scene Generation
+**Tip:** For domain randomization, varying the intensity, color, and position of lights is a simple but effective way to make visual perception models more robust.
 
-For tasks like training AI models, you often need a large and diverse set of simulation environments. Isaac Sim's Python scripting API allows you to procedurally generate scenes, which is a key component of domain randomization.
+### 4.2 Cameras
+Cameras in Isaac Sim are virtual sensors that render the scene.
+-   **Create:** `Create -> Camera`.
+-   **Properties:** Set focal length, sensor size, clipping planes.
+-   **Attach to Robot:** Parent a camera prim to a robot's link (e.g., the head) to simulate the robot's point of view.
 
-... more content to be added here ...
+## 5. Exercises
 
-## 6. Exercises
+1.  **Manual Composition:**
+    -   Create a "Kitchen" stage.
+    -   Import a table and chair from the Isaac assets (Nucleus).
+    -   Import a "Mug" or small object and place it on the table.
+    -   Group them under an `XForm` named "DiningSet".
+2.  **Procedural Generation:**
+    -   Write a Python script that spawns a 5x5 grid of cylinders.
+    -   Randomize the height (Z-scale) of each cylinder between 0.5m and 2.0m.
+    -   Randomize the color of each cylinder.
+3.  **Physics Setup:**
+    -   Add a "Physics Scene" to your stage (necessary for dynamics).
+    -   Add a "Ground Plane".
+    -   Spawn a cube in the air and ensure it has a "Rigid Body" API applied so it falls and hits the ground.
+4.  **Camera & Render:**
+    -   Place a camera looking at your scene.
+    -   Enable "RTX Real-Time" or "Path Tracing" mode in the Viewport to see the high-quality lighting and shadows.
 
-... exercises to be added here ...
+## 6. Review Questions
 
-## 7. Review Questions
-
-... review questions to be added here ...
+1.  How does the **USD Reference** mechanism differ from simply copying and pasting an object in a scene? What is the efficiency benefit?
+2.  What is the purpose of an **XForm** prim in USD?
+3.  Explain the difference between a **Dome Light** and a **Distant Light**. Which would you use to simulate a cloudy day?
+4.  Why is **procedural scene generation** important for training Machine Learning models for robots?
+5.  What USD feature would you use to manage a massive environment where you only want to load parts of the scene into memory at a time?

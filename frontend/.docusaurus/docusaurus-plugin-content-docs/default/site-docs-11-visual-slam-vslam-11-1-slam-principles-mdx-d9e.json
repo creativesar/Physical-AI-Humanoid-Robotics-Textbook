@@ -1,0 +1,26 @@
+{
+  "id": "visual-slam-vslam/11.1-slam-principles",
+  "title": "11.1 SLAM Principles: Mapping the Unknown",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/11-visual-slam-vslam/11.1-slam-principles.mdx",
+  "sourceDirName": "11-visual-slam-vslam",
+  "slug": "/visual-slam-vslam/11.1-slam-principles",
+  "permalink": "/docs/visual-slam-vslam/11.1-slam-principles",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "11.1 SLAM Principles: Mapping the Unknown",
+    "sidebar_label": "11.1 SLAM Principles"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "10.6 Reinforcement Learning",
+    "permalink": "/docs/unity-robotics-digital-humans/10.6-reinforcement-learning"
+  },
+  "next": {
+    "title": "11.2 Feature Extraction",
+    "permalink": "/docs/visual-slam-vslam/11.2-feature-extraction"
+  }
+}

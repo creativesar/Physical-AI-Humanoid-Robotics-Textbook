@@ -1,0 +1,26 @@
+{
+  "id": "ros2-foundations/3.4-building-ros2-packages",
+  "title": "3.4 Building ROS 2 Packages",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/3-ros2-foundations/3.4-building-ros2-packages.mdx",
+  "sourceDirName": "3-ros2-foundations",
+  "slug": "/ros2-foundations/3.4-building-ros2-packages",
+  "permalink": "/docs/ros2-foundations/3.4-building-ros2-packages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "3.4 Building ROS 2 Packages",
+    "sidebar_label": "3.4 Building ROS 2 Packages"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3.3 Launch Files & Parameters",
+    "permalink": "/docs/ros2-foundations/3.3-launch-files-and-parameters"
+  },
+  "next": {
+    "title": "3.5 Publisher/Subscriber Nodes",
+    "permalink": "/docs/ros2-foundations/3.5-publisher-subscriber-nodes"
+  }
+}

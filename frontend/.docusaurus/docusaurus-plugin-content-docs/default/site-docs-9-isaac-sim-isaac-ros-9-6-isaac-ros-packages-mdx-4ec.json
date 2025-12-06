@@ -1,0 +1,26 @@
+{
+  "id": "isaac-sim-isaac-ros/9.6-isaac-ros-packages",
+  "title": "9.6 Isaac ROS Packages",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/9-isaac-sim-isaac-ros/9.6-isaac-ros-packages.mdx",
+  "sourceDirName": "9-isaac-sim-isaac-ros",
+  "slug": "/isaac-sim-isaac-ros/9.6-isaac-ros-packages",
+  "permalink": "/docs/isaac-sim-isaac-ros/9.6-isaac-ros-packages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "9.6 Isaac ROS Packages",
+    "sidebar_label": "9.6 Isaac ROS Packages"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "9.5 Perception Pipelines",
+    "permalink": "/docs/isaac-sim-isaac-ros/9.5-perception-pipelines"
+  },
+  "next": {
+    "title": "10.1 Unity Robotics Hub",
+    "permalink": "/docs/unity-robotics-digital-humans/10.1-unity-robotics-hub"
+  }
+}

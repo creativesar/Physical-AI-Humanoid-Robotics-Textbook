@@ -1,0 +1,26 @@
+{
+  "id": "digital-twin-workstation/15.3-isaac-sim-workstation",
+  "title": "15.3 Isaac Sim Workstation",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/15-digital-twin-workstation/15.3-isaac-sim-workstation.mdx",
+  "sourceDirName": "15-digital-twin-workstation",
+  "slug": "/digital-twin-workstation/15.3-isaac-sim-workstation",
+  "permalink": "/docs/digital-twin-workstation/15.3-isaac-sim-workstation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "15.3 Isaac Sim Workstation",
+    "sidebar_label": "15.3 Isaac Sim Workstation"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "15.2 GPU Setup",
+    "permalink": "/docs/digital-twin-workstation/15.2-gpu-setup"
+  },
+  "next": {
+    "title": "15.4 ROS Workstation",
+    "permalink": "/docs/digital-twin-workstation/15.4-ros-workstation"
+  }
+}

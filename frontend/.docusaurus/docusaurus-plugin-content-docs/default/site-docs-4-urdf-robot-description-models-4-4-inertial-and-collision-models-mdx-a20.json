@@ -1,0 +1,26 @@
+{
+  "id": "urdf-robot-description-models/4.4-inertial-and-collision-models",
+  "title": "4.4 Inertial & Collision Models",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/4-urdf-robot-description-models/4.4-inertial-and-collision-models.mdx",
+  "sourceDirName": "4-urdf-robot-description-models",
+  "slug": "/urdf-robot-description-models/4.4-inertial-and-collision-models",
+  "permalink": "/docs/urdf-robot-description-models/4.4-inertial-and-collision-models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "4.4 Inertial & Collision Models",
+    "sidebar_label": "4.4 Inertial & Collision Models"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "4.3 XACRO Macros",
+    "permalink": "/docs/urdf-robot-description-models/4.3-xacro-macros"
+  },
+  "next": {
+    "title": "4.5 Visualization in RViz",
+    "permalink": "/docs/urdf-robot-description-models/4.5-visualization-in-rviz"
+  }
+}

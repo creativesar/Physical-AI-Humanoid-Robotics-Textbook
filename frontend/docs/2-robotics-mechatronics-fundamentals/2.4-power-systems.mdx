@@ -24,6 +24,15 @@ The choice of energy source depends heavily on the robot's application, size, mo
 
 #### Common Energy Sources:
 
+```mermaid
+graph TD
+    A[Energy Sources] --> B[Batteries<br/>Portable Robotics]
+    A --> C[Mains Power<br/>Stationary Robotics]
+    A --> D[Fuel Cells<br/>Long Endurance]
+    A --> E[Supercapacitors<br/>High Power Bursts]
+    A --> F[Solar Power<br/>Outdoor Applications]
+```
+
 *   **Batteries (Portable Robotics):**
     *   **Lithium-Ion (Li-Ion):** High energy density, good power density, and widely available. Most common for mobile and humanoid robots due to their excellent performance-to-weight ratio. Requires careful management to prevent overcharge/discharge.
     *   **Lithium Polymer (LiPo):** Similar to Li-Ion but often packaged in flexible pouches, allowing for various shapes. Favored in drones and certain humanoids for high discharge rates.
@@ -37,6 +46,18 @@ The choice of energy source depends heavily on the robot's application, size, mo
 
 Batteries are critical for mobile and humanoid robots. Key considerations for battery selection include:
 
+#### Battery Parameters:
+
+```mermaid
+graph TD
+    A[Battery Selection Criteria] --> B[Voltage<br/>Electrical Potential]
+    A --> C[Capacity<br/>Charge Storage]
+    A --> D[Discharge Rate<br/>Current Delivery]
+    A --> E[Weight & Size<br/>Form Factor]
+    A --> F[Cycle Life<br/>Durability]
+    A --> G[Safety Features<br/>Protection]
+```
+
 *   **Voltage (V):** Determines the electrical potential. Must match the robot's motor drivers and electronic components.
 *   **Capacity (Ah or mAh):** Represents how much charge the battery can store, directly influencing the robot's operating duration. Higher capacity means longer run time.
 *   **Discharge Rate (C-rating):** Indicates how quickly a battery can safely deliver current. High C-ratings are needed for robots with powerful motors that draw large currents.
@@ -48,6 +69,17 @@ Batteries are critical for mobile and humanoid robots. Key considerations for ba
 
 Robots typically have multiple components (motors, sensors, microcontrollers) that require different operating voltages. A robust power distribution system ensures that each component receives stable and clean power.
 
+#### Voltage Regulation Technologies:
+
+```mermaid
+graph TD
+    A[Voltage Regulators] --> B[Linear Regulators<br/>Low Noise<br/>Inefficient]
+    A --> C[Switching Regulators<br/>Efficient<br/>More Complex]
+    C --> D[Buck<br/>Step Down]
+    C --> E[Boost<br/>Step Up]
+    C --> F[Buck-Boost<br/>Step Up/Down]
+```
+
 *   **Voltage Regulators:** Devices that maintain a constant output voltage regardless of input voltage fluctuations or load changes.
     *   **Linear Regulators (LDOs):** Simple, low noise, but inefficient as they dissipate excess voltage as heat. Suitable for low-power, sensitive circuits.
     *   **Switching Regulators (Buck, Boost, Buck-Boost):** More efficient, especially for larger voltage differences, but can introduce electrical noise. Essential for high-power applications (e.g., motor drivers) and for converting voltages up or down.
@@ -58,6 +90,16 @@ Robots typically have multiple components (motors, sensors, microcontrollers) th
 
 Effective power management extends operational time and ensures system safety.
 
+#### Safety Systems:
+
+```mermaid
+graph TD
+    A[Power Safety] --> B[Battery Management<br/>Cell Monitoring]
+    A --> C[Emergency Stop<br/>Immediate Power Cut]
+    A --> D[Thermal Management<br/>Heat Control]
+    A --> E[Fuses & Breakers<br/>Overcurrent Protection]
+```
+
 *   **Battery Management Systems (BMS):** Electronic systems that manage rechargeable batteries. They monitor cell voltage, temperature, and current; balance cell charge; and provide protection against overcharge, over-discharge, over-current, and short-circuits. A BMS is indispensable for Li-Ion/LiPo batteries.
 *   **Emergency Stop (E-Stop):** A safety mechanism that immediately cuts power to motors and dangerous actuators, bringing the robot to a safe halt in an emergency. Typically involves a physical button and associated control circuitry.
 *   **Thermal Management:** Components like motors and voltage regulators generate heat. Proper heat sinking and cooling (e.g., fans) prevent overheating and damage.
@@ -67,13 +109,40 @@ Effective power management extends operational time and ensures system safety.
 
 Designing a robot's power system involves careful budgeting to meet all power demands while maximizing endurance.
 
+#### Power Budgeting Process:
+
+```mermaid
+graph TD
+    A[Power Budgeting] --> B[Component Analysis<br/>Current Consumption]
+    A --> C[Total Calculation<br/>System Requirements]
+    A --> D[Battery Sizing<br/>Capacity Needs]
+    A --> E[Optimization<br/>Efficiency Improvements]
+```
+
 *   **Component Current Draw:** Measure or estimate the current consumption of each motor (idle, peak), sensor, and computational board.
 *   **Total Power Calculation:** Sum up the power requirements of all components under various operational scenarios (e.g., idle, active, peak load).
 *   **Battery Sizing:** Select a battery with sufficient capacity and discharge rate to meet the calculated power budget for the desired operating time.
 *   **Efficiency:** Optimize by choosing efficient components (e.g., BLDC motors, switching regulators) and minimizing unnecessary power consumption (e.g., putting components to sleep).
 *   **Regenerative Braking:** In some motor systems, energy generated during braking can be fed back into the battery, improving efficiency and endurance.
 
-### Example: Powering a Humanoid Torso
+### 6. Advanced Power System Architectures
+
+Modern robots employ sophisticated power architectures to maximize performance and reliability.
+
+#### Multi-Bus Architecture:
+
+```mermaid
+graph TD
+    A[Main Battery] --> B[High-Power Bus<br/>Motors & Actuators]
+    A --> C[Logic Power Bus<br/>Sensors & Control]
+    A --> D[Critical Systems Bus<br/>Safety & Communication]
+```
+
+*   **Isolated Power Rails:** Separate power supplies for different subsystems to prevent interference
+*   **Redundant Systems:** Backup power for critical functions
+*   **Smart Switching:** Automatic switching between power sources (e.g., battery to mains)
+
+### 7. Example: Powering a Humanoid Torso
 
 A humanoid torso might contain a high-performance computer, multiple servo motors for arm movements, and various sensors. The power system would likely include:
 

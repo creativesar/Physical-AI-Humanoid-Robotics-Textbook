@@ -1,0 +1,26 @@
+{
+  "id": "gazebo-simulation/8.2-robot-spawning",
+  "title": "8.2 Robot Spawning",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/8-gazebo-simulation/8.2-robot-spawning.mdx",
+  "sourceDirName": "8-gazebo-simulation",
+  "slug": "/gazebo-simulation/8.2-robot-spawning",
+  "permalink": "/docs/gazebo-simulation/8.2-robot-spawning",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "8.2 Robot Spawning",
+    "sidebar_label": "8.2 Robot Spawning"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "8.1 Gazebo Basics",
+    "permalink": "/docs/gazebo-simulation/8.1-gazebo-basics"
+  },
+  "next": {
+    "title": "8.3 Sensor Simulation",
+    "permalink": "/docs/gazebo-simulation/8.3-sensor-simulation"
+  }
+}

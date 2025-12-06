@@ -1,0 +1,26 @@
+{
+  "id": "kinematics-fk-ik-dh/5.3-inverse-kinematics",
+  "title": "5.3 Inverse Kinematics",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/5-kinematics-fk-ik-dh/5.3-inverse-kinematics.mdx",
+  "sourceDirName": "5-kinematics-fk-ik-dh",
+  "slug": "/kinematics-fk-ik-dh/5.3-inverse-kinematics",
+  "permalink": "/docs/kinematics-fk-ik-dh/5.3-inverse-kinematics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "5.3 Inverse Kinematics",
+    "sidebar_label": "5.3 Inverse Kinematics"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "5.2 Forward Kinematics",
+    "permalink": "/docs/kinematics-fk-ik-dh/5.2-forward-kinematics"
+  },
+  "next": {
+    "title": "5.4 DH Parameters",
+    "permalink": "/docs/kinematics-fk-ik-dh/5.4-dh-parameters"
+  }
+}

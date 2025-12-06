@@ -1,0 +1,28 @@
+{
+  "id": "robotics-mechatronics-fundamentals/basic-control-theory",
+  "title": "2.5 Basic Control Theory",
+  "description": "Basic Control Theory: Guiding Robotic Behavior",
+  "source": "@site/docs/2-robotics-mechatronics-fundamentals/2.5-basic-control-theory.mdx",
+  "sourceDirName": "2-robotics-mechatronics-fundamentals",
+  "slug": "/robotics-mechatronics-fundamentals/basic-control-theory",
+  "permalink": "/docs/robotics-mechatronics-fundamentals/basic-control-theory",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "id": "basic-control-theory",
+    "title": "2.5 Basic Control Theory",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2.4 Power Systems",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/power-systems"
+  },
+  "next": {
+    "title": "2.6 Practical Engineering Concepts",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/practical-engineering-concepts"
+  }
+}

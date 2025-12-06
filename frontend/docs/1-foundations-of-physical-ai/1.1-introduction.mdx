@@ -1,61 +1,44 @@
 ---
-id: foundations-intro
 title: 1.1 Overview & Core Definitions
+sidebar_label: 1.1 Overview & Core Definitions
 sidebar_position: 1
 ---
 
-## Introduction to Physical AI & Embodied Intelligence
+## Learning Outcomes
+By the end of this subpage, you should be able to:
+- Define Physical AI and its key characteristics.
+- Understand the core concepts of Embodied Intelligence.
+- Differentiate between various levels of autonomy in robotic systems.
 
-Welcome to the foundational module of the Physical AI & Humanoid Robotics Textbook. In an era where artificial intelligence increasingly permeates every facet of our lives, the integration of AI with physical systems marks a critical frontier. This module introduces the exciting and rapidly evolving field of Physical AI and Embodied Intelligence, exploring how intelligent algorithms can be seamlessly integrated into robots and other physical entities, enabling them to perceive, reason, and act within the real world.
+## Introduction to Physical AI
 
-### Learning Outcomes
+Physical AI refers to artificial intelligence systems that interact with the real world through physical bodies, such as robots. Unlike purely software-based AI, physical AI systems perceive their environment, process information, make decisions, and execute actions through effectors like motors and manipulators. This interdisciplinary field combines robotics, control theory, computer vision, machine learning, and artificial intelligence to create intelligent agents capable of navigating, manipulating, and learning within dynamic physical environments.
 
-Upon completing this section, you will be able to:
+## Core Definitions
 
-*   Define Physical AI and differentiate it from traditional AI.
-*   Understand the concept of Embodied Intelligence and its significance in robotics.
-*   Recognize the historical convergence of AI and robotics.
-*   Identify key real-world applications where Physical AI is making an impact.
-*   Familiarize yourself with the foundational concepts and terminology used throughout this textbook.
+### Artificial Intelligence (AI)
+The simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.
 
-### The Rise of Physical AI
+### Robotics
+The branch of technology that deals with the design, construction, operation, and application of robots. Robotics aims to create machines that can assist humans in various tasks, often in environments that are dangerous, dirty, or dull for humans.
 
-Traditional AI has achieved remarkable feats in virtual domains, from mastering complex games to processing vast amounts of data. However, for AI to truly operate in human-centric environments, it must contend with the complexities of the physical world: gravity, friction, material properties, sensor noise, and unpredictable dynamics. Physical AI addresses this challenge by focusing on intelligence embedded in physical bodies, enabling systems to interact directly with their surroundings.
+### Embodied Intelligence
+Embodied intelligence is the idea that an agent's intelligence is deeply tied to its physical body and its interactions with the environment. It suggests that cognitive processes are not solely abstract but emerge from the continuous sensorimotor interactions between a physical agent and its surroundings. For instance, a robot learning to walk gains understanding of balance and terrain through physical experimentation, not just abstract calculations.
 
-### What is Physical AI?
+### Autonomy Levels
+Robotic systems can exhibit varying degrees of autonomy, typically categorized as follows:
+- **Teleoperation**: Human operator directly controls all movements and actions. The robot acts as a remote extension of the human.
+- **Assisted Autonomy**: The robot performs some tasks autonomously but requires human supervision or intervention for complex decisions or error recovery.
+- **Supervised Autonomy**: The robot operates largely independently but can report its status and request human input at critical junctures. Humans set high-level goals.
+- **Full Autonomy**: The robot operates completely independently, making its own decisions and adapting to unforeseen circumstances without human intervention. This is the ultimate goal of many physical AI systems.
 
-**Physical AI** refers to artificial intelligence systems that are integrated with physical bodies (e.g., robots, autonomous vehicles, smart devices) and interact with the real world through sensors and actuators. Unlike purely software-based AI, Physical AI agents must navigate, manipulate, and learn within environments governed by the laws of physics. This requires robust perception, real-time decision-making, and precise physical control.
+## Exercises
 
-### The Essence of Embodied Intelligence
+1.  **Conceptual Understanding**: Describe, in your own words, the fundamental difference between a software AI (e.g., a chatbot) and a Physical AI system.
+2.  **Scenario Analysis**: Consider a self-driving car. What level of autonomy do you believe it operates at today, and why? What would it need to achieve full autonomy?
 
-**Embodied Intelligence** is a subfield of AI that posits that an agent's intelligence is profoundly shaped by its physical body and its interactions with the environment. Rather than viewing the body as a mere container for a disembodied mind, embodied intelligence emphasizes that physical form, sensory capabilities, and motor skills are integral to cognitive processes. A robot's ability to grasp an object, for instance, is not just a triumph of its control algorithms but also a product of its gripper design and tactile sensors.
+## Review Questions
 
-### Historical Convergence of AI and Robotics
-
-The journey towards Physical AI has been a long and intertwined path, bringing together separate disciplines:
-
-*   **Early Robotics (1950s-1970s):** Focused on industrial automation, manipulators, and basic programmable machines. Control theory and mechanical design were paramount.
-*   **AI Winter & Revival (1980s-2000s):** AI research experienced cycles of hype and disillusionment. Robotics continued to advance in areas like locomotion and perception but largely independently of symbolic AI.
-*   **Machine Learning Revolution (2010s-Present):** The resurgence of AI, particularly deep learning, transformed fields like computer vision and natural language processing. This breakthrough provided powerful tools that could be integrated into robotic systems.
-*   **Embodied AI & Humanoids (2020s-Present):** The increasing computational power, advanced sensing, and sophisticated control algorithms have enabled the development of highly capable physical AI systems, including sophisticated humanoid robots that can perform complex tasks in unstructured environments.
-
-### Real-World Applications
-
-Physical AI and embodied intelligence are not just academic concepts; they are driving innovation across numerous sectors:
-
-*   **Manufacturing & Logistics:** Autonomous mobile robots (AMRs) and robotic arms perform intricate assembly, sorting, and delivery tasks.
-*   **Healthcare:** Surgical robots assist in precision operations, while companion robots provide elder care and assistance.
-*   **Exploration:** Robots traverse hazardous environments, from deep-sea trenches to other planets, collecting data and performing remote tasks.
-*   **Service Robotics:** Humanoid robots are being developed for roles in hospitality, retail, and home assistance, offering versatile physical interaction.
-*   **Agriculture:** Autonomous farming robots monitor crops, perform harvesting, and optimize resource usage.
-
-This module will lay the groundwork for understanding these technologies, preparing you for the advanced topics in ROS 2, simulation, control, and humanoid development that follow.
-
----
-
-### Review Questions
-
-1.  How does Physical AI differ from traditional, purely software-based AI?
-2.  Explain the core idea behind Embodied Intelligence. Why is the body considered integral to intelligence?
-3.  Briefly describe one real-world application of Physical AI and the benefits it provides.
-4.  What technological advancements have contributed to the recent rise of sophisticated physical AI systems?
+1.  What is the primary characteristic that distinguishes Physical AI from software-only AI?
+2.  How does Embodied Intelligence challenge the traditional view of intelligence as purely abstract cognition?
+3.  Name and briefly explain two levels of autonomy in robotic systems.

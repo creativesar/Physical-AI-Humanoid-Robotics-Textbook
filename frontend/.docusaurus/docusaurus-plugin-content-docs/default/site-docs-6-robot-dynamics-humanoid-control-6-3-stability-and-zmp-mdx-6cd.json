@@ -1,0 +1,26 @@
+{
+  "id": "robot-dynamics-humanoid-control/6.3-stability-and-zmp",
+  "title": "6.3 Stability & ZMP",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/6-robot-dynamics-humanoid-control/6.3-stability-and-zmp.mdx",
+  "sourceDirName": "6-robot-dynamics-humanoid-control",
+  "slug": "/robot-dynamics-humanoid-control/6.3-stability-and-zmp",
+  "permalink": "/docs/robot-dynamics-humanoid-control/6.3-stability-and-zmp",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "6.3 Stability & ZMP",
+    "sidebar_label": "6.3 Stability & ZMP"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "6.2 Physics Engines",
+    "permalink": "/docs/robot-dynamics-humanoid-control/6.2-physics-engines"
+  },
+  "next": {
+    "title": "6.4 Gait Cycle Fundamentals",
+    "permalink": "/docs/robot-dynamics-humanoid-control/6.4-gait-cycle-fundamentals"
+  }
+}

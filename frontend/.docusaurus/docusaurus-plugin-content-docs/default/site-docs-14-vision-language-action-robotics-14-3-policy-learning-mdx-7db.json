@@ -1,0 +1,26 @@
+{
+  "id": "vision-language-action-robotics/14.3-policy-learning",
+  "title": "14.3 Policy Learning",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/14-vision-language-action-robotics/14.3-policy-learning.mdx",
+  "sourceDirName": "14-vision-language-action-robotics",
+  "slug": "/vision-language-action-robotics/14.3-policy-learning",
+  "permalink": "/docs/vision-language-action-robotics/14.3-policy-learning",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "14.3 Policy Learning",
+    "sidebar_label": "14.3 Policy Learning"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "14.2 CLIP & VLA",
+    "permalink": "/docs/vision-language-action-robotics/14.2-clip-and-vla"
+  },
+  "next": {
+    "title": "14.4 Task Grounding",
+    "permalink": "/docs/vision-language-action-robotics/14.4-task-grounding"
+  }
+}

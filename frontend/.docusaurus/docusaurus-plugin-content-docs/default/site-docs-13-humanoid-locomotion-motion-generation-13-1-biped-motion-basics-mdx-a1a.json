@@ -1,0 +1,26 @@
+{
+  "id": "humanoid-locomotion-motion-generation/13.1-biped-motion-basics",
+  "title": "13.1 Biped Motion Basics",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/13-humanoid-locomotion-motion-generation/13.1-biped-motion-basics.mdx",
+  "sourceDirName": "13-humanoid-locomotion-motion-generation",
+  "slug": "/humanoid-locomotion-motion-generation/13.1-biped-motion-basics",
+  "permalink": "/docs/humanoid-locomotion-motion-generation/13.1-biped-motion-basics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "13.1 Biped Motion Basics",
+    "sidebar_label": "13.1 Biped Motion Basics"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "12.6 Obstacle Avoidance",
+    "permalink": "/docs/navigation-path-planning-nav2/12.6-obstacle-avoidance"
+  },
+  "next": {
+    "title": "13.2 Gait Planning",
+    "permalink": "/docs/humanoid-locomotion-motion-generation/13.2-gait-planning"
+  }
+}

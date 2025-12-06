@@ -1,0 +1,26 @@
+{
+  "id": "sensors-perception/7.3-rgb-and-depth-cameras",
+  "title": "7.3 RGB & Depth Cameras",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/7-sensors-perception/7.3-rgb-and-depth-cameras.mdx",
+  "sourceDirName": "7-sensors-perception",
+  "slug": "/sensors-perception/7.3-rgb-and-depth-cameras",
+  "permalink": "/docs/sensors-perception/7.3-rgb-and-depth-cameras",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "7.3 RGB & Depth Cameras",
+    "sidebar_label": "7.3 RGB & Depth Cameras"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "7.2 LiDAR",
+    "permalink": "/docs/sensors-perception/7.2-lidar"
+  },
+  "next": {
+    "title": "7.4 Intel RealSense Setup",
+    "permalink": "/docs/sensors-perception/7.4-intel-realsense-setup"
+  }
+}

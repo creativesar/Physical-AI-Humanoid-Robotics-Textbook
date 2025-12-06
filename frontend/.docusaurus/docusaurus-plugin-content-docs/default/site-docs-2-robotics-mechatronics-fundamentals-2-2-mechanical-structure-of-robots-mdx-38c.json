@@ -1,0 +1,28 @@
+{
+  "id": "robotics-mechatronics-fundamentals/mechanical-structure-of-robots",
+  "title": "2.2 Mechanical Structure of Robots",
+  "description": "Mechanical Structure of Robots: The Foundation of Movement",
+  "source": "@site/docs/2-robotics-mechatronics-fundamentals/2.2-mechanical-structure-of-robots.mdx",
+  "sourceDirName": "2-robotics-mechatronics-fundamentals",
+  "slug": "/robotics-mechatronics-fundamentals/mechanical-structure-of-robots",
+  "permalink": "/docs/robotics-mechatronics-fundamentals/mechanical-structure-of-robots",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "id": "mechanical-structure-of-robots",
+    "title": "2.2 Mechanical Structure of Robots",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2.1 Robotics Taxonomy",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/robotics-taxonomy"
+  },
+  "next": {
+    "title": "2.3 Motors, Actuators, and Servos",
+    "permalink": "/docs/robotics-mechatronics-fundamentals/motors-actuators-servos"
+  }
+}

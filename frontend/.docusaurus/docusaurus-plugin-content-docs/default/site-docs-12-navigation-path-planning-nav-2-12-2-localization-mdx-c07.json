@@ -1,0 +1,26 @@
+{
+  "id": "navigation-path-planning-nav2/12.2-localization",
+  "title": "12.2 Localization",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/12-navigation-path-planning-nav2/12.2-localization.mdx",
+  "sourceDirName": "12-navigation-path-planning-nav2",
+  "slug": "/navigation-path-planning-nav2/12.2-localization",
+  "permalink": "/docs/navigation-path-planning-nav2/12.2-localization",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "12.2 Localization",
+    "sidebar_label": "12.2 Localization"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "12.1 Nav2 Architecture",
+    "permalink": "/docs/navigation-path-planning-nav2/12.1-nav2-architecture"
+  },
+  "next": {
+    "title": "12.3 Mapping",
+    "permalink": "/docs/navigation-path-planning-nav2/12.3-mapping"
+  }
+}

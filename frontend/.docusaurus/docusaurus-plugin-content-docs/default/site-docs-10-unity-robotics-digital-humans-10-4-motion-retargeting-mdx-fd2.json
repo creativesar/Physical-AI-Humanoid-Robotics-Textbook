@@ -1,0 +1,26 @@
+{
+  "id": "unity-robotics-digital-humans/10.4-motion-retargeting",
+  "title": "10.4 Motion Retargeting",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/10-unity-robotics-digital-humans/10.4-motion-retargeting.mdx",
+  "sourceDirName": "10-unity-robotics-digital-humans",
+  "slug": "/unity-robotics-digital-humans/10.4-motion-retargeting",
+  "permalink": "/docs/unity-robotics-digital-humans/10.4-motion-retargeting",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "10.4 Motion Retargeting",
+    "sidebar_label": "10.4 Motion Retargeting"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "10.3 Character Rigging",
+    "permalink": "/docs/unity-robotics-digital-humans/10.3-character-rigging"
+  },
+  "next": {
+    "title": "10.5 Humanoid Simulation",
+    "permalink": "/docs/unity-robotics-digital-humans/10.5-humanoid-simulation"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "gazebo-simulation/8.5-ros-gazebo-integration",
+  "title": "8.5 ROS–Gazebo Integration",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/8-gazebo-simulation/8.5-ros-gazebo-integration.mdx",
+  "sourceDirName": "8-gazebo-simulation",
+  "slug": "/gazebo-simulation/8.5-ros-gazebo-integration",
+  "permalink": "/docs/gazebo-simulation/8.5-ros-gazebo-integration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "8.5 ROS–Gazebo Integration",
+    "sidebar_label": "8.5 ROS–Gazebo Integration"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "8.4 Plugins",
+    "permalink": "/docs/gazebo-simulation/8.4-plugins"
+  },
+  "next": {
+    "title": "8.6 Building Simulation Worlds",
+    "permalink": "/docs/gazebo-simulation/8.6-building-sim-worlds"
+  }
+}

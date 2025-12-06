@@ -1,0 +1,28 @@
+{
+  "id": "foundations-of-physical-ai/foundations-of-the-course",
+  "title": "1.5 Foundations of the Course",
+  "description": "Foundations of the Course: Your Learning Journey Begins",
+  "source": "@site/docs/1-foundations-of-physical-ai/1.5-foundations-of-the-course.mdx",
+  "sourceDirName": "1-foundations-of-physical-ai",
+  "slug": "/foundations-of-physical-ai/foundations-of-the-course",
+  "permalink": "/docs/foundations-of-physical-ai/foundations-of-the-course",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "id": "foundations-of-the-course",
+    "title": "1.5 Foundations of the Course",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1.4 Real-World Applications",
+    "permalink": "/docs/foundations-of-physical-ai/real-world-applications"
+  },
+  "next": {
+    "title": "1.6 Key Terminology",
+    "permalink": "/docs/foundations-of-physical-ai/key-terminology"
+  }
+}

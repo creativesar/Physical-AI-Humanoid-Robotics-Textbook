@@ -1,0 +1,26 @@
+{
+  "id": "full-humanoid-system-architecture/17.3-control-layer",
+  "title": "17.3 Control Layer",
+  "description": "Learning Outcomes",
+  "source": "@site/docs/17-full-humanoid-system-architecture/17.3-control-layer.mdx",
+  "sourceDirName": "17-full-humanoid-system-architecture",
+  "slug": "/full-humanoid-system-architecture/17.3-control-layer",
+  "permalink": "/docs/full-humanoid-system-architecture/17.3-control-layer",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "17.3 Control Layer",
+    "sidebar_label": "17.3 Control Layer"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "17.2 Perception Layer",
+    "permalink": "/docs/full-humanoid-system-architecture/17.2-perception-layer"
+  },
+  "next": {
+    "title": "17.4 Motion Layer",
+    "permalink": "/docs/full-humanoid-system-architecture/17.4-motion-layer"
+  }
+}
