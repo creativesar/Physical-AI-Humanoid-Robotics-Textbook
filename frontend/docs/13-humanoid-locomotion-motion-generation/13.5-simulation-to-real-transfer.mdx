@@ -1,0 +1,59 @@
+---
+title: "13.5 Simulation-to-Real Transfer"
+sidebar_label: "13.5 Simulation-to-Real Transfer"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the concept of simulation-to-real (sim2real) transfer in robotics.
+- Identify the challenges and discrepancies between simulation and the real world.
+- Understand techniques to improve sim2real transfer, such as domain randomization and system identification.
+- Apply sim2real methods to deploy control policies trained in simulation to physical humanoid robots.
+- Evaluate the performance of transferred policies on real hardware.
+
+## 1. The Challenge of Sim2Real Transfer
+
+Simulation offers a safe and efficient environment for developing and testing robot control policies. However, a significant challenge is transferring these policies from the simulator to a physical robot. This is known as the "reality gap," where discrepancies between the simulated and real worlds can cause policies to perform poorly.
+
+## 2. Sources of the Reality Gap
+
+The reality gap arises from several sources:
+- **Modeling errors:** Imperfect models of robot dynamics, sensor noise, and environmental interactions.
+- **Actuator limits:** Differences in torque, speed, and precision between simulated and real actuators.
+- **Sensor noise and latency:** Real-world sensors are noisy and have latency, which is hard to perfectly replicate in simulation.
+- **Friction and contact dynamics:** Complex and difficult to model accurately.
+
+... more content to be added here ...
+
+## 3. Techniques to Improve Sim2Real Transfer
+
+Various techniques are employed to bridge the reality gap:
+- **Domain Randomization:** Randomizing simulation parameters (e.g., friction, mass, textures, lighting) during training to make the learned policy robust to variations in the real world.
+- **System Identification:** Accurately measuring the physical parameters of the real robot and incorporating them into the simulation model.
+- **Domain Adaptation:** Using techniques to adapt a policy trained in simulation to perform well in the real world, often involving a small amount of real-world data.
+- **Reality-Aware Simulators:** Using high-fidelity simulators that closely match real-world physics.
+
+... more content to be added here ...
+
+## 4. Deploying Policies on Physical Humanoids
+
+This section will cover the practical aspects of deploying control policies developed in simulation onto physical humanoid robots.
+
+... more content to be added here ...
+
+## 5. Evaluating Transferred Policies
+
+Evaluating the performance of policies transferred from simulation to real hardware is crucial. This involves quantitative metrics and qualitative observations of the robot's behavior.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

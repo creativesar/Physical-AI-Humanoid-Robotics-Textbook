@@ -1,0 +1,107 @@
+---
+id: nodes-topics-services
+title: 3.2 Nodes, Topics, and Services
+sidebar_position: 2
+---
+
+## ROS 2 Nodes, Topics, and Services: The Building Blocks of Robot Communication
+
+In ROS 2, robotic applications are constructed from a network of independent executable units called nodes that communicate with each other. This modular approach promotes reusability, simplifies development, and allows for distributed processing across multiple computational resources. The primary communication mechanisms enabling this distributed architecture are topics (for continuous data streams) and services (for request/response interactions). Understanding these fundamental concepts is crucial for designing and implementing robust robotic systems with ROS 2.
+
+### Learning Outcomes
+
+Upon completing this section, you will be able to:
+
+*   Define a ROS 2 node and explain its role in a robotic system.
+*   Understand the concept of a ROS 2 topic and its publisher-subscriber communication pattern.
+*   Explain the role of ROS 2 services and their client-server request/response model.
+*   Differentiate between topics and services based on their use cases and communication characteristics.
+*   Appreciate how these communication primitives enable modularity and distribution in ROS 2 applications.
+
+### 1. ROS 2 Nodes: The Atomic Units of Computation
+
+A **node** is a single executable process in ROS 2 that performs a specific, focused task within the overall robotic application. Think of nodes as individual programs or modules. For example, a robot might have:
+
+*   A camera driver node that publishes image data.
+*   A motor control node that subscribes to velocity commands and publishes motor encoder data.
+*   A localization node that estimates the robot's position based on sensor inputs.
+*   A path planning node that generates movement trajectories.
+
+#### Key Characteristics of Nodes:
+
+*   **Modularity:** Each node typically handles one logical functionality, promoting clean code and reusability.
+*   **Independence:** Nodes run as separate processes and can be started, stopped, or restarted independently without affecting other parts of the system (unless critical dependencies are broken).
+*   **Communication:** Nodes communicate with each other using ROS 2's inter-process communication mechanisms (topics, services, actions).
+*   **Language Agnostic:** Nodes can be written in different programming languages using ROS Client Libraries (RCL), such as `rclcpp` for C++ or `rclpy` for Python.
+
+### 2. ROS 2 Topics: Asynchronous Data Streams
+
+**Topics** are the most common mechanism for nodes to exchange continuous, asynchronous data. They implement a **publisher-subscriber** communication pattern.
+
+*   **Publishers:** A node that produces data sends messages to a specific topic.
+*   **Subscribers:** One or more nodes that are interested in that data "subscribe" to the topic to receive all messages published on it.
+
+This pattern is ideal for streaming sensor data (e.g., camera images, LiDAR scans, IMU readings), robot odometry, joint states, or real-time control commands.
+
+#### Key Aspects of Topics:
+
+*   **One-to-Many:** A single publisher can send messages to multiple subscribers.
+*   **Asynchronous:** Publishers send data without waiting for acknowledgment from subscribers. Subscribers receive data as it becomes available.
+*   **Message Types:** All messages published on a given topic must conform to a specific ROS 2 message type (e.g., `sensor_msgs/msg/Image`, `geometry_msgs/msg/Twist`). These types define the structure and data fields of the messages.
+*   **Quality of Service (QoS):** Developers can specify QoS policies for topics (e.g., reliability, history, deadline) to ensure data delivery characteristics meet application requirements, especially critical for real-time systems.
+
+### 3. ROS 2 Services: Synchronous Request/Response
+
+**Services** provide a synchronous **client-server** communication pattern, used for explicit, one-time interactions where a node requests a specific computation or action from another node and expects a response.
+
+*   **Service Server:** A node that offers a specific function or computation.
+*   **Service Client:** A node that calls the service, sends a request message, and waits for a response message from the server.
+
+Services are suitable for tasks like triggering a single action (e.g., "take a picture," "move arm to pose X"), querying a current state (e.g., "get robot battery level"), or performing a specific calculation.
+
+#### Key Aspects of Services:
+
+*   **One-to-One:** Typically involves one client making a request to one server.
+*   **Synchronous/Blocking:** The client usually blocks its execution until it receives a response from the server.
+*   **Request/Response:** Services define a pair of message types: one for the request and one for the response.
+*   **Deterministic:** Ideal for operations that require a guaranteed outcome and explicit acknowledgment.
+
+### Differentiating Topics and Services
+
+The choice between topics and services depends on the nature of the communication:
+
+| Feature           | ROS 2 Topics                                  | ROS 2 Services                                           |
+| :---------------- | :-------------------------------------------- | :------------------------------------------------------- |
+| **Communication Pattern** | Publisher-Subscriber (One-to-Many)            | Client-Server (One-to-One)                               |
+| **Data Flow**     | Continuous, unidirectional stream             | Single request, single response (bidirectional in interaction) |
+| **Synchronicity** | Asynchronous (publisher doesn't wait)         | Synchronous (client waits for response)                  |
+| **Typical Use Cases** | Sensor data streams, odometry, joint states, continuous control commands, logging | One-time actions, configuration changes, querying state, triggering computations |
+| **Blocking**      | Non-blocking                                  | Client typically blocks until response received          |
+
+### Example: Humanoid Robot Head Control
+
+Consider a humanoid robot with a head that can pan and tilt, equipped with a camera:
+
+*   **Nodes:**
+    *   `head_controller_node`: Manages the pan/tilt motors.
+    *   `camer-node`: Streams video from the head camera.
+    *   `object_detector_node`: Processes camera images to find objects.
+*   **Topics:**
+    *   `camer-node` **publishes** `sensor_msgs/msg/Image` messages to the `/head_camera/image_raw` topic.
+    *   `object_detector_node` **subscribes** to `/head_camera/image_raw` to get images, and **publishes** `vision_msgs/msg/Detection2DArray` messages to the `/object_detections` topic.
+    *   `head_controller_node` **subscribes** to `/head/cmd_vel` (e.g., `geometry_msgs/msg/Twist`) to receive continuous pan/tilt velocity commands from a higher-level planning node, and **publishes** `/head/joint_states` (e.g., `sensor_msgs/msg/JointState`).
+*   **Services:**
+    *   `head_controller_node` **provides** a service, `/head/set_pose`, which takes a `geometry_msgs/srv/Pose` as a request (desired head pose) and returns a `std_srvs/srv/Empty` response upon completion. A higher-level task node might **call** this service to command the head to look at a specific point.
+    *   `camer-node` **provides** a service, `/camera/take_snapshot`, which takes an empty request and returns the path to a saved image as a response. A debugging tool could **call** this service to save an image on demand.
+
+This example illustrates how nodes interact using both topics for continuous data flow and services for explicit, on-demand interactions, forming a cohesive robotic system.
+
+---
+
+### Review Questions
+
+1.  What is the main purpose of a ROS 2 node, and how does it contribute to the modularity of a robotic application?
+2.  Describe the publisher-subscriber pattern used by ROS 2 topics. Provide an example of data that would typically be communicated via a topic.
+3.  Explain the client-server pattern used by ROS 2 services. Provide an example of an interaction that would typically be handled by a service.
+4.  When designing a robotic system, how would you decide whether to use a ROS 2 topic or a ROS 2 service for a particular communication need?
+5.  What are ROS Client Libraries (RCL), and why are they important in ROS 2 development?

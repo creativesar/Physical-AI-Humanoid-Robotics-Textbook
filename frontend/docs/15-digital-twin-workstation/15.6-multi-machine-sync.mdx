@@ -1,0 +1,66 @@
+---
+title: "15.6 Multi-Machine Sync"
+sidebar_label: "15.6 Multi-Machine Sync"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the principles of multi-machine synchronization in a digital twin setup.
+- Describe techniques for maintaining time synchronization across multiple computers.
+- Implement data synchronization strategies for shared state and sensor data.
+- Understand how to launch and manage ROS 2 nodes across distributed systems.
+- Troubleshoot synchronization and communication issues in a multi-machine environment.
+
+## 1. Introduction to Multi-Machine Synchronization
+
+In a digital twin setup, it's often necessary to synchronize data and time across multiple machines. For example, one machine might be running a high-fidelity simulation (like Isaac Sim) while another handles the robot's control stack or AI algorithms. Accurate synchronization is crucial for consistent behavior and reliable debugging.
+
+## 2. Time Synchronization
+
+Maintaining accurate time synchronization across all machines in a distributed system is critical. ROS 2 relies heavily on synchronized timestamps for sensor data and control messages.
+
+### NTP (Network Time Protocol)
+NTP is a widely used protocol for synchronizing computer clocks over a network.
+
+... more content to be added here ...
+
+## 3. Data Synchronization Strategies
+
+Beyond time, you often need to synchronize specific data between machines:
+- **Shared State:** Maintaining a consistent view of the robot's state or the environment.
+- **Sensor Data:** Ensuring that sensor readings from different sources are aligned.
+- **Control Commands:** Delivering commands to actuators with minimal latency.
+
+... more content to be added here ...
+
+## 4. Launching Nodes Across Machines
+
+ROS 2 provides tools and mechanisms to launch and manage nodes across multiple machines in a distributed system.
+
+... more content to be added here ...
+
+## 5. Network Configuration for High Throughput
+
+For optimal multi-machine performance, especially with high-bandwidth data like point clouds or camera streams, your network configuration needs to be optimized for high throughput and low latency.
+
+... more content to be added here ...
+
+## 6. Troubleshooting Synchronization Issues
+
+Common issues in multi-machine synchronization include:
+- **Clock drift:** Unsynchronized system clocks.
+- **Network latency:** Delays in message delivery.
+- **DDS configuration:** Mismatched QoS profiles.
+
+... more content to be added here ...
+
+## 7. Exercises
+
+... exercises to be added here ...
+
+## 8. Review Questions
+
+... review questions to be added here ...

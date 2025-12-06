@@ -1,0 +1,54 @@
+---
+title: "13.3 Balancing Control"
+sidebar_label: "13.3 Balancing Control"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the principles of balancing control for humanoid robots.
+- Describe different strategies for maintaining balance (e.g., ankle strategy, hip strategy).
+- Implement a basic balance controller using IMU feedback.
+- Understand the role of inverse dynamics in balance control.
+- Evaluate the effectiveness of a balance controller in simulation.
+
+## 1. The Challenge of Balance Control
+
+Balancing is perhaps the most critical aspect of humanoid locomotion. Unlike wheeled robots, bipedal robots are inherently unstable and require continuous active control to remain upright, especially during walking or when subjected to external disturbances.
+
+## 2. Balancing Strategies
+
+Humans and humanoids employ various strategies to maintain balance:
+- **Ankle Strategy:** Used for small, slow disturbances, involves rotating the body about the ankle joints.
+- **Hip Strategy:** Used for larger, faster disturbances, involves rotating the body about the hip joints.
+- **Stepping Strategy:** Used as a last resort when other strategies fail, involves taking a step to establish a new support polygon.
+
+... more content to be added here ...
+
+## 3. Implementing a Basic Balance Controller
+
+Let's implement a simplified balance controller using PID control and IMU feedback to keep the robot upright.
+
+... more content to be added here ...
+
+## 4. Role of Inverse Dynamics in Balance Control
+
+Inverse dynamics can be used to calculate the joint torques required to achieve a desired motion while also maintaining balance. This is particularly useful for whole-body control approaches.
+
+... more content to be added here ...
+
+## 5. External Disturbances and Robustness
+
+A good balance controller should be robust to external disturbances, such as pushes or uneven terrain. This requires careful tuning and often the use of advanced control techniques.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

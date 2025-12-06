@@ -1,0 +1,54 @@
+---
+title: "11.5 Loop Closure"
+sidebar_label: "11.5 Loop Closure"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the problem of drift in SLAM and the importance of loop closure.
+- Describe how loop closure detection works (e.g., appearance-based methods).
+- Understand how loop closure correction improves map consistency and localization accuracy.
+- Identify common techniques for place recognition.
+- Integrate loop closure into a VSLAM pipeline.
+
+## 1. The Problem of Drift in SLAM
+
+In SLAM, errors in odometry and sensor measurements accumulate over time, leading to a phenomenon called "drift." As the robot moves, its estimated position and the map gradually diverge from the true values. This results in inconsistent maps and inaccurate localization.
+
+## 2. What is Loop Closure?
+
+Loop closure is the process of detecting when a robot returns to a previously visited location. When a loop is detected, the SLAM system can correct the accumulated drift by reconciling the current sensor measurements with the past observations of the same location. This significantly improves the consistency of the map and the accuracy of the robot's localization.
+
+## 3. Loop Closure Detection (Place Recognition)
+
+Loop closure detection, also known as place recognition, involves identifying that the robot is currently at a place it has visited before. This is typically done using appearance-based methods:
+- **Visual Bag-of-Words:** Represents images as histograms of visual features.
+- **Deep Learning-based methods:** Use neural networks to learn compact and robust image descriptors for place recognition.
+
+... more content to be added here ...
+
+## 4. Loop Closure Correction
+
+Once a loop closure is detected, the SLAM system performs a graph optimization. The detected loop provides a new constraint that ties together the robot's pose graph. This optimization redistributes the errors accumulated along the loop, correcting the map and the robot's trajectory.
+
+... more content to be added here ...
+
+## 5. Integrating Loop Closure into VSLAM
+
+In a VSLAM pipeline, loop closure typically involves:
+1. Continuously tracking the camera's pose and building a local map.
+2. Periodically querying a place recognition system to detect loop closures.
+3. If a loop is detected, performing a graph optimization to correct the map and trajectory.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

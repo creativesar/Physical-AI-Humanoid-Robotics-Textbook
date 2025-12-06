@@ -1,0 +1,62 @@
+---
+title: "13.6 Safety & Constraints"
+sidebar_label: "13.6 Safety & Constraints"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the critical importance of safety in humanoid robotics.
+- Identify various types of constraints that apply to humanoid robots (e.g., joint limits, torque limits, self-collision).
+- Implement safety mechanisms in humanoid robot control.
+- Understand the role of physical and software constraints in robust humanoid operation.
+- Describe strategies for safe human-robot interaction.
+
+## 1. Introduction to Safety in Humanoid Robotics
+
+Safety is paramount in humanoid robotics, especially when robots operate in shared spaces with humans. Humanoid robots are powerful and complex machines, and any malfunction or unexpected behavior can lead to serious injuries or damage.
+
+## 2. Types of Constraints
+
+Humanoid robots are subject to a wide range of constraints that must be respected during motion generation and control:
+- **Joint Limits:** Physical limits on the range of motion of each joint.
+- **Torque/Velocity Limits:** Maximum forces and speeds that actuators can produce.
+- **Self-Collision Avoidance:** Preventing the robot's own parts from colliding with each other.
+- **Environment Collision Avoidance:** Preventing collisions with obstacles in the environment.
+- **Balance Constraints:** Ensuring the robot remains stable (e.g., ZMP within the support polygon).
+
+... more content to be added here ...
+
+## 3. Implementing Safety Mechanisms
+
+Safety mechanisms can be implemented at various levels of the control architecture:
+- **Hardware Level:** Emergency stop buttons, physical joint limits, current sensors.
+- **Software Level:** Joint limit checks, collision avoidance algorithms, watchdog timers.
+- **Control Level:** Incorporating constraints directly into the control optimization problems.
+
+... more content to be added here ...
+
+## 4. Physical and Software Constraints
+
+Both physical design and software algorithms contribute to the safe operation of humanoid robots. Physical constraints limit the robot's capabilities, while software constraints ensure that these limits are respected and that the robot behaves predictably.
+
+... more content to be added here ...
+
+## 5. Safe Human-Robot Interaction
+
+When humanoids work alongside humans, specific considerations for safe human-robot interaction (HRI) become critical. This includes:
+- **Proximity sensing:** Detecting nearby humans to reduce speed or stop.
+- **Force/torque sensors:** Enabling compliant behavior when contact occurs.
+- **Intuitive communication:** Providing clear indications of the robot's intent.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

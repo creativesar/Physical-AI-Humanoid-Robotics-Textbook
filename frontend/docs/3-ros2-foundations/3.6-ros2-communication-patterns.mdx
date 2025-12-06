@@ -1,0 +1,69 @@
+---
+title: "3.6 ROS 2 Communication Patterns"
+sidebar_label: "3.6 ROS 2 Communication Patterns"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the primary communication patterns in ROS 2: Topics, Services, and Actions.
+- Differentiate between the use cases for each communication pattern.
+- Implement a simple service-client interaction.
+- Understand the concept of actions for long-running tasks.
+- Choose the appropriate communication pattern for different robotics scenarios.
+
+## 1. Overview of ROS 2 Communication Patterns
+
+ROS 2 provides three main communication patterns, each suited for different types of interactions between nodes:
+
+- **Topics (Publish/Subscribe):** For continuous data streams, like sensor readings or status updates. This is a one-to-many communication pattern.
+- **Services (Request/Response):** For synchronous, remote procedure calls. A client sends a request and waits for a response from a service. This is a one-to-one communication pattern.
+- **Actions (Asynchronous Goal-Based Tasks):** For long-running, feedback-driven tasks, like navigation or manipulation. An action client sends a goal to an action server, which provides feedback and a final result.
+
+<Mermaid chart={`
+graph TD
+    subgraph Topics
+        direction LR
+        Pub1(Publisher) --> Topic1(Topic);
+        Topic1 --> Sub1(Subscriber);
+    end
+    subgraph Services
+        direction LR
+        Client1(Client) -- Request --> Service1(Service);
+        Service1 -- Response --> Client1;
+    end
+    subgraph Actions
+        direction LR
+        Client2(Action Client) -- Goal --> Server2(Action Server);
+        Server2 -- Feedback --> Client2;
+        Server2 -- Result --> Client2;
+    end
+`} />
+
+## 2. Services: Request/Response Communication
+
+Services are used for request/response interactions where a node (the client) needs a direct response from another node (the service). This is a synchronous pattern, meaning the client blocks until it receives the response.
+
+... more content to be added here ...
+
+## 3. Actions: For Long-Running Tasks
+
+Actions are designed for long-running, asynchronous tasks that require feedback. This is common in robotics for tasks like moving the robot to a specific location or executing a manipulation sequence.
+
+... more content to be added here ...
+
+## 4. Choosing the Right Communication Pattern
+
+Understanding when to use Topics, Services, or Actions is crucial for designing robust and efficient robotic systems.
+
+... more content to be added here ...
+
+## 5. Exercises
+
+... exercises to be added here ...
+
+## 6. Review Questions
+
+... review questions to be added here ...

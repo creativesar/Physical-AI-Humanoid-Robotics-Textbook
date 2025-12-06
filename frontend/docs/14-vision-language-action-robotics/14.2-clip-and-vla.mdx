@@ -1,0 +1,64 @@
+---
+title: "14.2 CLIP & VLA"
+sidebar_label: "14.2 CLIP & VLA"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the architecture and capabilities of CLIP (Contrastive Language–Image Pre-training).
+- Describe how CLIP can be used for zero-shot object recognition and image-text matching.
+- Understand the concept of Vision-Language-Action (VLA) models.
+- Explore how CLIP-like models enable robots to understand and act based on natural language commands.
+- Implement basic zero-shot classification using CLIP.
+
+## 1. Introduction to CLIP
+
+CLIP (Contrastive Language–Image Pre-training) is a neural network trained by OpenAI that efficiently learns visual concepts from natural language supervision. Instead of requiring explicit labels, CLIP is trained on a massive dataset of image-text pairs from the internet to understand the relationship between images and text.
+
+## 2. How CLIP Works
+
+CLIP consists of two main components:
+- **Image Encoder:** Encodes an image into a high-dimensional vector representation.
+- **Text Encoder:** Encodes a text caption into a high-dimensional vector representation.
+
+During training, CLIP learns to align these embeddings such that images and their corresponding text descriptions have similar representations in the embedding space.
+
+## 3. Zero-Shot Capabilities of CLIP
+
+One of CLIP's most impressive features is its ability to perform zero-shot classification. This means it can classify objects in images without being explicitly trained on those object categories.
+
+... more content to be added here ...
+
+## 4. Vision-Language-Action (VLA) Models
+
+Vision-Language-Action (VLA) models extend the concept of multimodal understanding to enable robots to perform actions based on visual and linguistic inputs. CLIP-like models provide a powerful foundation for VLA by allowing robots to ground natural language instructions in the visual world.
+
+<Mermaid chart={`
+graph TD
+    A[Natural Language Instruction] --> B{Text Encoder};
+    C[Robot Camera Image] --> D{Image Encoder};
+    B --> E{Common Embedding Space};
+    D --> E;
+    E --> F{Policy Learning};
+    F --> G[Robot Action];
+`} />
+
+## 5. CLIP in Robotics
+
+CLIP can be used in robotics for tasks such as:
+- **Object Recognition:** Identifying objects in a scene based on a text query.
+- **Scene Understanding:** Answering questions about the visual content of a scene.
+- **Instruction Following:** Enabling robots to understand and execute natural language commands.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

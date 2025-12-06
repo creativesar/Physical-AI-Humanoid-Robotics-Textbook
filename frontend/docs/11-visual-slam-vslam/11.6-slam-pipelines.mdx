@@ -1,0 +1,59 @@
+---
+title: "11.6 SLAM Pipelines"
+sidebar_label: "11.6 SLAM Pipelines"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the typical architecture of a Visual SLAM (VSLAM) pipeline.
+- Describe the different stages of a VSLAM pipeline: frontend, backend, and loop closure.
+- Understand how these stages interact to achieve robust localization and mapping.
+- Explore different VSLAM algorithms (e.g., ORB-SLAM3, VINS-Mono).
+- Integrate a VSLAM pipeline into a ROS 2 system.
+
+## 1. Introduction to SLAM Pipelines
+
+A SLAM pipeline is a modular system that combines various algorithms and components to solve the SLAM problem. While the specific components can vary, most VSLAM pipelines share a common architectural structure.
+
+## 2. The Frontend (Visual Odometry)
+
+The frontend, often called visual odometry, is responsible for processing incoming sensor data (e.g., camera images) and estimating the robot's pose between consecutive frames. It extracts features, matches them, and computes a short-term pose estimate.
+
+... more content to be added here ...
+
+## 3. The Backend (Optimization)
+
+The backend is responsible for optimizing the robot's trajectory and the map. It takes the pose estimates from the frontend and the loop closure constraints from the loop closure module and performs a graph optimization to produce a globally consistent map and trajectory.
+
+... more content to be added here ...
+
+## 4. Loop Closure
+
+As discussed in the previous section, the loop closure module is responsible for detecting when the robot revisits a previously mapped area and providing constraints to the backend for global consistency.
+
+... more content to be added here ...
+
+## 5. Popular VSLAM Algorithms
+
+Several powerful VSLAM algorithms have been developed, each with its own strengths and applications:
+- **ORB-SLAM3:** A versatile and robust SLAM system that supports monocular, stereo, and RGB-D cameras, and can operate in monocular, stereo, and visual-inertial modes.
+- **VINS-Mono:** A robust and accurate visual-inertial SLAM system for monocular cameras.
+
+... more content to be added here ...
+
+## 6. Integrating VSLAM into ROS 2
+
+Many VSLAM algorithms are available as ROS 2 packages, making it easy to integrate them into your robotics applications.
+
+... more content to be added here ...
+
+## 7. Exercises
+
+... exercises to be added here ...
+
+## 8. Review Questions
+
+... review questions to be added here ...

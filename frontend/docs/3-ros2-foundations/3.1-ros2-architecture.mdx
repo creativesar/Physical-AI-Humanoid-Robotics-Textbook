@@ -1,0 +1,133 @@
+---
+id: ros2-architecture
+title: 3.1 ROS 2 Architecture
+sidebar_position: 1
+---
+
+## ROS 2 Architecture: The Distributed Robotics Framework
+
+ROS 2 (Robot Operating System 2) is a flexible framework for writing robot software. It's not an operating system in the traditional sense, but rather a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot applications. Unlike its predecessor, ROS 1, ROS 2 was redesigned from the ground up to address modern robotics challenges, including support for multiple robot types, real-time control, and a more robust communication infrastructure suitable for production systems. Understanding its architecture is fundamental to developing any robot system using ROS 2, especially for physical AI and humanoid robotics.
+
+### Learning Outcomes
+
+Upon completing this section, you will be able to:
+
+*   Describe the high-level architecture of ROS 2 and its core components.
+*   Understand the concept of a distributed system in ROS 2.
+*   Explain the role of the Data Distribution Service (DDS) as the communication backbone.
+*   Identify key features that differentiate ROS 2 from ROS 1.
+*   Appreciate the modular and flexible nature of ROS 2 for various robotic applications.
+
+### 1. High-Level Overview of ROS 2
+
+ROS 2 is designed as a distributed, modular system where various functionalities are provided by independent processes (nodes) that communicate with each other. This distributed nature allows for greater flexibility, fault tolerance, and the ability to scale complex robotic systems across multiple machines or even heterogeneous computing environments.
+
+#### Key Architectural Principles:
+
+*   **Distributed System:** Components can run on different processes, machines, or even different operating systems, communicating seamlessly.
+*   **Modular Design:** Functionalities are encapsulated in small, independent executable units (nodes), promoting reusability and easier development.
+*   **Real-time Capabilities:** Improved support for real-time control loops, critical for dynamic and safety-critical robotic tasks.
+*   **Quality of Service (QoS) Policies:** Allows developers to specify communication requirements (e.g., reliability, latency, durability) for different types of data.
+*   **Security:** Built-in security features for authentication, authorization, and encryption of communication.
+
+### 2. Core Components of ROS 2
+
+ROS 2's architecture is composed of several interacting elements that facilitate robot application development.
+
+#### 2.1 Nodes
+
+A **Node** is an executable process that performs a specific task (e.g., a node for reading camera data, a node for controlling motors, a node for path planning). Each node is designed to be modular and can run independently.
+
+*   Nodes communicate with each other using the ROS 2 communication mechanisms.
+*   They are the fundamental building blocks of a ROS 2 system.
+
+#### 2.2 ROS Client Libraries (RCL)
+
+**ROS Client Libraries (RCL)** provide a programmatic interface for developers to write ROS 2 nodes in various programming languages. `rclpy` for Python and `rclcpp` for C++ are the most commonly used, allowing nodes to interact with the ROS 2 graph (topics, services, actions, parameters).
+
+#### 2.3 Data Distribution Service (DDS) - The Communication Backbone
+
+At the heart of ROS 2's communication is the **Data Distribution Service (DDS)**, an open international standard for real-time, peer-to-peer, data-centric communication. DDS replaces the custom transport layer of ROS 1 and provides several advantages:
+
+*   **Decentralized:** No central master node (unlike `roscore` in ROS 1), leading to improved fault tolerance and scalability.
+*   **Direct Communication:** Nodes communicate directly with each other, minimizing latency.
+*   **Discovery:** DDS automatically discovers participants (nodes) on the network.
+*   **Quality of Service (QoS):** Offers rich QoS policies to fine-tune communication characteristics, which are essential for real-time applications.
+*   **Interoperability:** Different DDS implementations (e.g., Fast RTPS, Cyclone DDS, OpenSplice) can be used interchangeably.
+
+#### 2.4 Topics
+
+**Topics** are a fundamental communication mechanism for sending continuous, asynchronous data streams. Nodes publish messages to topics, and other nodes subscribe to those topics to receive the messages.
+
+*   **Publisher-Subscriber Pattern:** A one-to-many communication model.
+*   **Data Types:** Messages published on a topic conform to a specific message type (e.g., `sensor_msgs/msg/Image` for camera data, `geometry_msgs/msg/Twist` for velocity commands).
+
+#### 2.5 Services
+
+**Services** provide a request/response communication model, used for synchronous, explicit interactions. A client node sends a request to a service server node and waits for a response.
+
+*   **Client-Server Pattern:** A one-to-one communication model.
+*   **Blocking:** The client typically blocks until the service server responds.
+*   **Data Types:** Services define both a request message type and a response message type.
+
+#### 2.6 Actions
+
+**Actions** are designed for long-running tasks with feedback. They are similar to services but allow for preemptable goals and provide periodic feedback during execution.
+
+*   **Goal, Feedback, Result:** An action client sends a goal, receives continuous feedback on its progress, and eventually a final result.
+*   **Asynchronous:** Actions are typically asynchronous, allowing the client to perform other tasks while the action is in progress.
+*   **Example:** A robot navigating to a distant goal. The action client receives feedback on its current position and can preempt the goal if needed.
+
+#### 2.7 Parameters
+
+**Parameters** allow nodes to expose configuration values that can be read and modified at runtime, either programmatically or via command-line tools. This provides flexibility without recompiling code.
+
+*   **Dynamic Configuration:** Parameters enable dynamic adjustment of node behavior.
+*   **Centralized Access:** The parameter service allows other nodes and tools to access and modify parameters.
+
+### 3. ROS 2 vs. ROS 1: Key Differentiators
+
+ROS 2 evolved from ROS 1 to address several limitations and expand capabilities:
+
+| Feature             | ROS 1                                   | ROS 2                                                        |
+| :------------------ | :-------------------------------------- | :----------------------------------------------------------- |
+| **Communication**   | Custom TCP/UDP (TCPROS/UDPROS)          | Data Distribution Service (DDS)                              |
+| **Master Node**     | `roscore` (centralized)                 | Decentralized (no central master)                            |
+| **Real-time**       | Limited support                         | Improved real-time capabilities (via RTOS and DDS QoS)       |
+| **Security**        | None built-in                           | DDS Security (authentication, authorization, encryption)     |
+| **Multi-Robot**     | Challenging                             | Designed for multi-robot systems and fleet management        |
+| **Windows/macOS**   | Linux-centric                           | Cross-platform (Linux, Windows, macOS)                       |
+| **QoS**             | Limited                                 | Rich QoS policies                                            |
+| **Launch Files**    | XML                                     | Python                                                       |
+| **Feedback for Goals** | ActionLib (separate library)            | Integrated Actions                                           |
+
+### 4. Modularity and Flexibility
+
+ROS 2's architectural design emphasizes modularity, allowing developers to choose and integrate components as needed. This flexibility makes it suitable for a wide range of robotic platforms, from small mobile robots to complex humanoid systems.
+
+*   **Packages:** Code is organized into packages, each containing a specific set of functionalities (e.g., `image_pipeline`, `navigation2`).
+*   **Workspaces:** Collections of packages that can be built and managed together.
+*   **Extensibility:** Developers can easily create new nodes, message types, services, and actions to extend ROS 2's capabilities.
+
+### Example: Humanoid Robot Perception Stack in ROS 2
+
+Consider a humanoid robot using ROS 2 for its perception stack:
+
+*   **Camera Node:** Publishes `sensor_msgs/msg/Image` messages to a `camera/image_raw` topic.
+*   **LiDAR Node:** Publishes `sensor_msgs/msg/LaserScan` messages to a `scan` topic.
+*   **IMU Node:** Publishes `sensor_msgs/msg/Imu` messages to an `imu/data` topic.
+*   **Visual SLAM Node:** Subscribes to `camera/image_raw` and `imu/data`, processes them, and publishes `nav_msgs/msg/Odometry` and `tf` (transform) messages.
+*   **Object Detection Node:** Subscribes to `camera/image_raw`, performs object detection, and publishes `vision_msgs/msg/Detection2DArray` messages to an `object_detections` topic.
+*   **Fusion Node:** Subscribes to `scan`, `nav_msgs/msg/Odometry`, and `object_detections` to create a more comprehensive environmental understanding, publishing to a `fused_map` topic.
+
+Each of these functionalities is provided by an independent node, communicating via DDS-backed topics, demonstrating the distributed and modular power of ROS 2 architecture for complex physical AI systems.
+
+---
+
+### Review Questions
+
+1.  What is the primary communication middleware used in ROS 2, and what are two advantages it offers over ROS 1's communication?
+2.  Define a "node" in ROS 2 and explain its role in a robotic system.
+3.  Differentiate between ROS 2 Topics and Services in terms of their communication patterns and typical use cases.
+4.  When would you use a ROS 2 Action instead of a Service?
+5.  How do QoS policies contribute to the robustness and flexibility of ROS 2 communication?

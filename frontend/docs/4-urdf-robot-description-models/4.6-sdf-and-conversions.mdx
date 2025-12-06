@@ -1,0 +1,65 @@
+---
+title: "4.6 SDF & Conversions"
+sidebar_label: "4.6 SDF & Conversions"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the purpose of the Simulation Description Format (SDF).
+- Identify the key differences between URDF and SDF.
+- Convert a URDF file to an SDF file for use in Gazebo.
+- Understand the limitations of URDF and when to use SDF instead.
+- Use tools to check and validate robot description files.
+
+## 1. Introduction to SDF
+
+The Simulation Description Format (SDF) is an XML-based file format used by the Gazebo simulator to describe all aspects of a simulation environment, including robots, lights, sensors, and physics.
+
+While URDF is excellent for describing the kinematics and visual appearance of a single robot, SDF is a more comprehensive format designed for simulation.
+
+## 2. URDF vs. SDF
+
+Here's a comparison of URDF and SDF:
+
+| Feature | URDF | SDF |
+|---|---|---|
+| **Purpose** | Robot model description | Simulation world description |
+| **Scope** | Single robot kinematics | Robots, environment, physics, sensors |
+| **Joints** | Supports tree-like structures only | Supports closed-loop chains |
+| **Sensors** | Limited support | Rich support for various sensors |
+| **Physics** | Limited dynamic properties | Detailed physics properties |
+
+... more content to be added here ...
+
+## 3. Converting URDF to SDF
+
+Gazebo can directly use URDF files, but it's often better to convert them to SDF to take advantage of Gazebo's more advanced features.
+
+... more content to be added here ...
+
+## 4. When to Use SDF
+
+While URDF is sufficient for many robotics tasks, SDF is the preferred format when you need to:
+- Model closed-loop kinematic chains.
+- Define detailed sensor properties.
+- Specify physics parameters for a simulation.
+- Describe an entire simulation world, not just a robot.
+
+... more content to be added here ...
+
+## 5. Validation Tools
+
+ROS and Gazebo provide several tools to check the syntax and validity of your URDF and SDF files.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

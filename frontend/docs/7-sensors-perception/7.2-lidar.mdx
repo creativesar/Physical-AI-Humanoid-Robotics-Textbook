@@ -1,0 +1,52 @@
+---
+title: "7.2 LiDAR"
+sidebar_label: "7.2 LiDAR"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the principles of LiDAR (Light Detection and Ranging).
+- Differentiate between 2D and 3D LiDAR sensors.
+- Understand the data provided by a LiDAR sensor (point clouds).
+- Use LiDAR data for obstacle avoidance and mapping in ROS 2.
+- Visualize LiDAR data in RViz.
+
+## 1. What is LiDAR?
+
+LiDAR (Light Detection and Ranging) is a remote sensing method that uses light in the form of a pulsed laser to measure ranges (variable distances) to the Earth. In robotics, LiDAR sensors are used to create detailed 3D maps of the environment.
+
+## 2. 2D vs. 3D LiDAR
+
+- **2D LiDAR:** Scans a single plane to create a 2D map of the environment. It's commonly used for obstacle avoidance and 2D SLAM (Simultaneous Localization and Mapping).
+- **3D LiDAR:** Scans in multiple planes to create a full 3D point cloud of the environment. It provides much richer data but is typically more expensive.
+
+... more content to be added here ...
+
+## 3. LiDAR Data: Point Clouds
+
+The data from a LiDAR sensor is a collection of points in 3D space, called a point cloud. Each point represents a location where the laser beam reflected off an object.
+
+... more content to be added here ...
+
+## 4. LiDAR in ROS 2
+
+ROS 2 has a standard message type, `sensor_msgs/LaserScan` for 2D LiDAR and `sensor_msgs/PointCloud2` for 3D LiDAR. This section will show you how to work with this data.
+
+... more content to be added here ...
+
+## 5. Visualizing LiDAR Data in RViz
+
+RViz is an excellent tool for visualizing LiDAR data. You can see the point cloud in 3D, which is invaluable for debugging and understanding the sensor's output.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

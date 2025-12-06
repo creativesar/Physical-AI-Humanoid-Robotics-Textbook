@@ -1,0 +1,58 @@
+---
+title: "15.5 Networking Setup"
+sidebar_label: "15.5 Networking Setup"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the networking requirements for multi-machine ROS 2 and digital twin setups.
+- Configure network interfaces for reliable communication between machines.
+- Understand the role of DDS (Data Distribution Service) in ROS 2 networking.
+- Troubleshoot common ROS 2 networking issues, including firewalls and IP configurations.
+- Set up a network for seamless interaction between a simulated environment and a physical robot.
+
+## 1. Introduction to Robotics Networking
+
+In advanced robotics setups, especially when dealing with digital twins or multiple robots, you often need to distribute ROS 2 nodes across multiple machines. This requires a robust and correctly configured network. ROS 2 leverages DDS (Data Distribution Service) for its underlying communication, which simplifies multi-machine setups compared to ROS 1.
+
+## 2. Network Interface Configuration
+
+For reliable communication, it's crucial to correctly configure your network interfaces. This typically involves:
+- **Static IP Addresses:** Assigning fixed IP addresses to each machine.
+- **Subnet Masks:** Ensuring all machines are on the same subnet.
+- **DNS (optional):** For easier hostname resolution.
+
+... more content to be added here ...
+
+## 3. DDS in ROS 2 Networking
+
+DDS is a middleware standard that provides a publish-subscribe communication model with built-in quality of service (QoS) policies. ROS 2 uses DDS to enable efficient and robust communication across different processes, machines, and even operating systems.
+
+... more content to be added here ...
+
+## 4. Troubleshooting Common Networking Issues
+
+Common networking issues in ROS 2 include:
+- **Firewall settings:** Ensure that ROS 2 ports are open.
+- **Incorrect IP configuration:** Mismatched IP addresses or subnets.
+- **DDS discovery problems:** Issues with how DDS participants find each other.
+- **VPNs:** Can interfere with DDS discovery.
+
+... more content to be added here ...
+
+## 5. Setting Up a Multi-Machine ROS 2 Environment
+
+This section will guide you through the practical steps of setting up a multi-machine ROS 2 environment for a digital twin setup, where one machine might run the simulation and another the control stack.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

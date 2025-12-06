@@ -1,0 +1,71 @@
+---
+title: "11.1 SLAM Principles"
+sidebar_label: "11.1 SLAM Principles"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the fundamental problem of Simultaneous Localization and Mapping (SLAM).
+- Describe the "chicken and egg" dilemma in SLAM.
+- Understand the role of odometry, sensing, and mapping in SLAM.
+- Differentiate between various types of SLAM (e.g., visual SLAM, LiDAR SLAM).
+- Appreciate the importance of SLAM for autonomous navigation.
+
+## 1. What is SLAM?
+
+Simultaneous Localization and Mapping (SLAM) is a computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it. Essentially, it answers the questions: "Where am I?" and "What does the world around me look like?"
+
+## 2. The "Chicken and Egg" Dilemma
+
+The core challenge of SLAM is often referred to as the "chicken and egg" problem:
+- To build an accurate map, you need to know your precise location.
+- To precisely localize yourself, you need an accurate map.
+
+SLAM algorithms iteratively solve both problems simultaneously.
+
+... more content to be added here ...
+
+## 3. Key Components of a SLAM System
+
+A typical SLAM system involves several interacting components:
+- **Odometry:** Estimating the robot's motion from internal sensors (e.g., wheel encoders, IMU).
+- **Sensing:** Acquiring data from external sensors (e.g., cameras, LiDAR) about the environment.
+- **Data Association:** Matching current sensor readings with features seen previously in the map.
+- **State Estimation:** Combining odometry and sensor data to estimate the robot's pose and the map.
+- **Mapping:** Building and maintaining a representation of the environment.
+
+<Mermaid chart={`
+graph TD
+    A[Robot Motion] --> B{Odometry};
+    C[Environmental Observations] --> D{Sensing};
+    B --> E{State Estimation & Map Update};
+    D --> E;
+    E --> F[Localized Robot Pose];
+    E --> G[Environment Map];
+`} />
+
+## 4. Types of SLAM
+
+SLAM systems are often categorized by the primary sensor used:
+- **Visual SLAM (VSLAM):** Uses cameras (mono, stereo, RGB-D).
+- **LiDAR SLAM:** Uses LiDAR sensors.
+- **Multi-sensor SLAM:** Combines data from various sensor types.
+
+... more content to be added here ...
+
+## 5. Importance of SLAM
+
+SLAM is a foundational technology for autonomous mobile robots, enabling them to explore unknown environments, perform navigation, and interact with the world intelligently.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...

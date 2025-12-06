@@ -1,0 +1,52 @@
+---
+title: "6.6 Whole-Body Control"
+sidebar_label: "6.6 Whole-Body Control"
+---
+
+import Mermaid from '@theme/Mermaid';
+
+## Learning Outcomes
+
+After completing this section, you will be able to:
+- Understand the concept of whole-body control for humanoid robots.
+- Describe the challenges of coordinating the motion of a high-degree-of-freedom robot.
+- Understand how whole-body controllers can manage multiple tasks simultaneously.
+- Learn about task-space control and hierarchical control strategies.
+- Explore common software frameworks for whole-body control.
+
+## 1. What is Whole-Body Control?
+
+Whole-body control is a control strategy for complex, high-degree-of-freedom robots like humanoids. Instead of controlling each joint independently, a whole-body controller coordinates the motion of all the joints to achieve a set of desired tasks, such as maintaining balance, reaching for an object, and walking at the same time.
+
+## 2. The Challenge of High Degrees of Freedom
+
+Humanoid robots can have dozens of degrees of freedom. This redundancy makes control challenging but also provides flexibility to perform multiple tasks simultaneously.
+
+... more content to be added here ...
+
+## 3. Multi-Task Control
+
+Whole-body controllers are often formulated as optimization problems that try to satisfy a set of prioritized tasks. For example, maintaining balance might be the highest priority task, followed by tracking a walking trajectory, and then reaching for an object.
+
+... more content to be added here ...
+
+## 4. Task-Space Control and Hierarchical Control
+
+- **Task-Space Control:** The controller specifies the desired motion in terms of tasks (e.g., the position of the hand or the CoM), rather than joint angles.
+- **Hierarchical Control:** Tasks are organized in a hierarchy of priority. The controller ensures that high-priority tasks are achieved, even if it means compromising on low-priority tasks.
+
+... more content to be added here ...
+
+## 5. Software Frameworks for Whole-Body Control
+
+Several open-source software frameworks are available for implementing whole-body control on humanoid robots.
+
+... more content to be added here ...
+
+## 6. Exercises
+
+... exercises to be added here ...
+
+## 7. Review Questions
+
+... review questions to be added here ...
