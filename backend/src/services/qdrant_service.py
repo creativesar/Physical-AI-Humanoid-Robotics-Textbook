@@ -13,7 +13,7 @@ from typing import List, Dict, Any, Optional
 import uuid
 
 from ..config import settings
-from .openai_service import openai_service
+from .gemini_service import gemini_service
 
 
 class QdrantService:
@@ -70,7 +70,7 @@ class QdrantService:
             Vector ID (UUID string)
         """
         # Create embedding
-        embedding = await openai_service.create_embedding(f"{title}\n\n{content}")
+        embedding = await gemini_service.create_embedding(f"{title}\n\n{content}")
         
         # Generate vector ID
         vector_id = str(uuid.uuid4())
@@ -113,7 +113,7 @@ class QdrantService:
         """
         # Create embeddings in batch
         texts = [f"{doc['title']}\n\n{doc['content']}" for doc in documents]
-        embeddings = await openai_service.create_embeddings(texts)
+        embeddings = await gemini_service.create_embeddings(texts)
         
         # Prepare points
         points = []
@@ -163,7 +163,7 @@ class QdrantService:
             List of search results with scores
         """
         # Create query embedding
-        query_embedding = await openai_service.create_embedding(query)
+        query_embedding = await gemini_service.create_embedding(query)
         
         # Search
         results = self.client.search(

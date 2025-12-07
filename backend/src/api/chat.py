@@ -14,7 +14,7 @@ from typing import Optional, List
 import json
 
 from .. import models, schemas
-from ..services.openai_service import openai_service
+from ..services.gemini_service import gemini_service
 from ..services.qdrant_service import qdrant_service
 from ..database import get_db
 from .auth import get_current_user, get_optional_user
@@ -110,7 +110,7 @@ async def chat(
     
     # Generate response
     try:
-        response_text = await openai_service.chat(
+        response_text = await gemini_service.chat(
             message=request.message,
             conversation_history=history,
             rag_context=rag_context
@@ -156,7 +156,7 @@ async def chat_with_selection(
     This endpoint is designed for text-selection based Q&A.
     """
     try:
-        response_text = await openai_service.answer_selection(
+        response_text = await gemini_service.answer_selection(
             selected_text=request.selected_text,
             question=request.question,
             context=request.context

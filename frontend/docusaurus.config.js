@@ -30,6 +30,10 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    // Removed Tailwind plugin to use pure CSS modules instead
+  ],
+
   presets: [
     [
       'classic',
@@ -56,7 +60,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: 'dark', // Start with dark mode for premium feel
+        defaultMode: 'light', // Changed from dark to light for better readability
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
@@ -133,6 +137,14 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  stylesheets: [
+    {
+      href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+      type: 'text/css',
+      rel: 'stylesheet',
+      crossorigin: 'anonymous',
+    },
+  ],
 };
 
 module.exports = config;

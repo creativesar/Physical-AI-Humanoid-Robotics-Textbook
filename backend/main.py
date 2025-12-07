@@ -12,7 +12,12 @@ Base.metadata.create_all(bind=engine)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifecycle events."""
-    # Startup: could initialize things here
+    # Startup: check if Gemini API key is provided
+    if not settings.gemini_api_key:
+        print("⚠️ Warning: GEMINI_API_KEY not found in environment. Gemini features will be limited.")
+    if not settings.openai_api_key:
+        print("ℹ️  Note: OPENAI_API_KEY not found in environment. Using Gemini as primary AI provider.")
+
     yield
     # Shutdown: could clean up things here
 
@@ -58,12 +63,14 @@ async def root():
             "rag": settings.enable_rag,
             "translation": settings.enable_translation,
             "personalization": settings.enable_personalization
-        }
+        },
+        "llm_provider": "gemini" if settings.gemini_api_key else "openai" if settings.openai_api_key else "none"
     }
 
 @app.get("/health")
 async def health_check():
     return {
         "status": "ok",
-        "database": "connected"  # Ideally check actual connection
+        "database": "connected",  # Ideally check actual connection
+        "llm_provider": "gemini" if settings.gemini_api_key else "openai" if settings.openai_api_key else "none"
     }

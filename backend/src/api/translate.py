@@ -7,7 +7,7 @@ Provides:
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from .. import schemas
-from ..services.openai_service import openai_service
+from ..services.gemini_service import gemini_service
 from .auth import get_current_user
 from .. import models
 
@@ -25,7 +25,7 @@ async def translate_to_urdu(
     Preserves technical terms and markdown formatting.
     """
     try:
-        translated = await openai_service.translate_to_urdu(request.content)
+        translated = await gemini_service.translate_to_urdu(request.content)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

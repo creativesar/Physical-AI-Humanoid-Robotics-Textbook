@@ -103,35 +103,32 @@ graph LR
     E --> F[Control Output u(t)]
 ```
 
-*   **`P` (Proportional Term):**
+*   **P (Proportional Term):**
     *   **Function:** Corrects the error proportionally to its current value. A larger error leads to a larger corrective action.
-    *   **Mathematical Representation:** $K_p \cdot e(t)$
     *   **Effect:** Reduces the rise time but can lead to oscillations and a steady-state error (offset).
-    *   **Graphical Representation:** In a step response, increasing $K_p$ reduces steady-state error but increases overshoot.
+    *   **Graphical Representation:** In a step response, increasing Kp reduces steady-state error but increases overshoot.
 
-*   **`I` (Integral Term):**
+*   **I (Integral Term):**
     *   **Function:** Corrects the error based on the accumulation (integral) of past errors. It works to eliminate steady-state error.
-    *   **Mathematical Representation:** $K_i \int_0^t e(\tau) d\tau$
     *   **Effect:** Eliminates steady-state error but can increase overshoot and settling time, potentially leading to instability.
     *   **Graphical Representation:** In a step response, the integral term eliminates offset but may cause oscillatory behavior.
 
-*   **`D` (Derivative Term):**
+*   **D (Derivative Term):**
     *   **Function:** Corrects the error based on the rate of change (derivative) of the error. It anticipates future errors.
-    *   **Mathematical Representation:** $K_d \frac{de(t)}{dt}$
     *   **Effect:** Reduces overshoot, improves stability, and decreases settling time, but can amplify noise.
     *   **Graphical Representation:** In a step response, the derivative term reduces overshoot and improves damping.
 
 #### PID Equation:
 
-The output of the PID controller ($u(t)$) is given by:
+The output of the PID controller (u(t)) is given by:
 
-$u(t) = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}$
+$$u(t) = K_p \cdot e(t) + K_i \int e(t) \, dt + K_d \frac{d}{dt}e(t)$$
 
 Where:
-*   $e(t)$ is the error at time $t$ (setpoint - actual value)
-*   $K_p$ is the proportional gain
-*   $K_i$ is the integral gain
-*   $K_d$ is the derivative gain
+*   e(t) is the error at time t (setpoint - actual value)
+*   Kp is the proportional gain
+*   Ki is the integral gain
+*   Kd is the derivative gain
 
 #### Response Characteristics Visualization:
 
@@ -145,15 +142,15 @@ graph TD
 
 #### Tuning PID Controllers:
 
-Tuning involves adjusting the $K_p, K_i, K_d$ gains to achieve the desired system response (e.g., fast response, minimal overshoot, no steady-state error). This is often an iterative process, potentially involving trial and error or more systematic methods like Ziegler-Nichols.
+Tuning involves adjusting the Kp, Ki, Kd gains to achieve the desired system response (e.g., fast response, minimal overshoot, no steady-state error). This is often an iterative process, potentially involving trial and error or more systematic methods like Ziegler-Nichols.
 
 ##### Common Tuning Effects:
 
 | Parameter | Rise Time | Overshoot | Settling Time | Steady-State Error | Stability |
-|----------|-----------|-----------|---------------|-------------------|-----------|
-| $K_p$ | Decrease | Increase | Small change | Decrease | Degrade |
-| $K_i$ | Decrease | Increase | Increase | Eliminate | Degrade |
-| $K_d$ | Minor change | Decrease | Decrease | No change | Improve |
+|----------|-----------|-----------|---------------|-------------------|----------|
+| Kp | Decrease | Increase | Small change | Decrease | Degrade |
+| Ki | Decrease | Increase | Increase | Eliminate | Degrade |
+| Kd | Minor change | Decrease | Decrease | No change | Improve |
 
 ### 3. Challenges in Robotic Control
 
@@ -204,8 +201,8 @@ Imagine a single joint in a humanoid robot's arm that needs to move to a specifi
 
 1.  **Setpoint:** The desired angle for the joint (e.g., 90 degrees).
 2.  **Sensor:** An encoder measures the current joint angle.
-3.  **Error Calculation:** The difference between the desired angle and the current angle ($e(t) = 90 - current\_angle$).
-4.  **PID Output:** The controller calculates a torque command based on $K_p$, $K_i$, and $K_d$ gains and the error.
+3.  **Error Calculation:** The difference between the desired angle and the current angle (e(t) = 90 - current_angle).
+4.  **PID Output:** The controller calculates a torque command based on Kp, Ki, and Kd gains and the error.
 5.  **Actuator:** A servo motor receives the torque command and moves the joint.
 6.  **Feedback:** The new joint angle is measured by the encoder, and the process repeats, constantly adjusting to reach and maintain the setpoint.
 
@@ -232,9 +229,9 @@ These metrics help in tuning controllers and comparing different control strateg
 
 1.  How does a closed-loop control system fundamentally differ from an open-loop system, and what is the primary advantage of a closed-loop system?
 2.  List and briefly describe the three main components (terms) of a PID controller.
-3.  What effect does increasing the proportional gain ($K_p$) typically have on a control system's response?
-4.  Explain why the integral term ($K_i$) is often necessary in a PID controller for robotic applications.
+3.  What effect does increasing the proportional gain (Kp) typically have on a control system's response?
+4.  Explain why the integral term (Ki) is often necessary in a PID controller for robotic applications.
 5.  Identify two significant challenges encountered when controlling complex robotic systems and how feedback control helps address them.
 6.  Sketch and label a block diagram of a closed-loop control system.
 7.  Describe how each component of a PID controller affects the system's step response.
-8.  What are the trade-offs between using a high versus low derivative gain ($K_d$)?
+8.  What are the trade-offs between using a high versus low derivative gain (Kd)?

@@ -9,7 +9,7 @@ Provides:
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from .. import models, schemas
-from ..services.openai_service import openai_service
+from ..services.gemini_service import gemini_service
 from ..database import get_db
 from .auth import get_current_user
 
@@ -34,7 +34,7 @@ async def personalize_content(
         level = "intermediate"
     
     try:
-        personalized = await openai_service.personalize_content(
+        personalized = await gemini_service.personalize_content(
             content=request.content,
             level=level
         )

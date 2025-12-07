@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-4o"
     openai_embedding_model: str = "text-embedding-3-small"
+
+    # Google Gemini
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-pro"
+    gemini_embedding_model: str = "text-embedding-004"
     
     # Qdrant Cloud - Vector Database
     qdrant_url: str = ""

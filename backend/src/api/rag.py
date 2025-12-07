@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from typing import Optional
 
 from .. import schemas
-from ..services.openai_service import openai_service
+from ..services.gemini_service import gemini_service
 from ..services.qdrant_service import qdrant_service
 from ..database import get_db
 from .auth import get_current_user, get_optional_user
@@ -74,7 +74,7 @@ async def rag_query(
     
     # Generate answer
     try:
-        answer = await openai_service.chat(
+        answer = await gemini_service.chat(
             message=request.query,
             rag_context=rag_context
         )
