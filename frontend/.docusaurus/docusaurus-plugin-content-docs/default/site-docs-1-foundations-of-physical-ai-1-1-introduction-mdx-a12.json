@@ -1,6 +1,6 @@
 {
   "id": "foundations-of-physical-ai/1.1-introduction",
-  "title": "1.1 Overview & Core Definitions",
+  "title": "1.1 Overview & Core Definitions.",
   "description": "Learning Outcomes",
   "source": "@site/docs/1-foundations-of-physical-ai/1.1-introduction.mdx",
   "sourceDirName": "1-foundations-of-physical-ai",
@@ -12,7 +12,7 @@
   "version": "current",
   "sidebarPosition": 1,
   "frontMatter": {
-    "title": "1.1 Overview & Core Definitions",
+    "title": "1.1 Overview & Core Definitions.",
     "sidebar_label": "1.1 Overview & Core Definitions",
     "sidebar_position": 1
   },
