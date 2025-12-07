@@ -1,21 +1,23 @@
 // JavaScript for animations and interactive elements
 
 // Initialize all animations and interactive elements when the component mounts
-if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initCounterAnimations();
-    initFAQ();
-    initScrollAnimations();
-    initSmoothScroll();
-  });
+export function initializeHomepageAnimations() {
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initCounterAnimations();
+      initFAQ();
+      initScrollAnimations();
+      initSmoothScroll();
+    });
 
-  // Also initialize when the page loads (for when DOM is ready)
-  window.addEventListener('load', function() {
-    initCounterAnimations();
-    initFAQ();
-    initScrollAnimations();
-    initSmoothScroll();
-  });
+    // Also initialize when the page loads (for when DOM is ready)
+    window.addEventListener('load', function() {
+      initCounterAnimations();
+      initFAQ();
+      initScrollAnimations();
+      initSmoothScroll();
+    });
+  }
 }
 
 function initCounterAnimations() {
@@ -160,3 +162,5 @@ function initParticles() {
   // This function could be expanded to add particle effects
   // using libraries like particles.js or custom canvas animations
 }
+
+export { initCounterAnimations, initFAQ, initScrollAnimations, debounce, initSmoothScroll, initParticles };

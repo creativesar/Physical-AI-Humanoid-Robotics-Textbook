@@ -4,6 +4,7 @@ import Head from '@docusaurus/Head';
 import styles from './index.module.css';
 import CommonHeader from '../components/CommonHeader';
 import CommonFooter from '../components/CommonFooter';
+import { initializeHomepageAnimations } from '../utils/homepageAnimations';
 
 // Main Homepage Component
 export default function Homepage() {
@@ -25,6 +26,9 @@ export default function Homepage() {
         concepts: 150
       });
     }, 500);
+
+    // Initialize homepage animations
+    initializeHomepageAnimations();
 
     return () => clearTimeout(timer);
   }, []);

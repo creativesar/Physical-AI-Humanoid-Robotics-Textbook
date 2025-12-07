@@ -18,11 +18,6 @@ export default [
     exact: true
   },
   {
-    path: '/homepage-script',
-    component: ComponentCreator('/homepage-script', '211'),
-    exact: true
-  },
-  {
     path: '/docs',
     component: ComponentCreator('/docs', '113'),
     routes: [
