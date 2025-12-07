@@ -18,6 +18,11 @@ export default [
     exact: true
   },
   {
+    path: '/mdx-book',
+    component: ComponentCreator('/mdx-book', 'b70'),
+    exact: true
+  },
+  {
     path: '/docs',
     component: ComponentCreator('/docs', '113'),
     routes: [
