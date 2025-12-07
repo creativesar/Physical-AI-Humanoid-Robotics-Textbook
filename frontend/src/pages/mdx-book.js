@@ -6,8 +6,8 @@ import CommonHeader from '../components/CommonHeader';
 import CommonFooter from '../components/CommonFooter';
 import { initializeHomepageAnimations } from '../utils/homepageAnimations';
 
-// Main Homepage Component
-export default function Homepage() {
+// MDX Book Homepage Component
+export default function MdxBookHomepage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [counters, setCounters] = useState({
     books: 0,
@@ -119,15 +119,13 @@ export default function Homepage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  // The handleBookClick function is defined in the useEffect above
-
   return (
     <>
       <CommonHeader onBookClick={handleBookClick} />
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <title>Physical AI & Humanoid Robotics Textbook</title>
-        <meta name="description" content="The definitive textbook on physical AI and humanoid robotics - bridging the gap between artificial intelligence and embodied machines" />
+        <title>Physical AI & Humanoid Robotics Textbook - MDX Book</title>
+        <meta name="description" content="The definitive MDX textbook on physical AI and humanoid robotics - bridging the gap between artificial intelligence and embodied machines" />
       </Head>
 
       <div className={styles.homepageContainer}>
@@ -161,8 +159,9 @@ export default function Homepage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={styles.heroButtonPrimary}
+                  onClick={handleBookClick}
                 >
-                  Get Started
+                  Open Book
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -529,6 +528,7 @@ export default function Homepage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={styles.heroButtonPrimary}
+                  onClick={handleBookClick}
                 >
                   Get Started Now
                 </motion.button>
