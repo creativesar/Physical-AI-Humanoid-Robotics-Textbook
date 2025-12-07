@@ -3,9 +3,12 @@ fastapi==0.115.0
 uvicorn[standard]==0.32.0
 python-multipart==0.0.12
 
-# OpenAI - Agents SDK
+# OpenAI - Agents SDK (optional - can be removed if not using OpenAI)
 openai>=1.50.0
 openai-agents>=0.0.3
+
+# Google Gemini
+google-generativeai>=0.8.0
 
 # Database - Neon Serverless Postgres
 sqlalchemy[asyncio]==2.0.36

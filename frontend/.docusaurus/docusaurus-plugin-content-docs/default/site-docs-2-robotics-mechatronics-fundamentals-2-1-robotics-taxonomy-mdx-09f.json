@@ -18,8 +18,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Introduction",
-    "permalink": "/docs/intro"
+    "title": "1.6 Key Terminology",
+    "permalink": "/docs/foundations-of-physical-ai/key-terminology"
   },
   "next": {
     "title": "2.2 Mechanical Structure of Robots",

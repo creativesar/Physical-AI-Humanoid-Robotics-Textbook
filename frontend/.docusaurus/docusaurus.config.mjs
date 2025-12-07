@@ -20,6 +20,7 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "plugins": [],
   "presets": [
     [
       "classic",
@@ -38,7 +39,7 @@ export default {
   ],
   "themeConfig": {
     "colorMode": {
-      "defaultMode": "dark",
+      "defaultMode": "light",
       "disableSwitch": false,
       "respectPrefersColorScheme": true
     },
@@ -336,6 +337,14 @@ export default {
       "maxHeadingLevel": 3
     }
   },
+  "stylesheets": [
+    {
+      "href": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "type": "text/css",
+      "rel": "stylesheet",
+      "crossorigin": "anonymous"
+    }
+  ],
   "baseUrlIssueBanner": true,
   "future": {
     "v4": {
@@ -364,11 +373,9 @@ export default {
     "static"
   ],
   "customFields": {},
-  "plugins": [],
   "themes": [],
   "scripts": [],
   "headTags": [],
-  "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
   "noIndex": false,

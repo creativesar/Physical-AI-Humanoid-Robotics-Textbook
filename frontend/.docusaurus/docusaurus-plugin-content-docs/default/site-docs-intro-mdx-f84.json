@@ -1,0 +1,19 @@
+{
+  "id": "intro",
+  "title": "intro",
+  "description": "Welcome To Physical AI Humnaoid Rebotics",
+  "source": "@site/docs/intro.mdx",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "19.3 References",
+    "permalink": "/docs/glossary-appendix-references/19.3-references"
+  }
+}

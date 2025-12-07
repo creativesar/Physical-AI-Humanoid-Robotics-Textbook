@@ -1,29 +1,349 @@
-/**
- * Any CSS or SCSS file in this folder is included in the main CSS bundle for your site.
- *
- * For most projects, this file should only contain C`SS variables and utility classes.
- * You can import other CSS/SCSS files here. */
+/* Professional Custom CSS for Docusaurus docs */
 
-/* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+/* Enhanced global styles */
+html {
+  scroll-behavior: smooth !important;
+  overflow-x: hidden !important;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+body {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  transition: background 0.6s ease !important;
+  position: relative !important;
+}
+
+/* Enhanced main content container */
+.main-wrapper {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  min-height: 100vh !important;
+  padding-top: 20px !important;
+  position: relative !important;
+}
+
+/* Professional Navigation Sidebar */
+.menu {
+  background: white !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  margin: 1rem !important;
+  background: #ffffff !important;
+}
+
+/* Navigation items */
+.menu__list-item {
+  margin-bottom: 0.4rem !important;
+}
+
+.menu__link {
+  border-radius: 12px !important;
+  padding: 0.7rem 1rem !important;
+  margin: 0.1rem 0 !important;
+  transition: all 0.3s ease !important;
+  color: #4a5568 !important;
+  font-weight: 500 !important;
+  border: 1px solid transparent !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+.menu__link:hover {
+  color: #2563eb !important;
+  background-color: #eff6ff !important;
+  transform: translateX(4px) !important;
+}
+
+.menu__link--active {
+  background-color: #eff6ff !important;
+  color: #2563eb !important;
+  border-left: 3px solid #2563eb !important;
+  font-weight: 600 !important;
+}
+
+/* Professional Doc Content Area */
+.docItemContainer {
+  background: white !important;
+  border-radius: 16px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  margin: 1rem auto !important;
+  max-width: 1200px !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Content styling */
+.markdown {
+  color: #374151 !important;
+  line-height: 1.8 !important;
+  font-size: 1.05rem !important;
+}
+
+/* Doc content inner */
+.markdown {
+  color: #4a5568 !important;
+  line-height: 1.8 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Headers in documentation */
+.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.markdown h1 {
+  font-size: 2.25rem !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  text-align: left !important;
+}
+
+.markdown h2 {
+  font-size: 1.75rem !important;
+  margin-top: 2.5rem !important;
+  position: relative !important;
+}
+
+.markdown h2::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: -8px !important;
+  width: 40px !important;
+  height: 3px !important;
+  background: #3b82f6 !important;
+  border-radius: 2px !important;
+}
+
+.markdown h3 {
+  font-size: 1.4rem !important;
+  color: #3b82f6 !important;
+}
+
+.markdown p {
+  margin-bottom: 1.5rem !important;
+  text-align: left !important;
+  color: #374151 !important;
+}
+
+/* Professional Lists */
+.markdown ul, .markdown ol {
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.markdown li {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.7 !important;
+  color: #374151 !important;
+}
+
+/* Professional Code Blocks */
+.prism-code {
+  background: #f3f4f6 !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  font-size: 0.9rem !important;
+  border: 1px solid #e5e7eb !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* Professional Inline Code */
+.markdown code {
+  background: #f3f4f6 !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+  border: 1px solid #e5e7eb !important;
+  color: #dc2626 !important;
+}
+
+/* Professional Links */
+.markdown a {
+  color: #3b82f6 !important;
+  text-decoration: none !important;
+  position: relative !important;
+}
+
+.markdown a:hover {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+/* Professional Blockquotes */
+.markdown blockquote {
+  border-left: 4px solid #3b82f6 !important;
+  background: #f8fafc !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-style: italic !important;
+  color: #4b5563 !important;
+}
+
+/* Professional Tables */
+.markdown table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+.markdown table th {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+  padding: 0.75rem !important;
+  text-align: left !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+.markdown table td {
+  padding: 0.75rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.markdown table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Professional Admonitions (tips, notes, etc.) */
+.theme-admonition {
+  border-radius: 8px !important;
+  margin: 1.5rem 0 !important;
+  padding: 1rem !important;
+  border-left: 4px solid #3b82f6 !important;
+  background-color: #eff6ff !important;
+  border: 1px solid #dbeafe !important;
+}
+
+.theme-admonition--note {
+  border-left-color: #3b82f6 !important;
+  background-color: #eff6ff !important;
+  border-color: #dbeafe !important;
+}
+
+.theme-admonition--tip {
+  border-left-color: #10b981 !important;
+  background-color: #ecfdf5 !important;
+  border-color: #d1fae5 !important;
+}
+
+.theme-admonition--caution {
+  border-left-color: #f59e0b !important;
+  background-color: #fffbf0 !important;
+  border-color: #fde68a !important;
+}
+
+/* Professional Table of Contents */
+.table-of-contents__link {
+  color: #4b5563 !important;
+  padding: 0.5rem !important;
+  display: block !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.9rem !important;
+}
+
+.table-of-contents__link:hover {
+  color: #3b82f6 !important;
+  background-color: #f3f4f6 !important;
+}
+
+.table-of-contents__link--active {
+  color: #2563eb !important;
+  font-weight: 600 !important;
+  background-color: #eff6ff !important;
+}
+
+/* Professional Breadcrumb */
+.theme-edit-this-page {
+  background-color: #f3f4f6 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  color: #4b5563 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+  margin-top: 1rem !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.theme-edit-this-page:hover {
+  background-color: #e5e7eb !important;
+  color: #3b82f6 !important;
+}
+
+/* Professional Doc Item Footer */
+.theme-doc-footer {
+  margin-top: 2rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+/* Professional Footer */
+.footer {
+  background-color: #1f2937 !important;
+  margin-top: 3rem !important;
+  padding: 2rem 0 !important;
+  color: #d1d5db !important;
+}
+
+/* Professional Navigation Header */
+.navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.navbar__title {
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+}
+
+/* Professional Responsive Improvements */
+@media (max-width: 996px) {
+  .menu {
+    margin: 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .docItemContainer {
+    margin: 1rem !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+  }
+
+  .markdown h1 {
+    font-size: 1.875rem !important;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-wrapper {
+    padding-top: 10px !important;
+  }
+
+  .docItemContainer {
+    margin: 1rem !important;
+    padding: 1rem !important;
+  }
+
+  .menu {
+    margin: 1rem !important;
+  }
 }
