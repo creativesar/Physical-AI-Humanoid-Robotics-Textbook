@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 
 import styles from './index.module.css';
 
@@ -423,7 +423,7 @@ function AnimatedBackground({ parallaxOffset = 0 }: { parallaxOffset?: number })
 
 // What We Do Section is now implemented using the premium component
 
-// Services Section
+// Services Section - Premium Robotics Lab Interface
 function ServicesSection() {
   return (
     <motion.section
@@ -437,53 +437,164 @@ function ServicesSection() {
       }}
     >
       <div className="container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            fontFamily: 'Sora, sans-serif',
-            color: '#ffffff',
-            fontSize: '3rem',
-            marginBottom: '3.5rem',
-            textAlign: 'center',
-            fontWeight: 800,
-          }}
-        >
-          Our Services
-        </motion.h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontFamily: 'Sora, sans-serif',
+              color: '#ffffff',
+              fontSize: '3rem',
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              fontWeight: 800,
+            }}
+          >
+            Our Services
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              color: '#c0c0c0',
+              fontSize: '1.2rem',
+              maxWidth: '700px',
+              margin: '0 auto',
+              lineHeight: '1.7',
+              fontWeight: 500,
+            }}
+          >
+            Comprehensive solutions for academic excellence and technical innovation in Physical AI and Humanoid Robotics
+          </motion.p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2.5rem' }}>
           {[
-            { title: 'Interactive Learning', features: ['19 structured modules', 'Interactive exercises', 'Progress tracking'] },
-            { title: 'Expert Support', features: ['AI-powered chatbot', 'Instant answers', '24/7 availability'] },
-            { title: 'Academic Resources', features: ['Peer-reviewed content', 'Research references', 'Case studies'] },
+            {
+              title: 'Interactive Learning',
+              features: [
+                'Structured modules',
+                'Practical tasks & assessments',
+                'Real-time progress analytics'
+              ],
+              icon: '⚙️',
+              color: '#0FE3C0'
+            },
+            {
+              title: 'Expert Support',
+              features: [
+                'AI research assistant',
+                'Instant problem solving',
+                '24/7 technical guidance'
+              ],
+              icon: '🤖',
+              color: '#0F96E3'
+            },
+            {
+              title: 'Academic Resources',
+              features: [
+                'Research references',
+                'Verified scientific explanations',
+                'Case-based learning models'
+              ],
+              icon: '📚',
+              color: '#A87EE5'
+            },
           ].map((service, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
               transition={{ delay: idx * 0.15, duration: 0.6 }}
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
                 backdropFilter: 'blur(20px)',
                 padding: '2.8rem',
-                borderRadius: '16px',
+                borderRadius: '20px',
+                border: '1px solid rgba(80, 80, 80, 0.3)',
                 transition: 'all 0.4s ease',
-                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
-              <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#ffffff', fontSize: '1.6rem', marginBottom: '1.8rem', fontWeight: 800 }}>
+              {/* Premium gradient accent */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: `linear-gradient(90deg, ${service.color} 0%, ${service.color}80 100%)`,
+              }} />
+
+              <div style={{
+                position: 'absolute',
+                top: '25px',
+                right: '25px',
+                fontSize: '2.5rem',
+                opacity: 0.1
+              }}>
+                {service.icon}
+              </div>
+
+              <h3 style={{
+                fontFamily: 'Sora, sans-serif',
+                color: service.color,
+                fontSize: '1.6rem',
+                marginBottom: '1.8rem',
+                fontWeight: 700,
+                position: 'relative',
+                zIndex: 1
+              }}>
                 {service.title}
               </h3>
-              <ul style={{ fontFamily: 'Inter, sans-serif', color: '#c0c0c0', lineHeight: '2.3', listStyle: 'none', padding: 0 }}>
+
+              <ul style={{
+                fontFamily: 'Inter, sans-serif',
+                color: '#E0E0E0',
+                lineHeight: '1.8',
+                listStyle: 'none',
+                padding: 0,
+                position: 'relative',
+                zIndex: 1
+              }}>
                 {service.features.map((feature, i) => (
-                  <li key={i} style={{ marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: 500 }}>
-                    <span style={{ color: '#888888', fontSize: '1.3rem', fontWeight: 700 }}>✓</span>
-                    <span>{feature}</span>
+                  <li key={i} style={{
+                    marginBottom: '1.2rem',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem',
+                    fontWeight: 500,
+                    paddingTop: '0.2rem'
+                  }}>
+                    <span style={{
+                      color: service.color,
+                      fontSize: '1.3rem',
+                      fontWeight: 700,
+                      display: 'inline-block',
+                      marginTop: '0.1rem',
+                      minWidth: '1.3rem',
+                      textAlign: 'center'
+                    }}>✓</span>
+                    <span style={{ color: '#E0E0E0', lineHeight: '1.7' }}>{feature}</span>
                   </li>
                 ))}
               </ul>
+
+              {/* Subtle bottom accent */}
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, rgba(200,200,200,0.1), transparent)',
+              }} />
             </motion.div>
           ))}
         </div>
@@ -547,8 +658,32 @@ function TrustedPartnersSection() {
   );
 }
 
-// Testimonial Section
+// Testimonial Section - Premium Scholarly Design
 function TestimonialSection() {
+  const testimonials = [
+    {
+      name: 'Dr. Sarah Chen',
+      role: 'AI Researcher',
+      text: 'An essential resource for serious learners of Physical AI. The clarity and depth are unmatched.',
+      quotePrefix: '"',
+      quoteSuffix: '" —'
+    },
+    {
+      name: 'Prof. Marcus Rivera',
+      role: 'Robotics Scientist',
+      text: 'The curriculum bridges theoretical sophistication with practical robotics engineering.',
+      quotePrefix: '"',
+      quoteSuffix: '" —'
+    },
+    {
+      name: 'Emma Rodriguez',
+      role: 'AI Educator',
+      text: 'A transformative platform for understanding intelligent embodied systems.',
+      quotePrefix: '"',
+      quoteSuffix: '" —'
+    },
+  ];
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -561,27 +696,42 @@ function TestimonialSection() {
       }}
     >
       <div className="container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            fontFamily: 'Sora, sans-serif',
-            color: '#ffffff',
-            fontSize: '3rem',
-            marginBottom: '3.5rem',
-            textAlign: 'center',
-            fontWeight: 800,
-          }}
-        >
-          What Users Say
-        </motion.h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
-          {[
-            { name: 'Dr. Sarah Chen', role: 'AI Researcher', text: 'The most comprehensive resource for Physical AI education. Highly recommended for students and professionals.' },
-            { name: 'Prof. James Wilson', role: 'Robotics Professor', text: 'Excellent pedagogy and up-to-date content. Our students consistently praise the clarity and depth.' },
-            { name: 'Emma Rodriguez', role: 'Graduate Student', text: 'Finally, a textbook that bridges theory and practice. The AI assistant is incredibly helpful!' },
-          ].map((testimonial, idx) => (
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontFamily: 'Sora, sans-serif',
+              color: '#ffffff',
+              fontSize: '3rem',
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              fontWeight: 800,
+            }}
+          >
+            What Users Say
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              color: '#c0c0c0',
+              fontSize: '1.2rem',
+              maxWidth: '700px',
+              margin: '0 auto',
+              lineHeight: '1.7',
+              fontWeight: 500,
+            }}
+          >
+            Insights from leading researchers, educators, and professionals in Physical AI and robotics
+          </motion.p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '3rem' }}>
+          {testimonials.map((testimonial, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -589,21 +739,60 @@ function TestimonialSection() {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
                 backdropFilter: 'blur(20px)',
-                padding: '2.5rem',
-                borderRadius: '16px',
-                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.08)',
+                padding: '3rem',
+                borderRadius: '20px',
+                border: '1px solid rgba(80, 80, 80, 0.3)',
+                textAlign: 'left',
+                transition: 'all 0.4s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
               }}
             >
-              <p style={{ fontFamily: 'Inter, sans-serif', color: '#c0c0c0', fontSize: '1rem', lineHeight: '1.8', marginBottom: '1.5rem', fontStyle: 'italic' }}>
-                "{testimonial.text}"
+              {/* Subtle reflection effect */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '25%',
+                background: 'linear-gradient(to bottom, rgba(15, 227, 192, 0.08), transparent)',
+                zIndex: 1,
+                pointerEvents: 'none',
+              }} />
+
+              <p style={{
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                color: '#d0d0d0',
+                fontSize: '1.15rem',
+                lineHeight: '1.9',
+                marginBottom: '2rem',
+                fontStyle: 'italic',
+                position: 'relative',
+                zIndex: 2
+              }}>
+                {testimonial.quotePrefix}{testimonial.text}{testimonial.quoteSuffix}
               </p>
-              <div>
-                <p style={{ fontFamily: 'Sora, sans-serif', color: '#ffffff', fontSize: '1rem', fontWeight: 700, margin: '0' }}>
+
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <p style={{
+                  fontFamily: 'Sora, sans-serif',
+                  color: '#ffffff',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  margin: '0.2rem 0',
+                }}>
                   {testimonial.name}
                 </p>
-                <p style={{ fontFamily: 'Inter, sans-serif', color: '#888888', fontSize: '0.9rem', margin: '0.5rem 0 0' }}>
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  color: '#a0a0a0',
+                  fontSize: '1rem',
+                  margin: '0.3rem 0',
+                  fontStyle: 'normal'
+                }}>
                   {testimonial.role}
                 </p>
               </div>
@@ -1259,12 +1448,59 @@ function AboutSection() {
   );
 }
 
-// Statistics Section
+// Counter Component for animated numbers
+const Counter = ({ target, prefix = '', suffix = '', duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    let animationFrame;
+    if (inView && count < target) {
+      const startTime = Date.now();
+      const endTime = startTime + duration;
+
+      const updateCount = () => {
+        const now = Date.now();
+        const elapsed = Math.min(now - startTime, duration);
+        const progress = elapsed / duration;
+
+        // Ease-out function
+        const easeProgress = 1 - Math.pow(1 - progress, 2);
+
+        const currentValue = Math.floor(easeProgress * target);
+        setCount(Math.min(currentValue, target));
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(updateCount);
+        }
+      };
+
+      animationFrame = requestAnimationFrame(updateCount);
+    }
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [inView, target, duration, count]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+};
+
+// Statistics Section - Premium Real-time Counters
 function StatsSection() {
   const stats = [
-    { number: '19', label: 'Comprehensive Modules', description: 'From fundamentals to advanced systems', color: '#888888', icon: '📚' },
-    { number: '100+', label: 'Learning Objectives', description: 'Clear, measurable outcomes', color: '#5a8a7b', icon: '🎯' },
-    { number: '1000+', label: 'Technical Concepts', description: 'Thoroughly documented', color: '#4a7a6f', icon: '⚙️' },
+    { end: 19, label: 'Comprehensive Modules', description: 'From fundamentals to advanced robotics systems.', icon: '📚', prefix: '', suffix: '' },
+    { end: 100, label: 'Learning Objectives', description: 'Clear, measurable academic outcomes.', icon: '🎯', prefix: '', suffix: '+' },
+    { end: 1000, label: 'Technical Concepts', description: 'Documented, visualized, and explained.', icon: '⚙️', prefix: '', suffix: '+' },
   ];
 
   const ref = useRef(null);
@@ -1283,25 +1519,40 @@ function StatsSection() {
       }}
     >
       <div className="container">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{
-            fontFamily: 'Sora, sans-serif',
-            color: '#fff',
-            fontSize: '3rem',
-            marginBottom: '3.5rem',
-            textAlign: 'center',
-            background: 'linear-gradient(135deg, #888888 0%, #e0e0e0 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontWeight: 800,
-          }}
-        >
-          Platform Overview
-        </motion.h2>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontFamily: 'Sora, sans-serif',
+              color: '#fff',
+              fontSize: '3rem',
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              fontWeight: 800,
+            }}
+          >
+            Platform Overview
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              color: '#c0c0c0',
+              fontSize: '1.2rem',
+              maxWidth: '700px',
+              margin: '0 auto',
+              lineHeight: '1.7',
+              fontWeight: 500,
+            }}
+          >
+            Real-time metrics showcasing our comprehensive educational platform
+          </motion.p>
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
           {stats.map((stat, idx) => (
             <motion.div
@@ -1309,46 +1560,78 @@ function StatsSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.15, duration: 0.6 }}
-              whileHover={{ y: -12, boxShadow: `0 30px 60px ${stat.color}25` }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
               style={{
-                background: `linear-gradient(135deg, rgba(200, 200, 200, 0.08) 0%, rgba(180, 180, 180, 0.04) 100%)`,
-                backdropFilter: 'blur(10px)',
-                padding: '3rem 2.5rem',
-                borderRadius: '16px',
-                border: 'none',
+                background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
+                backdropFilter: 'blur(20px)',
+                padding: '2.8rem 2rem',
+                borderRadius: '20px',
+                border: '1px solid rgba(80, 80, 80, 0.3)',
                 textAlign: 'center',
                 transition: 'all 0.4s ease',
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
               }}
             >
+              {/* Premium radial glow */}
               <div style={{
                 position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '4px',
-                background: `linear-gradient(90deg, ${stat.color} 0%, transparent 100%)`,
+                top: '-50%',
+                left: '-50%',
+                width: '200%',
+                height: '200%',
+                background: `radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)`,
+                zIndex: 0,
               }} />
-              <div style={{ fontSize: '3rem', marginBottom: '1.2rem' }}>{stat.icon}</div>
+
+              <div style={{
+                position: 'relative',
+                zIndex: 1,
+                marginBottom: '1.8rem',
+                fontSize: '2.8rem'
+              }}>
+                {stat.icon}
+              </div>
+
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: idx * 0.15 + 0.1 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
                 style={{
                   fontFamily: 'Sora, sans-serif',
-                  fontSize: '3.8rem',
-                  color: '#888888',
+                  fontSize: '4.8rem',
+                  color: '#0FE3C0',
                   fontWeight: 800,
-                  marginBottom: '0.5rem',
+                  marginBottom: '1.2rem',
+                  lineHeight: '1.1',
+                  position: 'relative',
+                  zIndex: 1
                 }}
               >
-                {stat.number}
+                <Counter target={stat.end} prefix={stat.prefix} suffix={stat.suffix} />
               </motion.div>
-              <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#fff', fontSize: '1.35rem', marginBottom: '0.8rem', fontWeight: 700 }}>
+
+              <h3 style={{
+                fontFamily: 'Sora, sans-serif',
+                color: '#fff',
+                fontSize: '1.6rem',
+                marginBottom: '1.2rem',
+                fontWeight: 700,
+                position: 'relative',
+                zIndex: 1
+              }}>
                 {stat.label}
               </h3>
-              <p style={{ fontFamily: 'Inter, sans-serif', color: '#a8a8a8', fontSize: '1rem', fontWeight: 500 }}>
+
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                color: '#a8a8a8',
+                fontSize: '1rem',
+                fontWeight: 500,
+                position: 'relative',
+                zIndex: 1
+              }}>
                 {stat.description}
               </p>
             </motion.div>
