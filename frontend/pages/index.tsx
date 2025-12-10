@@ -1,0 +1,356 @@
+import React, { type ReactElement } from 'react';
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import { motion } from 'framer-motion';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Chatbot from '@site/src/components/Chatbot';
+
+import styles from './index.module.css';
+
+function HomepageHeader() {
+  const { siteConfig } = useDocusaurusContext();
+  return (
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <div className="container">
+        <motion.h1
+          className="hero__title"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ fontFamily: 'Sora, sans-serif' }}
+        >
+          {siteConfig.title}
+        </motion.h1>
+        <motion.p
+          className="hero__subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          {siteConfig.tagline}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro">
+            Read Textbook
+          </Link>
+        </motion.div>
+      </div>
+    </header>
+  );
+}
+
+// Additional sections that are not in HomepageFeatures
+function ModuleGridSection() {
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg')} id="module-grid">
+      <div className="container padding-horiz--md">
+        <div className="row">
+          <div className="col col--12">
+            <h2 style={{ fontFamily: 'Sora, sans-serif', textAlign: 'center' }}>Textbook Modules</h2>
+            <div className="text--center">
+              <p style={{ fontFamily: 'Inter, sans-serif' }}>Explore the complete 19-module curriculum</p>
+            </div>
+            <div className="row">
+              {[...Array(6)].map((_, idx) => (
+                <div key={idx} className="col col--2 padding--sm">
+                  <div
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: '1px solid #555',
+                      borderRadius: '8px',
+                      padding: '15px',
+                      textAlign: 'center',
+                      height: '120px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <h3 style={{ fontFamily: 'Sora, sans-serif', margin: 0 }}>Module {idx + 1}</h3>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8em', margin: '5px 0 0' }}>Intro to Physical AI</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CounterSection() {
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg', 'padding-vert--md')}
+             style={{ backgroundColor: 'transparent', borderRadius: '8px', margin: '20px 0' }}>
+      <div className="container">
+        <div className="row">
+          <div className="col col--3 text--center">
+            <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#25c19f', margin: 0 }}>19</h3>
+            <p style={{ fontFamily: 'Inter, sans-serif', margin: 0 }}>Modules</p>
+          </div>
+          <div className="col col--3 text--center">
+            <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#25c19f', margin: 0 }}>50+</h3>
+            <p style={{ fontFamily: 'Inter, sans-serif', margin: 0 }}>Subpages</p>
+          </div>
+          <div className="col col--3 text--center">
+            <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#25c19f', margin: 0 }}>10k+</h3>
+            <p style={{ fontFamily: 'Inter, sans-serif', margin: 0 }}>Students</p>
+          </div>
+          <div className="col col--3 text--center">
+            <h3 style={{ fontFamily: 'Sora, sans-serif', color: '#25c19f', margin: 0 }}>24/7</h3>
+            <p style={{ fontFamily: 'Inter, sans-serif', margin: 0 }}>Support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg')}>
+      <div className="container padding-horiz--md">
+        <div className="row">
+          <div className="col col--12">
+            <h2 style={{ fontFamily: 'Sora, sans-serif', textAlign: 'center' }}>What Our Users Say</h2>
+            <div className="row">
+              <div className="col col--4">
+                <div style={{
+                  padding: '20px',
+                  border: '1px solid #555',
+                  borderRadius: '8px',
+                  backgroundColor: 'transparent',
+                  height: '100%'
+                }}>
+                  <p style={{ fontFamily: 'Inter, sans-serif' }}>"This textbook provided the comprehensive foundation I needed to start my robotics research."</p>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8em' }}><em>- Graduate Student</em></p>
+                </div>
+              </div>
+              <div className="col col--4">
+                <div style={{
+                  padding: '20px',
+                  border: '1px solid #555',
+                  borderRadius: '8px',
+                  backgroundColor: 'transparent',
+                  height: '100%'
+                }}>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8em' }}><em>- Robotics Engineer</em></p>
+                </div>
+              </div>
+              <div className="col col--4">
+                <div style={{
+                  padding: '20px',
+                  border: '1px solid #555',
+                  borderRadius: '8px',
+                  backgroundColor: 'transparent',
+                  height: '100%'
+                }}>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8em' }}><em>- Professor</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrustedPartnersSection() {
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg')}>
+      <div className="container padding-horiz--md">
+        <div className="row">
+          <div className="col col--12">
+            <h2 style={{ fontFamily: 'Sora, sans-serif', textAlign: 'center' }}>Trusted By</h2>
+            <div className="text--center">
+              <p style={{ fontFamily: 'Inter, sans-serif' }}>Academic and Industry Partners</p>
+              <div className="row padding-vert--md">
+                {[...Array(4)].map((_, idx) => (
+                  <div key={idx} className="col col--3">
+                    <div style={{
+                      padding: '20px',
+                      border: '1px solid #555',
+                      borderRadius: '8px',
+                      backgroundColor: 'transparent',
+                      height: '80px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      Partner {idx + 1}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = React.useState(null);
+
+  const faqs = [
+    {
+      question: "Who is this textbook for?",
+      answer: "This textbook is designed for students, researchers, and professionals working in robotics, AI, or related fields who want to understand the principles of Physical AI and Humanoid Robotics."
+    },
+    {
+      question: "Do I need prior robotics experience?",
+      answer: "While some background in programming and basic robotics concepts is helpful, this textbook is structured to be accessible to motivated learners at various levels."
+    },
+    {
+      question: "How is this textbook different?",
+      answer: "Unlike traditional robotics textbooks, this resource specifically focuses on the intersection of AI and physical systems, with emphasis on embodied intelligence and humanoid systems."
+    },
+    {
+      question: "Can I interact with the content?",
+      answer: "Yes! Our platform includes an AI-powered chatbot that can answer your questions based on the textbook content, providing personalized learning experiences."
+    }
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg')}>
+      <div className="container padding-horiz--md">
+        <div className="row">
+          <div className="col col--12">
+            <h2 style={{ fontFamily: 'Sora, sans-serif', textAlign: 'center' }}>Frequently Asked Questions</h2>
+            <div className="padding-vert--md">
+              {faqs.map((faq, index) => (
+                <div key={index} style={{ marginBottom: '10px' }}>
+                  <div
+                    style={{
+                      padding: '20px',
+                      border: '1px solid #555',
+                      borderRadius: '8px',
+                      backgroundColor: 'transparent',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => toggleFAQ(index)}
+                  >
+                    <h3 style={{
+                      margin: 0,
+                      fontFamily: 'Sora, sans-serif',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}>
+                      {faq.question}
+                      <span>{openIndex === index ? '−' : '+'}</span>
+                    </h3>
+                    {openIndex === index && (
+                      <p style={{
+                        marginTop: '10px',
+                        fontFamily: 'Inter, sans-serif',
+                        color: '#aaa'
+                      }}>
+                        {faq.answer}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GetConnectSection() {
+  return (
+    <section className={clsx(styles.section, 'margin-vert--lg', 'padding-vert--xl')}>
+      <div className="container padding-horiz--md">
+        <div className="row">
+          <div className="col col--12 text--center">
+            <h2 style={{ fontFamily: 'Sora, sans-serif' }}>Get Connected</h2>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.2em', marginBottom: '30px' }}>
+              Join our community of researchers and engineers advancing Physical AI and Humanoid Robotics
+            </p>
+            <div className="row">
+              <div className="col col--4">
+                <div style={{ padding: '20px' }}>
+                  <h3 style={{ fontFamily: 'Sora, sans-serif' }}>Contact Us</h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Have questions? Reach out to our team for more information about the textbook.
+                  </p>
+                  <Link
+                    className="button button--secondary button--md"
+                    to="mailto:contact@physicalai-textbook.org">
+                    Email Us
+                  </Link>
+                </div>
+              </div>
+              <div className="col col--4">
+                <div style={{ padding: '20px' }}>
+                  <h3 style={{ fontFamily: 'Sora, sans-serif' }}>Join Community</h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Connect with other students and researchers in our community forums.
+                  </p>
+                  <Link
+                    className="button button--secondary button--md"
+                    to="https://discord.gg/robotics">
+                    Join Discord
+                  </Link>
+                </div>
+              </div>
+              <div className="col col--4">
+                <div style={{ padding: '20px' }}>
+                  <h3 style={{ fontFamily: 'Sora, sans-serif' }}>Follow Updates</h3>
+                  <p style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Stay up to date with the latest content updates and research insights.
+                  </p>
+                  <Link
+                    className="button button--secondary button--md"
+                    to="https://twitter.com/PhysicalAI_Textbk">
+                    Follow on Twitter
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Home(): ReactElement {
+  const { siteConfig } = useDocusaurusContext();
+  return (
+    <Layout
+      title={`Welcome to ${siteConfig.title}`}
+      description="Comprehensive textbook covering Physical AI and Humanoid Robotics">
+      <HomepageHeader />
+      <main>
+        <HomepageFeatures />
+        <ModuleGridSection />
+        <CounterSection />
+        <TestimonialsSection />
+        <TrustedPartnersSection />
+        <FAQSection />
+        <GetConnectSection />
+        <Chatbot />
+      </main>
+    </Layout>
+  );
+}

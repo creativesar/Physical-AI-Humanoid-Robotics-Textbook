@@ -2,7 +2,7 @@
 
 **Endpoint**: `/user-profile`
 **Method**: `GET` / `POST` / `PUT`
-**Purpose**: Manages user profile data and personalization settings.
+**Purpose**: Manages user profile data and personalization settings for the Physical AI & Humanoid Robotics Textbook platform.
 
 ## GET Request (Retrieve User Profile)
 
@@ -23,14 +23,21 @@
   "username": "string",
   "profile_data": {
     "preferred_tone": "string",
-    "learning_level": "string"
+    "learning_level": "string",
+    "academic_background": "string",
+    "robotics_experience": "string"
   },
   "personalization_settings": [
     {
       "setting_key": "string",
       "setting_value": "string"
     }
-  ]
+  ],
+  "progress_data": {
+    "modules_completed": ["string"],
+    "current_module": "string",
+    "last_accessed": "string"
+  }
 }
 ```
 
@@ -46,7 +53,13 @@
 {
   "username": "string",
   "password": "string",
-  "profile_data": { /* optional initial profile data */ }
+  "email": "string",
+  "profile_data": {
+    "preferred_tone": "string",
+    "learning_level": "string",
+    "academic_background": "string",
+    "robotics_experience": "string"
+  }
 }
 ```
 
@@ -77,7 +90,8 @@
       "setting_key": "string",
       "setting_value": "string"
     }
-  ] (optional)
+  ] (optional),
+  "progress_data": { /* updated progress data */ } (optional)
 }
 ```
 
