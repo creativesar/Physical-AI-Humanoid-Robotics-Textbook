@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import { motion } from 'framer-motion';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Chatbot from '@site/src/components/Chatbot';
+import WhatWeDoPremium from '@site/src/components/WhatWeDoCompact';
 
 import styles from './index.module.css';
 
@@ -343,6 +344,7 @@ export default function Home(): ReactElement {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <WhatWeDoPremium />
         <ModuleGridSection />
         <CounterSection />
         <TestimonialsSection />
