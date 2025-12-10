@@ -1,42 +1,100 @@
-from typing import List, Dict, Any
-from .qdrant_service import qdrant_service
-from .gemini_service import gemini_service
-from ..config import settings
-from .. import models  # For chat history typing
+import cohere
+from typing import List, Dict, Any, Tuple
 
-async def retrieve_context(query_text: str, top_k: int = 5) -> List[Dict[str, Any]]:
-    """Retrieves relevant chunks from Qdrant based on query."""
-    return await qdrant_service.search(query_text, top_k=top_k)
+from ..core.config import settings
+from ..database.qdrant_client import get_qdrant_client, query_collection
+from ..services.embeddings import generate_embeddings
+from ..services.context_builder import format_context_for_llm, build_llm_prompt
 
-def format_context_for_llm(context: List[Dict[str, Any]]) -> str:
-    """Formats retrieved context into a string for the LLM."""
-    formatted_context = []
-    for i, chunk in enumerate(context):
-        formatted_context.append(f"--- Textbook Reference {i+1} (Title: {chunk.get('title', '')}) ---")
-        formatted_context.append(chunk.get('content', ''))
-        formatted_context.append("\n")
-    return "\n".join(formatted_context)
+co = cohere.Client(settings.COHERE_API_KEY)
 
-async def process_chat_query(user_message: str, conversation_history: List[Dict[str, str]], selected_text: str | None = None) -> (str, List[Dict[str, Any]]):
-    """Orchestrates the RAG pipeline."""
+async def process_chat_query(
+    user_message: str,
+    chat_history: List[Dict[str, str]] = None,
+    selected_text: str = None,
+    user_id: str = None
+) -> Tuple[str, List[Dict[str, Any]]]:
+    """
+    Main function to process a chat query using RAG.
+    """
+    if chat_history is None:
+        chat_history = []
 
-    # 1. Retrieve context
-    # If selected_text is provided, use it to augment the query for better retrieval
-    retrieval_query = f"{user_message} {selected_text}" if selected_text else user_message
-    context_chunks = await retrieve_context(retrieval_query)
+    # Step 1: Retrieve relevant context from Qdrant
+    context_chunks, sources = await retrieve_context(user_message)
 
-    # 2. Format context
+    # Step 2: Format the context for the LLM
     formatted_context = format_context_for_llm(context_chunks)
 
-    # 3. Get LLM response using the gemini service
-    ai_response = await gemini_service.chat(
-        message=user_message,
-        conversation_history=conversation_history,
-        rag_context=formatted_context
+    # Step 3: Build the full prompt with context, history, and user query
+    full_prompt = build_llm_prompt(
+        user_message=user_message,
+        context=formatted_context,
+        chat_history=chat_history,
+        selected_text=selected_text
     )
 
-    # Extract sources from context_chunks for the response
-    sources = [{"title": c.get("title"), "score": c.get("score"), "source_url": c.get("source_url")}
-               for c in context_chunks if c.get("title")]
+    # Step 4: Generate response using the LLM
+    response = await generate_llm_response(full_prompt)
 
-    return ai_response, sources
+    # Optionally log the interaction to the database
+    if user_id:
+        await log_chat_interaction(user_message, response, user_id)
+
+    return response, sources
+
+async def retrieve_context(query: str, top_k: int = 5) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Retrieve relevant context from the Qdrant vector database.
+    """
+    # Generate embedding for the query
+    query_embeddings = await generate_embeddings([query])
+    query_vector = query_embeddings[0]
+
+    # Query Qdrant for similar chunks
+    search_results = query_collection(query_vector, limit=top_k)
+
+    context_chunks = []
+    sources = []
+
+    for hit in search_results:
+        payload = hit.payload or {}
+        context_chunks.append({
+            'text': payload.get("text", ""),
+            'chapter': payload.get("chapter", ""),
+            'section': payload.get("section", ""),
+        })
+
+        sources.append({
+            'id': hit.id,
+            'chapter': payload.get("chapter", ""),
+            'section': payload.get("section", ""),
+            'score': hit.score
+        })
+
+    return context_chunks, sources
+
+async def generate_llm_response(prompt: str) -> str:
+    """
+    Generate a response from the LLM based on the prompt.
+    """
+    try:
+        response = co.generate(
+            model=settings.COHERE_CHAT_MODEL,
+            prompt=prompt,
+            max_tokens=1024,
+            temperature=0.7,
+        )
+
+        return response.generations[0].text
+    except Exception as e:
+        # Fallback response if LLM fails
+        return f"Sorry, I encountered an error processing your request: {str(e)}"
+
+async def log_chat_interaction(user_message: str, ai_response: str, user_id: str):
+    """
+    Log the chat interaction to the database for analytics and improvement.
+    """
+    # Implementation would require database access and ChatMessage model
+    # This is a placeholder for the actual implementation
+    pass

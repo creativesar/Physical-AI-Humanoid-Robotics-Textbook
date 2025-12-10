@@ -28,7 +28,8 @@
       "Bash(mkdir:*)",
       "Bash(npm install)",
       "Bash(./.venv/Scripts/activate:*)",
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(del \".specify\\memory\\constitution.md\")"
     ],
     "deny": [],
     "ask": []

@@ -1,76 +1,39 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
+import os
+from dotenv import load_dotenv
 
-from src.api import auth, chat, ingest, rag, personalize, translate, embed
-from src.database import engine, Base
-from src.config import settings
+# Load environment variables
+load_dotenv()
 
-# Create database tables (sync for simplicity, use migrations in production)
-Base.metadata.create_all(bind=engine)
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Lifecycle events."""
-    # Startup: check if Gemini API key is provided
-    if not settings.gemini_api_key:
-        print("⚠️ Warning: GEMINI_API_KEY not found in environment. Gemini features will be limited.")
-    if not settings.openai_api_key:
-        print("ℹ️  Note: OPENAI_API_KEY not found in environment. Using Gemini as primary AI provider.")
-
-    yield
-    # Shutdown: could clean up things here
-
+# Initialize the FastAPI app
 app = FastAPI(
-    title="Physical AI & Humanoid Robotics Textbook Backend",
-    description="API for AI-native textbook with RAG, Personalization, and Translation",
-    version="1.0.0",
-    lifespan=lifespan
+    title="Physical AI & Humanoid Robotics Textbook API",
+    description="API for the Physical AI & Humanoid Robotics Textbook Platform",
+    version="1.0.0"
 )
 
-# CORS Configuration
-origins = [
-    "http://localhost:3000",
-    "http://localhost:5173",  # Vite default
-    "https://physical-ai-textbook.vercel.app",  # Example production URL
-    "*"  # Allow all for development
-]
-
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # In production, replace with specific frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register Routers
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
-app.include_router(chat.router, prefix="/chat", tags=["Chat & AI"])
-app.include_router(rag.router, prefix="/rag", tags=["RAG & Search"])
-app.include_router(ingest.router, prefix="/ingest", tags=["Content Ingestion"])
-app.include_router(personalize.router, prefix="/personalize", tags=["Personalization"])
-app.include_router(translate.router, prefix="/translate", tags=["Translation"])
-# Keep raw embed router for backward compatibility if needed, or deprecate
-app.include_router(embed.router, prefix="/embed", tags=["Embeddings (Legacy)"])
+# Include API routes
+from api import router as api_router
+app.include_router(api_router, prefix="/api/v1")
 
 @app.get("/")
-async def root():
-    return {
-        "message": "Physical AI & Humanoid Robotics Textbook Backend API",
-        "docs": "/docs",
-        "features": {
-            "rag": settings.enable_rag,
-            "translation": settings.enable_translation,
-            "personalization": settings.enable_personalization
-        },
-        "llm_provider": "gemini" if settings.gemini_api_key else "openai" if settings.openai_api_key else "none"
-    }
+def read_root():
+    return {"message": "Physical AI & Humanoid Robotics Textbook API"}
 
 @app.get("/health")
-async def health_check():
-    return {
-        "status": "ok",
-        "database": "connected",  # Ideally check actual connection
-        "llm_provider": "gemini" if settings.gemini_api_key else "openai" if settings.openai_api_key else "none"
-    }
+def health_check():
+    return {"status": "healthy"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))

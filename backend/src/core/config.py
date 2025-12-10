@@ -9,18 +9,28 @@ class Settings(BaseSettings):
     PROJECT_VERSION: str = "1.0.0"
     PROJECT_DESCRIPTION: str = "FastAPI backend for RAG chatbot in Physical AI textbook."
 
-    # Google Gemini
-    GEMINI_API_KEY: str
-    GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"  # Placeholder - Gemini doesn't have direct equivalent
-    GEMINI_CHAT_MODEL: str = "gemini-pro"
+    # Secret key for JWT
+    SECRET_KEY: str
+    ALGORITHM: str = "HS256"
+
+    # Better Auth integration
+    BETTER_AUTH_API_URL: str = ""  # URL of the Better Auth backend
+
+    # Cohere
+    COHERE_API_KEY: str
+    COHERE_EMBEDDING_MODEL: str = "embed-multilingual-v3.0"  # Cohere's embedding model
+    COHERE_CHAT_MODEL: str = "command-r-plus" # Or other available Cohere models
 
     # Qdrant
     QDRANT_URL: str
     QDRANT_API_KEY: str
-    QDRANT_COLLECTION_NAME: str = "textbook_chunks"
+    QDRANT_COLLECTION_NAME: str = "textbook_vectors"  # Updated to match implementation guide
 
     # Postgres
     DATABASE_URL: str
+
+    # Frontend path for ingestion
+    FRONTEND_PATH: str = "../../../frontend"
 
     # CORS
     BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"] # Adjust for production

@@ -1,189 +1,195 @@
-"""
-Content Ingestion API endpoints.
+from fastapi import APIRouter, HTTPException, BackgroundTasks
+from pydantic import BaseModel
+from typing import List, Dict, Any
+import os
+import asyncio
 
-Provides:
-- Single document ingestion
-- Batch document ingestion
-- Document deletion
-"""
-
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
-from typing import List
-
-from .. import models, schemas
-from ..services.qdrant_service import qdrant_service
-from ..database import get_db
-from .auth import get_current_user
+from ..services.chunker import chunk_mdx_content
+from ..services.embeddings import generate_embeddings
+from ..database.qdrant_client import upsert_points_to_qdrant
+from ..models.postgres_models import Module, TextbookChunk, Counter
+from ..database.postgres_client import get_db_session
+from ..core.config import settings
 
 router = APIRouter()
 
+class IngestRequest(BaseModel):
+    force_reindex: bool = False
 
-@router.post("/document", response_model=schemas.ContentIngestResponse, status_code=status.HTTP_201_CREATED)
-async def ingest_document(
-    request: schemas.ContentIngestRequest,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
-):
-    """
-    Ingest a single document into the vector database.
-    
-    The document will be embedded and stored for RAG retrieval.
-    """
-    # Create database record
-    document = models.ContentDocument(
-        title=request.title,
-        content=request.content,
-        source_url=request.source_url,
-        doc_type=request.doc_type,
-        doc_metadata=request.doc_metadata or {}
-    )
-    db.add(document)
-    db.commit()
-    db.refresh(document)
-    
-    # Index in vector database
-    try:
-        vector_id = await qdrant_service.index_document(
-            document_id=document.id,
-            title=document.title,
-            content=document.content,
-            source_url=document.source_url,
-            metadata=document.doc_metadata
-        )
-        
-        # Update document with vector ID
-        document.vector_id = vector_id
-        db.commit()
-        
-    except Exception as e:
-        # Rollback on indexing failure
-        db.delete(document)
-        db.commit()
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to index document: {str(e)}"
-        )
-    
-    return schemas.ContentIngestResponse(
-        id=document.id,
-        title=document.title,
-        vector_id=vector_id,
-        status="indexed"
-    )
+class IngestResponse(BaseModel):
+    status: str
+    message: str
+    processed_modules: int
 
+def read_mdx_files() -> Dict[str, str]:
+    """
+    Read all MDX files from the frontend docs directory.
+    """
+    mdx_dir = os.path.join(settings.FRONTEND_PATH or "../../../frontend/docs", "")
+    
+    content_dict = {}
+    
+    # Check if directory exists
+    if not os.path.exists(mdx_dir):
+        raise HTTPException(status_code=404, detail=f"Docs directory not found: {mdx_dir}")
+    
+    # Walk through the docs directory to find MDX files
+    for root, dirs, files in os.walk(mdx_dir):
+        for file in files:
+            if file.endswith('.mdx'):
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    # Use relative path from docs directory as identifier
+                    rel_path = os.path.relpath(file_path, mdx_dir)
+                    content_dict[rel_path] = content
+    
+    return content_dict
 
-@router.post("/batch", response_model=List[schemas.ContentIngestResponse], status_code=status.HTTP_201_CREATED)
-async def ingest_batch(
-    requests: List[schemas.ContentIngestRequest],
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
-):
+async def process_module_content(module_slug: str, content: str, db_session):
     """
-    Ingest multiple documents in batch.
-    
-    More efficient than individual ingestion for large datasets.
+    Process a single module's content: chunk, embed, and store.
     """
-    if len(requests) > 100:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Maximum 100 documents per batch"
-        )
+    # Chunk the content
+    chunks = chunk_mdx_content(content, module_slug, f"docs/{module_slug}")
     
-    # Create database records
-    documents = []
-    for req in requests:
-        doc = models.ContentDocument(
-            title=req.title,
-            content=req.content,
-            source_url=req.source_url,
-            doc_type=req.doc_type,
-            doc_metadata=req.doc_metadata or {}
-        )
-        db.add(doc)
-        documents.append(doc)
+    if not chunks:
+        print(f"No chunks generated for module {module_slug}")
+        return []
     
-    db.commit()
-    for doc in documents:
-        db.refresh(doc)
+    # Extract text content for embedding
+    texts = [chunk['text'] for chunk in chunks]
     
-    # Prepare for batch indexing
-    docs_for_indexing = [
-        {
-            "id": doc.id,
-            "title": doc.title,
-            "content": doc.content,
-            "source_url": doc.source_url,
-            "metadata": doc.doc_metadata
+    # Generate embeddings
+    embeddings = await generate_embeddings(texts)
+    
+    # Prepare metadata for Qdrant
+    metadatas = []
+    for chunk in chunks:
+        metadata = {
+            'module_id': module_slug,
+            'module_title': chunk.get('module_title', ''),
+            'section': chunk.get('section', ''),
+            'source_path': chunk.get('source_path', ''),
+            'token_count': chunk.get('token_count', len(chunk['text'].split()))
         }
-        for doc in documents
-    ]
+        metadatas.append(metadata)
     
+    # Store in Qdrant
+    qdrant_ids = upsert_points_to_qdrant(texts, embeddings, metadatas)
+    
+    # Store mapping in PostgreSQL
+    for i, chunk in enumerate(chunks):
+        textbook_chunk = TextbookChunk(
+            hash=hash(chunk['text']),  # Simple hash for deduplication
+            chapter=module_slug,
+            section=chunk.get('section', ''),
+            content=chunk['text'],
+            token_count=len(chunk['text'].split()),
+            embedding_vector_id=qdrant_ids[i]
+        )
+        db_session.add(textbook_chunk)
+    
+    return qdrant_ids
+
+async def perform_ingestion(db_session, force_reindex: bool = False):
+    """
+    Perform the full ingestion process for all MDX content.
+    """
+    # Read all MDX files
+    mdx_content = read_mdx_files()
+    
+    if not mdx_content:
+        raise HTTPException(status_code=404, detail="No MDX files found to ingest")
+    
+    processed_modules = 0
+    
+    # Process each MDX file
+    for file_path, content in mdx_content.items():
+        # Extract module slug from file path (e.g., "01-intro/index.mdx" -> "01-intro")
+        module_slug = file_path.split('/')[0] if '/' in file_path else file_path.replace('.mdx', '')
+        
+        # Extract module name from path or content
+        module_name = module_slug.replace('-', ' ').title()
+        
+        # Check if module already exists
+        existing_module = db_session.query(Module).filter(Module.slug == module_slug).first()
+        
+        if existing_module and not force_reindex:
+            print(f"Module {module_slug} already exists, skipping...")
+            continue
+        
+        # Create or update module record
+        if existing_module:
+            existing_module.name = module_name
+            existing_module.description = f"Module {module_slug} from the Physical AI & Humanoid Robotics Textbook"
+            db_session.add(existing_module)
+        else:
+            new_module = Module(
+                name=module_name,
+                slug=module_slug,
+                description=f"Module {module_slug} from the Physical AI & Humanoid Robotics Textbook"
+            )
+            db_session.add(new_module)
+        
+        # Process the content
+        try:
+            qdrant_ids = await process_module_content(module_slug, content, db_session)
+            print(f"Successfully processed {module_slug} with {len(qdrant_ids)} chunks")
+            processed_modules += 1
+            
+            # Commit changes for this module
+            db_session.commit()
+        except Exception as e:
+            print(f"Error processing module {module_slug}: {str(e)}")
+            db_session.rollback()
+            continue
+    
+    # Update counters
+    total_modules = db_session.query(Module).count()
+    counter = db_session.query(Counter).filter(Counter.name == 'modules_count').first()
+    if counter:
+        counter.value = total_modules
+    else:
+        counter = Counter(name='modules_count', value=total_modules)
+        db_session.add(counter)
+    
+    db_session.commit()
+    
+    return processed_modules
+
+@router.post("/ingest", response_model=IngestResponse)
+async def ingest_textbook(request: IngestRequest, background_tasks: BackgroundTasks):
+    """
+    Ingest all textbook MDX content into the RAG system.
+    """
     try:
-        vector_ids = await qdrant_service.index_documents_batch(docs_for_indexing)
+        # Use context manager to get a database session
+        with get_db_session() as db:
+            processed_modules = await perform_ingestion(db, request.force_reindex)
         
-        # Update documents with vector IDs
-        for doc, vector_id in zip(documents, vector_ids):
-            doc.vector_id = vector_id
-        db.commit()
-        
+        return IngestResponse(
+            status="success",
+            message=f"Ingestion completed successfully. Processed {processed_modules} modules.",
+            processed_modules=processed_modules
+        )
     except Exception as e:
-        # Rollback on failure
-        for doc in documents:
-            db.delete(doc)
-        db.commit()
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to index documents: {str(e)}"
-        )
-    
-    return [
-        schemas.ContentIngestResponse(
-            id=doc.id,
-            title=doc.title,
-            vector_id=doc.vector_id,
-            status="indexed"
-        )
-        for doc in documents
-    ]
+        raise HTTPException(status_code=500, detail=f"Ingestion failed: {str(e)}")
 
-
-@router.delete("/{document_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_document(
-    document_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
-):
-    """Delete a document from both the database and vector store."""
-    document = db.query(models.ContentDocument).filter(
-        models.ContentDocument.id == document_id
-    ).first()
-    
-    if not document:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Document not found"
-        )
-    
-    # Delete from vector store
-    if document.vector_id:
-        await qdrant_service.delete_document(document.vector_id)
-    
-    # Delete from database
-    db.delete(document)
-    db.commit()
-
-
-@router.get("/stats")
-async def get_ingestion_stats(
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
-):
-    """Get statistics about ingested content."""
-    doc_count = db.query(models.ContentDocument).count()
-    qdrant_info = qdrant_service.get_collection_info()
-    
-    return {
-        "database_documents": doc_count,
-        "vector_store": qdrant_info
-    }
+@router.get("/ingest/status")
+async def get_ingestion_status():
+    """
+    Get the current status of the ingestion process.
+    """
+    try:
+        # Check how many modules are already in the database
+        with get_db_session() as db:
+            total_modules = db.query(Module).count()
+        
+        return {
+            "status": "ready",
+            "modules_ingested": total_modules,
+            "message": f"Currently {total_modules} modules in the database"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get ingestion status: {str(e)}")

@@ -1,349 +1,272 @@
-/* Professional Custom CSS for Docusaurus docs */
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
-/* Enhanced global styles */
+/* You can override the default Docusaurus variables here. */
+:root {
+  --ifm-color-primary: #888888;
+  --ifm-color-primary-dark: #777777;
+  --ifm-color-primary-darker: #666666;
+  --ifm-color-primary-darkest: #555555;
+  --ifm-color-primary-light: #999999;
+  --ifm-color-primary-lighter: #aaaaaa;
+  --ifm-color-primary-lightest: #bbbbbb;
+  --ifm-code-font-size: 95%;
+  /* Premium shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+  /* Gradients */
+  --gradient-subtle: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-premium: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
+}
+
+/* Pure black theme implementation */
+html[data-theme='light'],
+html[data-theme='dark'] {
+  /* Navbar styling */
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-link-hover-color: #888888;
+  /* Footer styling */
+  --ifm-footer-background-color: #1a1a1a;
+  /* Ensure consistent black background across all themes */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #000000;
+}
+
+/* Global black background */
+body,
+.navbar,
+.main-wrapper,
+.container,
+.row,
+.col {
+  color: #ffffff;
+}
+
+/* Premium section spacing */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ultra-premium backdrop filters */
+.premium-backdrop {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.premium-backdrop:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  box-shadow: 0 12px 48px rgba(255, 255, 255, 0.12);
+}
+
+/* Smooth scroll behavior */
 html {
-  scroll-behavior: smooth !important;
-  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
-body {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
-  transition: background 0.6s ease !important;
-  position: relative !important;
+/* Premium text rendering */
+body, h1, h2, h3, h4, h5, h6 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Enhanced main content container */
-.main-wrapper {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
-  min-height: 100vh !important;
-  padding-top: 20px !important;
-  position: relative !important;
-}
-
-/* Professional Navigation Sidebar */
-.menu {
-  background: white !important;
-  border-radius: 16px !important;
-  padding: 1.5rem !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
-  border: 1px solid rgba(0, 0, 0, 0.05) !important;
-  margin: 1rem !important;
-  background: #ffffff !important;
-}
-
-/* Navigation items */
-.menu__list-item {
-  margin-bottom: 0.4rem !important;
-}
-
-.menu__link {
-  border-radius: 12px !important;
-  padding: 0.7rem 1rem !important;
-  margin: 0.1rem 0 !important;
-  transition: all 0.3s ease !important;
-  color: #4a5568 !important;
-  font-weight: 500 !important;
-  border: 1px solid transparent !important;
-  position: relative !important;
-  text-decoration: none !important;
-}
-
-.menu__link:hover {
-  color: #2563eb !important;
-  background-color: #eff6ff !important;
-  transform: translateX(4px) !important;
-}
-
-.menu__link--active {
-  background-color: #eff6ff !important;
-  color: #2563eb !important;
-  border-left: 3px solid #2563eb !important;
-  font-weight: 600 !important;
-}
-
-/* Professional Doc Content Area */
-.docItemContainer {
-  background: white !important;
-  border-radius: 16px !important;
-  padding: 2.5rem !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-  margin: 1rem auto !important;
-  max-width: 1200px !important;
-  border: 1px solid rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Content styling */
-.markdown {
-  color: #374151 !important;
-  line-height: 1.8 !important;
-  font-size: 1.05rem !important;
-}
-
-/* Doc content inner */
-.markdown {
-  color: #4a5568 !important;
-  line-height: 1.8 !important;
-  font-size: 1.1rem !important;
-}
-
-/* Headers in documentation */
-.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
-  color: #1f2937 !important;
-  font-weight: 700 !important;
-  margin-top: 2rem !important;
-  margin-bottom: 1rem !important;
-}
-
-.markdown h1 {
-  font-size: 2.25rem !important;
-  margin-bottom: 2rem !important;
-  padding-bottom: 0.5rem !important;
-  border-bottom: 2px solid #e5e7eb !important;
-  text-align: left !important;
-}
-
-.markdown h2 {
-  font-size: 1.75rem !important;
-  margin-top: 2.5rem !important;
-  position: relative !important;
-}
-
-.markdown h2::before {
-  content: '' !important;
-  position: absolute !important;
-  left: 0 !important;
-  bottom: -8px !important;
-  width: 40px !important;
-  height: 3px !important;
-  background: #3b82f6 !important;
-  border-radius: 2px !important;
-}
-
-.markdown h3 {
-  font-size: 1.4rem !important;
-  color: #3b82f6 !important;
-}
-
-.markdown p {
-  margin-bottom: 1.5rem !important;
-  text-align: left !important;
-  color: #374151 !important;
-}
-
-/* Professional Lists */
-.markdown ul, .markdown ol {
-  margin-bottom: 1.5rem !important;
-  padding-left: 1.5rem !important;
-}
-
-.markdown li {
-  margin-bottom: 0.5rem !important;
-  line-height: 1.7 !important;
-  color: #374151 !important;
-}
-
-/* Professional Code Blocks */
-.prism-code {
-  background: #f3f4f6 !important;
-  border-radius: 8px !important;
-  padding: 1rem !important;
-  font-size: 0.9rem !important;
-  border: 1px solid #e5e7eb !important;
-  overflow-x: auto !important;
-  margin: 1.5rem 0 !important;
-}
-
-/* Professional Inline Code */
-.markdown code {
-  background: #f3f4f6 !important;
-  padding: 0.2rem 0.4rem !important;
-  border-radius: 4px !important;
-  font-size: 0.9em !important;
-  border: 1px solid #e5e7eb !important;
-  color: #dc2626 !important;
-}
-
-/* Professional Links */
-.markdown a {
-  color: #3b82f6 !important;
-  text-decoration: none !important;
-  position: relative !important;
-}
-
-.markdown a:hover {
-  color: #2563eb !important;
-  text-decoration: underline !important;
-}
-
-/* Professional Blockquotes */
-.markdown blockquote {
-  border-left: 4px solid #3b82f6 !important;
-  background: #f8fafc !important;
-  padding: 1rem 1.5rem !important;
-  margin: 1.5rem 0 !important;
-  border-radius: 0 8px 8px 0 !important;
-  font-style: italic !important;
-  color: #4b5563 !important;
-}
-
-/* Professional Tables */
-.markdown table {
-  border-collapse: collapse !important;
-  width: 100% !important;
-  margin: 1.5rem 0 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-}
-
-.markdown table th {
-  background-color: #f3f4f6 !important;
-  color: #1f2937 !important;
-  font-weight: 600 !important;
-  padding: 0.75rem !important;
-  text-align: left !important;
-  border-bottom: 2px solid #e5e7eb !important;
-}
-
-.markdown table td {
-  padding: 0.75rem !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  color: #374151 !important;
-}
-
-.markdown table tr:last-child td {
-  border-bottom: none !important;
-}
-
-/* Professional Admonitions (tips, notes, etc.) */
-.theme-admonition {
-  border-radius: 8px !important;
-  margin: 1.5rem 0 !important;
-  padding: 1rem !important;
-  border-left: 4px solid #3b82f6 !important;
-  background-color: #eff6ff !important;
-  border: 1px solid #dbeafe !important;
-}
-
-.theme-admonition--note {
-  border-left-color: #3b82f6 !important;
-  background-color: #eff6ff !important;
-  border-color: #dbeafe !important;
-}
-
-.theme-admonition--tip {
-  border-left-color: #10b981 !important;
-  background-color: #ecfdf5 !important;
-  border-color: #d1fae5 !important;
-}
-
-.theme-admonition--caution {
-  border-left-color: #f59e0b !important;
-  background-color: #fffbf0 !important;
-  border-color: #fde68a !important;
-}
-
-/* Professional Table of Contents */
-.table-of-contents__link {
-  color: #4b5563 !important;
-  padding: 0.5rem !important;
-  display: block !important;
-  border-radius: 6px !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
-  font-size: 0.9rem !important;
-}
-
-.table-of-contents__link:hover {
-  color: #3b82f6 !important;
-  background-color: #f3f4f6 !important;
-}
-
-.table-of-contents__link--active {
-  color: #2563eb !important;
-  font-weight: 600 !important;
-  background-color: #eff6ff !important;
-}
-
-/* Professional Breadcrumb */
-.theme-edit-this-page {
-  background-color: #f3f4f6 !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 6px !important;
-  color: #4b5563 !important;
-  font-weight: 500 !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
-  display: inline-block !important;
-  margin-top: 1rem !important;
-  border: 1px solid #d1d5db !important;
-}
-
-.theme-edit-this-page:hover {
-  background-color: #e5e7eb !important;
-  color: #3b82f6 !important;
-}
-
-/* Professional Doc Item Footer */
-.theme-doc-footer {
-  margin-top: 2rem !important;
-  padding-top: 1.5rem !important;
-  border-top: 1px solid #e5e7eb !important;
-}
-
-/* Professional Footer */
-.footer {
-  background-color: #1f2937 !important;
-  margin-top: 3rem !important;
-  padding: 2rem 0 !important;
-  color: #d1d5db !important;
-}
-
-/* Professional Navigation Header */
 .navbar {
-  background-color: #ffffff !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  background-color: #1a1a1a !important;
 }
 
+.footer {
+  background-color: #5c5c5c !important;
+}
+
+/* Typography: Apply Sora for headings, Inter for body, Syncopate for labels */
+h1, h2, h3, h4, h5, h6,
+.hero__title,
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
 .navbar__title {
-  color: #1f2937 !important;
-  font-weight: 700 !important;
+  font-family: 'Sora', sans-serif;
 }
 
-/* Professional Responsive Improvements */
-@media (max-width: 996px) {
-  .menu {
-    margin: 1rem !important;
-    border-radius: 12px !important;
-  }
+.markdown p,
+.markdown li,
+.markdown blockquote,
+.navbar__item,
+.footer__item,
+.text--left,
+.text--center,
+.text--right {
+  font-family: 'Inter', sans-serif;
+}
 
-  .docItemContainer {
-    margin: 1rem !important;
-    padding: 1.5rem !important;
-    border-radius: 12px !important;
-  }
+/* For section labels and special elements */
+.label--gray,
+.label--primary,
+.label--secondary,
+.label--success,
+.label--info,
+.label--warning,
+.label--danger {
+  font-family: 'Syncopate', sans-serif;
+}
 
-  .markdown h1 {
-    font-size: 1.875rem !important;
-  }
+/* Black theme for cards and containers */
+.card,
+.divider,
+.alert,
+.modal,
+.table,
+.table th,
+.table td {
+  background-color: transparent !important;
+  border: none !important;
+}
 
-  .markdown h2 {
-    font-size: 1.5rem !important;
+/* Text colors in dark theme */
+.markdown a,
+.navbar__link,
+.footer__link-item,
+.menu__link {
+  color: #ddd !important;
+}
+
+Code blocks
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222;
+}
+
+/* Grayscale accents */
+.text--success {
+  color: #8bc34a !important;
+}
+
+.text--warning {
+  color: #ffc107 !important;
+}
+
+.text--danger {
+  color: #f44336 !important;
+}
+
+/* Ensure images have proper contrast */
+img {
+  background-color: transparent;
+  border: none;
+}
+
+/* Homepage sections - ensure black background */
+.hero--primary {
+  color: #fff;
+}
+
+/* Ensure proper contrast for all text */
+:root {
+  --ifm-color-emphasis-0: #000000;
+  --ifm-color-emphasis-100: #000000;
+  --ifm-color-emphasis-200: #000000;
+  --ifm-color-emphasis-300: #000000;
+  --ifm-color-emphasis-400: #000000;
+  --ifm-color-emphasis-500: #000000;
+  --ifm-color-emphasis-600: #000000;
+  --ifm-color-emphasis-700: #000000;
+  --ifm-color-emphasis-800: #000000;
+  --ifm-color-emphasis-900: #000000;
+  --ifm-color-emphasis-1000: #ffffff;
+}
+
+/* Ultra-premium section headings */
+h1, h2, h3 {
+  position: relative;
+  display: inline-block;
+}
+
+/* Premium link styling */
+a {
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Premium button base styling */
+.button {
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Premium card animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
 
-@media (max-width: 768px) {
-  .main-wrapper {
-    padding-top: 10px !important;
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.08);
   }
+  50% {
+    box-shadow: 0 12px 48px rgba(255, 255, 255, 0.12);
+  }
+}
 
-  .docItemContainer {
-    margin: 1rem !important;
-    padding: 1rem !important;
-  }
-
-  .menu {
-    margin: 1rem !important;
-  }
+/* Premium text effects */
+.premium-text {
+  background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -2,7 +2,7 @@
 
 **Endpoint**: `/feedback`
 **Method**: `POST`
-**Purpose**: Allows users to submit feedback or corrections on chatbot responses or textbook content.
+**Purpose**: Allows users to submit feedback or corrections on chatbot responses or content from the Physical AI & Humanoid Robotics Textbook.
 
 ## Request Body
 
@@ -11,14 +11,14 @@
   "user_id": "string" (optional),
   "feedback_type": "bug" | "correction" | "suggestion" | "other",
   "feedback_content": "string",
-  "context": "string" (optional, e.g., related query, chat history ID, chapter/section)
+  "context": "string" (optional, e.g., related query, chat history ID, module/section)
 }
 ```
 
 **`user_id`** (string, optional): The ID of the user submitting feedback.
 **`feedback_type`** (string, required): The category of feedback (e.g., bug, correction, suggestion).
 **`feedback_content`** (string, required): The detailed feedback message.
-**`context`** (string, optional): Additional context about the feedback, such as the query it relates to, a chat history ID, or specific chapter/section.
+**`context`** (string, optional): Additional context about the feedback, such as the query it relates to, a chat history ID, or specific module/section.
 
 ## Response Body (200 OK)
 
