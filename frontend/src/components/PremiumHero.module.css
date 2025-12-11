@@ -1,0 +1,70 @@
+.heroBanner {
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 70vh; /* Set a specific height for the hero */
+  min-height: 500px; /* Minimum height to ensure visibility */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textContainer {
+  z-index: 20; /* Ensure text is above all background effects */
+  position: relative;
+  max-width: 800px;
+  padding: 2rem;
+  color: white;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(176, 224, 230, 0.5);
+  background: linear-gradient(to right, #b0e0e6, #d0f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #e0f0f0;
+  text-shadow: 0 0 5px rgba(176, 224, 230, 0.3);
+}
+
+.buttonContainer {
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    height: 50vh;
+    min-height: 350px;
+  }
+  
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+}

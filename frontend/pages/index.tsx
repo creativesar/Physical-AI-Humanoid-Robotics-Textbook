@@ -7,46 +7,12 @@ import { motion } from 'framer-motion';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Chatbot from '@site/src/components/Chatbot';
 import WhatWeDoPremium from '@site/src/components/WhatWeDoCompact';
+import PremiumHero from '@site/src/components/PremiumHero';
 
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <motion.h1
-          className="hero__title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{ fontFamily: 'Sora, sans-serif' }}
-        >
-          {siteConfig.title}
-        </motion.h1>
-        <motion.p
-          className="hero__subtitle"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ fontFamily: 'Inter, sans-serif' }}
-        >
-          {siteConfig.tagline}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Read Textbook
-          </Link>
-        </motion.div>
-      </div>
-    </header>
-  );
+  return <PremiumHero />;
 }
 
 // Additional sections that are not in HomepageFeatures

@@ -1,0 +1,46 @@
+.heroBanner {
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  min-height: 300px; /* Reduced from default height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 1.5rem 0;
+    min-height: 250px; /* Further reduced for mobile */
+  }
+}
+
+/* Container adjustment for better vertical spacing */
+.container {
+  max-width: var(--ifm-container-width);
+  margin: 0 auto;
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
+/* Adjust spacing between elements in the hero */
+.heroTitle {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.heroSubtitle {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.heroButtonContainer {
+  margin-top: 0.5rem;
+}
+
+/* Button styling */
+.button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
