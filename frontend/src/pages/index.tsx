@@ -51,10 +51,10 @@ function AnimatedBackground({ parallaxOffset = 0 }: { parallaxOffset?: number })
           width: '100%',
           height: '100%',
           backgroundImage: `
-            radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.05) 0%, transparent 15%),
-            radial-gradient(circle at 80% 70%, rgba(0, 200, 255, 0.05) 0%, transparent 15%),
-            linear-gradient(90deg, transparent 49%, rgba(0, 150, 200, 0.03) 50%, transparent 51%),
-            linear-gradient(0deg, transparent 49%, rgba(0, 150, 200, 0.03) 50%, transparent 51%)
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 15%),
+            radial-gradient(circle at 80% 70%, rgba(200, 200, 255, 0.05) 0%, transparent 15%),
+            linear-gradient(90deg, transparent 49%, rgba(150, 150, 200, 0.03) 50%, transparent 51%),
+            linear-gradient(0deg, transparent 49%, rgba(150, 150, 200, 0.03) 50%, transparent 51%)
           `,
           backgroundSize: '50px 50px, 70px 70px, 30px 30px, 30px 30px',
           opacity: 0.3,
@@ -666,23 +666,49 @@ function TestimonialSection() {
       role: 'AI Researcher',
       text: 'An essential resource for serious learners of Physical AI. The clarity and depth are unmatched.',
       quotePrefix: '"',
-      quoteSuffix: '" —'
+      quoteSuffix: '"',
+      avatar: 'SC',
+      rating: 5
     },
     {
       name: 'Prof. Marcus Rivera',
       role: 'Robotics Scientist',
       text: 'The curriculum bridges theoretical sophistication with practical robotics engineering.',
       quotePrefix: '"',
-      quoteSuffix: '" —'
+      quoteSuffix: '"',
+      avatar: 'MR',
+      rating: 5
     },
     {
       name: 'Emma Rodriguez',
       role: 'AI Educator',
       text: 'A transformative platform for understanding intelligent embodied systems.',
       quotePrefix: '"',
-      quoteSuffix: '" —'
+      quoteSuffix: '"',
+      avatar: 'ER',
+      rating: 5
     },
   ];
+
+  // Function to render star ratings
+  const renderRating = (rating: number) => {
+    return (
+      <div style={{ display: 'flex', marginBottom: '1rem' }}>
+        {[...Array(5)].map((_, i) => (
+          <span 
+            key={i} 
+            style={{ 
+              color: i < rating ? '#0FE3C0' : '#444',
+              fontSize: '1.2rem',
+              marginRight: '0.2rem'
+            }}
+          >
+            ★
+          </span>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <motion.section
@@ -690,11 +716,33 @@ function TestimonialSection() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       style={{
-        background: 'transparent',
+        background: 'radial-gradient(circle at center, rgba(15, 227, 192, 0.05) 0%, transparent 70%)',
         padding: '8rem 0',
         position: 'relative',
       }}
     >
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: '10%',
+        left: '5%',
+        width: '80px',
+        height: '80px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(15, 227, 192, 0.2) 0%, transparent 70%)',
+        filter: 'blur(20px)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '15%',
+        right: '8%',
+        width: '120px',
+        height: '120px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)',
+        filter: 'blur(30px)',
+      }} />
+      
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <motion.h2
@@ -704,10 +752,14 @@ function TestimonialSection() {
             style={{
               fontFamily: 'Sora, sans-serif',
               color: '#ffffff',
-              fontSize: '3rem',
+              fontSize: '3.5rem',
               marginBottom: '1.5rem',
               textAlign: 'center',
               fontWeight: 800,
+              background: 'linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }}
           >
             What Users Say
@@ -719,59 +771,104 @@ function TestimonialSection() {
             style={{
               fontFamily: 'Inter, sans-serif',
               color: '#c0c0c0',
-              fontSize: '1.2rem',
+              fontSize: '1.3rem',
               maxWidth: '700px',
               margin: '0 auto',
               lineHeight: '1.7',
-              fontWeight: 500,
+              fontWeight: 400,
             }}
           >
             Insights from leading researchers, educators, and professionals in Physical AI and robotics
           </motion.p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '3rem' }}>
           {testimonials.map((testimonial, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={{ 
+                y: -12, 
+                transition: { duration: 0.3 },
+                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(15, 227, 192, 0.3)'
+              }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               style={{
                 background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
-                backdropFilter: 'blur(20px)',
-                padding: '3rem',
-                borderRadius: '20px',
-                border: '1px solid rgba(80, 80, 80, 0.3)',
+                backdropFilter: 'blur(25px)',
+                padding: '2.5rem',
+                borderRadius: '24px',
+                border: '1px solid rgba(80, 80, 80, 0.4)',
                 textAlign: 'left',
-                transition: 'all 0.4s ease',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                 position: 'relative',
                 overflow: 'hidden',
                 boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
               }}
             >
-              {/* Subtle reflection effect */}
+              {/* Decorative corner element */}
               <div style={{
                 position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '25%',
-                background: 'linear-gradient(to bottom, rgba(15, 227, 192, 0.08), transparent)',
-                zIndex: 1,
-                pointerEvents: 'none',
-              }} />
+                top: '20px',
+                right: '20px',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'rgba(15, 227, 192, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid rgba(15, 227, 192, 0.2)',
+              }}>
+                <span style={{ 
+                  color: '#0FE3C0', 
+                  fontSize: '1.5rem',
+                  transform: 'rotate(180deg)',
+                  display: 'block'
+                }}>❝</span>
+              </div>
+              
+              {/* Avatar and rating */}
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                marginBottom: '1.5rem',
+                position: 'relative',
+                zIndex: 2
+              }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #0FE3C0 0%, #0a8f7a 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  color: '#000',
+                  marginRight: '1rem',
+                  boxShadow: '0 5px 15px rgba(15, 227, 192, 0.3)'
+                }}>
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  {renderRating(testimonial.rating)}
+                </div>
+              </div>
 
               <p style={{
                 fontFamily: 'Georgia, "Times New Roman", serif',
-                color: '#d0d0d0',
-                fontSize: '1.15rem',
-                lineHeight: '1.9',
+                color: '#e0e0e0',
+                fontSize: '1.25rem',
+                lineHeight: '1.8',
                 marginBottom: '2rem',
                 fontStyle: 'italic',
                 position: 'relative',
-                zIndex: 2
+                zIndex: 2,
+                paddingLeft: '1rem',
+                borderLeft: '3px solid #0FE3C0'
               }}>
                 {testimonial.quotePrefix}{testimonial.text}{testimonial.quoteSuffix}
               </p>
@@ -780,25 +877,84 @@ function TestimonialSection() {
                 <p style={{
                   fontFamily: 'Sora, sans-serif',
                   color: '#ffffff',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
+                  fontSize: '1.2rem',
+                  fontWeight: 700,
                   margin: '0.2rem 0',
                 }}>
                   {testimonial.name}
                 </p>
                 <p style={{
                   fontFamily: 'Inter, sans-serif',
-                  color: '#a0a0a0',
-                  fontSize: '1rem',
+                  color: '#0FE3C0',
+                  fontSize: '1.05rem',
                   margin: '0.3rem 0',
-                  fontStyle: 'normal'
+                  fontStyle: 'normal',
+                  fontWeight: 500
                 }}>
                   {testimonial.role}
                 </p>
               </div>
+              
+              {/* Subtle animated wave effect at bottom */}
+              <motion.div 
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '5px',
+                  background: 'linear-gradient(90deg, transparent, #0FE3C0, transparent)',
+                  opacity: 0.3
+                }}
+                animate={{ 
+                  x: ['-100%', '100%'] 
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "linear"
+                }}
+              />
             </motion.div>
           ))}
         </div>
+        
+        {/* Call to action */}
+        <motion.div 
+          style={{
+            textAlign: 'center',
+            marginTop: '4rem'
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.a 
+            href="#contact" 
+            style={{
+              display: 'inline-block',
+              padding: '1rem 2.5rem',
+              background: 'linear-gradient(135deg, #0FE3C0 0%, #0a8f7a 100%)',
+              color: '#000',
+              fontFamily: 'Sora, sans-serif',
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              boxShadow: '0 10px 25px rgba(15, 227, 192, 0.4)',
+              transition: 'all 0.3s ease'
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 15px 30px rgba(15, 227, 192, 0.6)'
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+          >
+            Join Our Community
+          </motion.a>
+        </motion.div>
       </div>
     </motion.section>
   );
@@ -809,139 +965,42 @@ function HeroSection() {
   const { siteConfig } = useDocusaurusContext();
   
   useEffect(() => {
-    // Dynamically load Three.js and required modules
-    const loadScripts = async () => {
-      // Create script elements
-      const scripts = [
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.min.js',
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/postprocessing/EffectComposer.js',
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/postprocessing/RenderPass.js',
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/postprocessing/ShaderPass.js',
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/shaders/CopyShader.js',
-        'https://cdn.jsdelivr.net/npm/three@0.168.0/examples/js/shaders/DotScreenShader.js'
-      ];
-      
-      // Load scripts sequentially
-      for (const src of scripts) {
-        await new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = src;
-          script.async = true;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      }
-      
-      // Wait a bit more for all to initialize
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Initialize Three.js scene after scripts load
-      initScene();
-    };
-    
-    const initScene = () => {
-      // Check if THREE is available
-      if (!(window as any).THREE) {
-        console.error('THREE.js not loaded');
-        return;
-      }
-      
-      const c = document.getElementById('blackHoleCanvas') as HTMLCanvasElement;
-      if (!c) {
-        console.error('Canvas element not found');
-        return;
-      }
-      
-      try {
-        const r = new (window as any).THREE.WebGLRenderer({canvas:c, alpha:true, antialias:true});
-        r.setSize(window.innerWidth, window.innerHeight); 
-        r.setPixelRatio(window.devicePixelRatio);
-        
-        const scene = new (window as any).THREE.Scene();
-        const cam = new (window as any).THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        cam.position.z = 10;
-        
-        const geo = new (window as any).THREE.TorusKnotGeometry(4,1.3,300,16);
-        const mat = new (window as any).THREE.MeshBasicMaterial({color:0x00ffff, wireframe:true});
-        const knot = new (window as any).THREE.Mesh(geo,mat);
-        scene.add(knot);
-        
-        function animate(){
-          knot.rotation.x += 0.01; 
-          knot.rotation.y += 0.02;
-          knot.scale.setScalar(1 + Math.sin(Date.now()*0.002)*0.1);
-          r.render(scene,cam);
-          requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        const handleResize = () => {
-          cam.aspect = window.innerWidth/window.innerHeight; 
-          cam.updateProjectionMatrix(); 
-          r.setSize(window.innerWidth, window.innerHeight);
-        };
-        
-        window.addEventListener('resize', handleResize);
-        
-        // Cleanup function
-        return () => {
-          window.removeEventListener('resize', handleResize);
-          r.dispose();
-        };
-      } catch (error) {
-        console.error('Error initializing Three.js scene:', error);
-      }
-    };
-    
-    // Start loading scripts
-    loadScripts().catch(error => {
-      console.error('Failed to load Three.js scripts:', error);
-    });
-    
+    // No background effects needed
     return () => {
       // Clean up if needed
     };
   }, []);
   
   return (
-    <div
+    <motion.div
       className="hero"
       style={{
         position: 'relative',
         background: '#000000',
-        padding: '6rem 0',
-        minHeight: '100vh',
+        padding: '3rem 0',
+        minHeight: '80vh',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
+        perspective: '1000px',
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
-      {/* BLACK HOLE VORTEX Background */}
-      <title>BLACK HOLE VORTEX</title>
-      <canvas 
-        id="blackHoleCanvas" 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 1,
-        }}
-      />
-      
-      <div
+
+      <motion.div
         className="container"
         style={{ 
           position: 'relative', 
           zIndex: 2,
-          background: 'rgba(0, 0, 0, 0.7)',
-          borderRadius: '16px',
-          padding: '2rem',
-          animation: 'fadeIn 1.2s ease-in-out',
+          padding: '3rem',
+          maxWidth: '900px',
+          margin: '0 auto',
         }}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
         <style>
           {`
@@ -955,6 +1014,18 @@ function HeroSection() {
               50% { transform: translateY(8px); }
               100% { transform: translateY(0px); }
             }
+            
+            @keyframes pulseGlow {
+              0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+              50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6); }
+              100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            }
+            
+            @keyframes borderGlow {
+              0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+              50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+              100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+            }
           `}
         </style>
         <div style={{
@@ -963,136 +1034,198 @@ function HeroSection() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          maxWidth: '900px',
-          margin: '0 auto',
           padding: '0 1.5rem',
         }}>
-          <div
-            style={{
-              display: 'inline-block',
-              marginBottom: '3rem',
-              animation: 'fadeIn 0.8s ease-in-out 0.2s both',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'Syncopate, sans-serif',
-                fontSize: '0.8rem',
-                color: '#888888',
-                textTransform: 'uppercase',
-                letterSpacing: '3px',
-                fontWeight: 700,
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                padding: '0.6rem 1.6rem',
-                borderRadius: '4px',
-                display: 'inline-block',
-              }}
-            >
-              Academic Excellence
-            </span>
-          </div>
-          
-          <h1
-            style={{
-              fontFamily: 'Sora, sans-serif',
-              fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
-              fontWeight: 800,
-              marginBottom: '1.8rem',
-              lineHeight: '1.15',
-              color: '#ffffff',
-              letterSpacing: '-0.02em',
-              textAlign: 'center',
-              textShadow: '0 0 15px rgba(255, 255, 255, 0.1)',
-              animation: 'fadeIn 0.8s ease-in-out 0.3s both',
-            }}
-          >
-            Physical AI & Humanoid Robotics Textbook
-          </h1>
-          
-          <div
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.15rem)',
-              color: '#a8a8a8',
-              maxWidth: '700px',
-              margin: '0 auto 2.8rem',
-              lineHeight: '1.8',
-              fontWeight: 400,
-              textAlign: 'center',
-              animation: 'fadeIn 0.8s ease-in-out 0.4s both',
-            }}
-          >
-            <p style={{ marginBottom: '1.5rem' }}>
-              A comprehensive, research-driven learning system unifying physical intelligence, humanoid robotics, and advanced automation.
-            </p>
-            <p>
-              Master the foundational principles, technical frameworks, and real-world implementations of modern intelligent robotics.
-            </p>
-          </div>
-          
-          <div
-            style={{ 
-              display: 'flex', 
-              gap: '1.5rem', 
-              justifyContent: 'center', 
-              flexWrap: 'wrap',
-              animation: 'fadeIn 0.8s ease-in-out 0.5s both',
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             <div
               style={{
-                transition: 'all 0.3s ease',
+                display: 'inline-block',
+                marginBottom: '2.5rem',
+                animation: 'borderGlow 3s ease-in-out infinite',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)';
-                e.currentTarget.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.3)';
+            >
+              <span
+                style={{
+                  fontFamily: 'Syncopate, sans-serif',
+                  fontSize: '0.9rem',
+                  color: '#00ffff',
+                  textTransform: 'uppercase',
+                  letterSpacing: '4px',
+                  fontWeight: 700,
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  padding: '0.7rem 2rem',
+                  borderRadius: '30px',
+                  display: 'inline-block',
+                }}
+              >
+                PREMIUM ACADEMIC RESOURCE
+              </span>
+            </div>
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{
+              fontFamily: 'Sora, sans-serif',
+              fontSize: 'clamp(2.8rem, 5vw, 4rem)',
+              fontWeight: 800,
+              marginBottom: '2rem',
+              lineHeight: '1.1',
+              color: '#ffffff',
+              letterSpacing: '-0.03em',
+              textAlign: 'center',
+              textShadow: '0 0 15px rgba(255, 255, 255, 0.3)',
+              animation: 'pulseGlow 4s ease-in-out infinite',
+            }}
+          >
+            Physical AI & Humanoid Robotics
+          </motion.h1>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h2
+              style={{
+                fontFamily: 'Sora, sans-serif',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+                fontWeight: 700,
+                marginBottom: '2.5rem',
+                lineHeight: '1.2',
+                color: '#00ffff',
+                textAlign: 'center',
+                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 6px 18px rgba(0, 0, 0, 0.3)';
+            >
+              Comprehensive Textbook
+            </h2>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: 'clamp(1.1rem, 1.8vw, 1.25rem)',
+                color: '#b0b0b0',
+                maxWidth: '750px',
+                margin: '0 auto 3rem',
+                lineHeight: '1.8',
+                fontWeight: 400,
+                textAlign: 'center',
               }}
-              onMouseDown={(e) => {
-                e.currentTarget.style.transform = 'scale(0.98)';
+            >
+              <p style={{ marginBottom: '1.8rem' }}>
+                A cutting-edge, research-driven learning system unifying physical intelligence, humanoid robotics, and advanced automation technologies.
+              </p>
+              <p>
+                Master foundational principles, technical frameworks, and real-world implementations of modern intelligent robotics systems.
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            style={{ 
+              display: 'flex', 
+              gap: '1.8rem', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap',
+              marginBottom: '3rem',
+            }}
+          >
+            <motion.div
+              style={{
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
               }}
+              whileHover={{ y: -6, scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <Link
                 className="button button--primary button--lg"
                 to="/docs/intro"
                 style={{
-                  background: 'linear-gradient(135deg, #333333 0%, #222222 100%)',
+                  background: 'linear-gradient(135deg, #004d4d 0%, #003333 100%)',
                   color: '#ffffff',
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 600,
-                  fontSize: '1.05rem',
-                  padding: '1.2rem 2.8rem',
-                  borderRadius: '8px',
+                  fontFamily: 'Sora, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                  padding: '1.3rem 3rem',
+                  borderRadius: '12px',
                   transition: 'all 0.3s ease',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 6px 18px rgba(0, 0, 0, 0.3)',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
                   display: 'inline-block',
                   textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
                 }}
               >
-                Start Learning
+                Begin Your Journey
               </Link>
-            </div>
-          </div>
+            </motion.div>
+            
+            <motion.div
+              style={{
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              }}
+              whileHover={{ y: -6, scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            >
+              <Link
+                className="button button--secondary button--lg"
+                to="#features"
+                style={{
+                  background: 'transparent',
+                  color: '#00ffff',
+                  fontFamily: 'Sora, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                  padding: '1.3rem 3rem',
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)',
+                  display: 'inline-block',
+                  textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                }}
+              >
+                Explore Features
+              </Link>
+            </motion.div>
+          </motion.div>
           
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
             style={{
-              marginTop: '4.5rem',
-              color: '#666666',
-              fontSize: '0.9rem',
-              animation: 'float 2.5s ease-in-out infinite',
+              marginTop: '3rem',
+              color: '#00aaaa',
+              fontSize: '1rem',
+              animation: 'float 3s ease-in-out infinite',
             }}
           >
-            <div style={{ marginBottom: '0.5rem' }}>Explore</div>
-            <div style={{ fontSize: '1.5rem' }}>↓</div>
-          </div>
+            <div style={{ marginBottom: '0.8rem', fontFamily: 'Sora, sans-serif', fontWeight: 600 }}>Discover the Future</div>
+            <div style={{ fontSize: '2rem' }}>↓</div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
