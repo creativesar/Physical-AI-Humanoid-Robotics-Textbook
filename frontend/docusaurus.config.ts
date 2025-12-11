@@ -138,10 +138,6 @@ const config: Config = {
     ],
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
-      logo: {
-        alt: 'Physical AI & Humanoid Robotics Textbook Logo',
-        src: 'img/robotics-logo.svg',
-      },
       items: [
         {
           type: 'docSidebar',
