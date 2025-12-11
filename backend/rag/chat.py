@@ -1,66 +1,67 @@
-import google.generativeai as genai
+import cohere
 import os
 from typing import List, Dict, Optional
 import logging
 
-# Initialize Gemini client
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY environment variable is required")
+# Initialize Cohere client
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+if not COHERE_API_KEY:
+    raise ValueError("COHERE_API_KEY environment variable is required")
 
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-pro')  # Using the text generation model
+co = cohere.AsyncClient(COHERE_API_KEY)
 
 async def chat_with_rag(
-    user_message: str, 
+    user_message: str,
     conversation_history: Optional[List[dict]] = None,
     retrieved_context: Optional[List[dict]] = None
 ) -> Dict:
     """
-    Handle a chat request using RAG (Retrieval-Augmented Generation) approach
+    Handle a chat request using RAG (Retrieval-Augmented Generation) approach with Cohere
     """
     try:
         # Prepare the context from retrieved documents
         context_text = ""
         referenced_content = []
-        
+
         if retrieved_context:
             for item in retrieved_context:
                 context_text += f"Module: {item['module']}, Section: {item['section']}\n"
                 context_text += f"Content: {item['text']}\n\n"
                 referenced_content.append(item['id'])
-        
-        # Prepare the prompt for Gemini
+
+        # Prepare the message for Cohere
         if context_text:
-            prompt = f"""
-            You are an expert assistant for the Physical AI & Humanoid Robotics Textbook.
+            preamble = """You are an expert assistant for the Physical AI & Humanoid Robotics Textbook.
             Use the following context from the textbook to answer the user's question.
-            If the context doesn't contain relevant information, use your general knowledge but be clear about this.
-            
+            If the context doesn't contain relevant information, use your general knowledge but be clear about this."""
+
+            message = f"""
             Context:
             {context_text}
-            
+
             User's question: {user_message}
-            
+
             Please provide a helpful, accurate response based on the textbook content when possible.
             """
         else:
-            prompt = f"""
-            You are an expert assistant for the Physical AI & Humanoid Robotics Textbook.
-            The user has asked: {user_message}
-            
-            Please provide a helpful response. Note that no specific textbook context was retrieved for this query.
-            """
-        
-        # Generate response using Gemini
-        response = await model.generate_content_async(prompt)
-        
+            preamble = "You are an expert assistant for the Physical AI & Humanoid Robotics Textbook."
+            message = f"The user has asked: {user_message}\n\nPlease provide a helpful response. Note that no specific textbook context was retrieved for this query."
+
+        # Generate response using Cohere
+        response = await co.chat(
+            model='command-r-plus',  # Using Cohere's advanced model
+            message=message,
+            preamble=preamble,
+            conversation_id=None,  # For a new conversation
+            temperature=0.3  # Lower temperature for more factual responses
+        )
+
         # Extract the text from the response
         if response.text:
             assistant_response = response.text
         else:
             assistant_response = "I'm sorry, I couldn't generate a response for your query. Please try rephrasing your question."
-        
+
         return {
             "assistant_response": assistant_response,
             "referenced_content": referenced_content

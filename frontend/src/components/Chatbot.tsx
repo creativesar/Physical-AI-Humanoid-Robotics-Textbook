@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 
 const Chatbot = () => {
@@ -7,34 +7,70 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedText, setSelectedText] = useState('');
+  const messagesEndRef = useRef(null);
 
-  const toggleChat = () => {
-    setIsOpen(!isOpen);
+  // Function to get selected text from the page
+  const getSelectedText = () => {
+    const selectedText = window.getSelection()?.toString().trim() || '';
+    return selectedText;
   };
 
+  // Handle sending a message to the backend
   const sendMessage = async (e) => {
     e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: inputValue, id: Date.now() };
+    // Get any currently selected text
+    const currentSelectedText = getSelectedText();
+
+    const userMessage = {
+      role: 'user',
+      content: inputValue,
+      id: Date.now(),
+      selectedText: currentSelectedText || selectedText // Use either current selection or stored selection
+    };
+
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
 
-    // In a real implementation, this would call the backend API
-    // For now, we'll simulate a response
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      // Call the backend API
+      const response = await fetch('http://localhost:8000/api/v1/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_message: inputValue,
+          conversation_history: messages.map(msg => ({
+            role: msg.role,
+            content: msg.content
+          })),
+          retrieved_context: currentSelectedText ? [{
+            text: currentSelectedText,
+            module: 'current-page',
+            section: 'selected-text'
+          }] : []
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
       const botMessage = {
         role: 'assistant',
-        content: `I received your message: "${inputValue}". This is a simulated response from the Physical AI & Humanoid Robotics textbook assistant. In a full implementation, this would connect to a Cohere-powered RAG backend to provide accurate answers based on the textbook content.`,
+        content: data.assistant_response,
+        sources: data.referenced_content || [],
         id: Date.now() + 1
       };
-      
+
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
+      console.error('Error sending message:', error);
       const errorMessage = {
         role: 'assistant',
         content: 'Sorry, I encountered an error processing your request. Please try again.',
@@ -43,7 +79,41 @@ const Chatbot = () => {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
+      setSelectedText(''); // Clear selected text after sending
     }
+  };
+
+  // Auto-scroll to bottom of messages
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Function to handle text selection
+  const handleTextSelection = () => {
+    const selectedText = getSelectedText();
+    if (selectedText) {
+      setSelectedText(selectedText);
+      if (!isOpen) {
+        setIsOpen(true); // Open the chat if it's closed when text is selected
+      }
+    }
+  };
+
+  // Add event listener for text selection
+  useEffect(() => {
+    const handleMouseUp = () => {
+      // Small delay to ensure selection is complete
+      setTimeout(handleTextSelection, 100);
+    };
+
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isOpen]);
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -138,6 +208,7 @@ const Chatbot = () => {
               <div style={{ textAlign: 'center', padding: '20px', color: '#888' }}>
                 <p>Hello! I'm your Physical AI & Humanoid Robotics textbook assistant.</p>
                 <p>Ask me anything about the textbook content, and I'll help find relevant information.</p>
+                <p>You can also select any text in the textbook and I'll help explain it!</p>
               </div>
             ) : (
               messages.map((message) => (
@@ -159,6 +230,11 @@ const Chatbot = () => {
                     }}
                   >
                     {message.content}
+                    {message.sources && message.sources.length > 0 && (
+                      <div style={{ marginTop: '5px', fontSize: '0.8em', color: '#aaa' }}>
+                        Sources: {message.sources.join(', ')}
+                      </div>
+                    )}
                   </div>
                   <div
                     style={{
@@ -193,6 +269,7 @@ const Chatbot = () => {
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input area */}
@@ -211,7 +288,7 @@ const Chatbot = () => {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about Physical AI & Robotics..."
+              placeholder={selectedText ? "Ask about selected text..." : "Ask about Physical AI & Robotics..."}
               style={{
                 flex: 1,
                 padding: '10px',

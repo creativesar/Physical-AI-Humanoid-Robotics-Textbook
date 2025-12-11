@@ -244,6 +244,54 @@ a {
   left: 100%;
 }
 
+/* Custom header and footer styling */
+.navbar {
+  background-color: #1a1a1a !important;
+  border-bottom: 1px solid rgba(176, 224, 230, 0.3) !important;
+}
+
+.navbar__brand {
+  color: #b0e0e6 !important;
+}
+
+.navbar__link {
+  color: #e0f0f0 !important;
+}
+
+.navbar__link:hover {
+  color: #b0e0e6 !important;
+}
+
+/* Header scrolled state */
+.navbar.scrolled {
+  background-color: rgba(26, 26, 26, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(176, 224, 230, 0.2) !important;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #000000 !important;
+  color: #e0f0f0 !important;
+  border-top: 1px solid rgba(176, 224, 230, 0.2) !important;
+}
+
+.footer a {
+  color: #e0f0f0 !important;
+}
+
+.footer a:hover {
+  color: #b0e0e6 !important;
+}
+
+.footer__title {
+  color: #b0e0e6 !important;
+}
+
+.footer__copyright {
+  color: rgba(224, 240, 240, 0.7) !important;
+}
+
 /* Premium card animations */
 @keyframes float {
   0%, 100% {

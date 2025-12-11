@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics Textbook',
-  tagline: 'Comprehensive textbook covering Physical AI and Humanoid Robotics',
+  tagline: 'Master foundational principles, technical frameworks, and real-world implementations of modern intelligent robotics systems',
   favicon: 'img/robotics-favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -138,10 +138,6 @@ const config: Config = {
     ],
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
-      logo: {
-        alt: 'Physical AI & Humanoid Robotics Textbook Logo',
-        src: 'img/robotics-logo.svg',
-      },
       items: [
         {
           type: 'docSidebar',
