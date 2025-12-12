@@ -26,14 +26,7 @@ const config: Config = {
         ],
       },
     ],
-    async function myPlugin(context, options) {
-      return {
-        name: 'docusaurus-plugin-root-component',
-        getClientModules() {
-          return [require.resolve('./src/components/Root.tsx')];
-        },
-      };
-    },
+
   ],
 
   // Set the production url of your site here
@@ -149,6 +142,11 @@ const config: Config = {
           to: '/modules',
           label: 'Modules',
           position: 'left',
+        },
+        {
+          to: '/login',
+          label: 'Login',
+          position: 'right',
         },
         {
           href: 'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook',
