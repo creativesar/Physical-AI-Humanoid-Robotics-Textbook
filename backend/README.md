@@ -1,106 +1,78 @@
-# Physical AI & Humanoid Robotics Textbook - Backend
+# Physical AI & Humanoid Robotics Textbook Backend
 
-This is the FastAPI-based backend for the Physical AI & Humanoid Robotics Textbook project. It provides a RAG (Retrieval-Augmented Generation) chatbot, user authentication, and data persistence services.
+This backend serves the Physical AI & Humanoid Robotics Textbook platform, providing RAG (Retrieval-Augmented Generation) functionality using either Cohere or Hugging Face models.
 
 ## Features
 
-- **FastAPI**: Modern, fast (high-performance) web framework for building APIs with Python
-- **RAG System**: Retrieval-Augmented Generation for AI-powered textbook Q&A
-- **Qdrant Integration**: Vector database for semantic search and similarity matching
-- **PostgreSQL Integration**: Relational database for user data and content management
-- **Google Gemini**: LLM integration for conversational AI
-- **Authentication**: User authentication and profile management
-- **API Endpoints**:
-  - `/health`: Health check endpoint
-  - `/chat`: RAG-powered chat endpoint
-  - `/embed`: Text embedding endpoint
-  - `/query`: Textbook content search endpoint
-  - `/feedback`: User feedback endpoint
-  - `/user-profile`: User profile management
+- RAG functionality with vector storage in Qdrant
+- Support for both Cohere and Hugging Face models
+- API endpoints for embedding, querying, and chatting
+- Metadata management for textbook modules and counters
 
-## Requirements
+## Architecture
 
-- Python 3.10+
-- Google Gemini API key
-- Qdrant Cloud account or self-hosted instance
-- PostgreSQL database (Neon Serverless recommended)
+```
+Frontend (Docusaurus) 
+    ↓ (API calls)
+FastAPI Backend 
+    ↓ (Embeddings & Storage)
+Qdrant Vector Database
+    ↓ (Textbook Content)
+PostgreSQL (Metadata)
+```
 
-## Installation
+## Hugging Face Integration
 
-1. Clone the repository
-2. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-3. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   # On Windows
-   .venv\Scripts\activate
-   # On Linux/macOS
-   source .venv/bin/activate
-   ```
-4. Install dependencies:
+This backend now supports both Cohere and Hugging Face models for:
+1. **Embedding Generation**: Creating vector representations of text content
+2. **Text Generation**: Generating responses to user queries
+
+### Configuration
+
+You can configure which provider to use for each function through environment variables:
+
+- `EMBEDDING_PROVIDER`: Either "cohere" or "huggingface" (default: huggingface)
+- `GENERATION_PROVIDER`: Either "cohere" or "huggingface" (default: cohere)
+- `HF_EMBEDDING_MODEL`: Hugging Face model for embeddings (default: all-MiniLM-L6-v2)
+- `HF_GENERATION_MODEL`: Hugging Face model for text generation (default: microsoft/DialoGPT-medium)
+
+## API Endpoints
+
+- `GET /`: Health check
+- `GET /health`: Health check
+- `POST /api/v1/chat`: Chat with RAG
+- `POST /api/v1/embed`: Generate embeddings
+- `POST /api/v1/ingest`: Ingest documents
+- `POST /api/v1/query`: Query documents
+- `GET /api/v1/metadata/modules`: Get module metadata
+- `GET /api/v1/metadata/counters`: Get platform counters
+
+## Setup
+
+1. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-## Configuration
-
-1. Copy `.env.example` to `.env`:
+2. Set up environment variables:
    ```bash
    cp .env.example .env
+   # Edit .env with your configuration
    ```
 
-2. Fill in your environment variables in the `.env` file:
-   - `GEMINI_API_KEY`: Your Google Gemini API key
-   - `QDRANT_URL`: Your Qdrant Cloud URL or local instance
-   - `QDRANT_API_KEY`: Your Qdrant API key
-   - `DATABASE_URL`: Your PostgreSQL database URL
+3. Run the server:
+   ```bash
+   uvicorn main:app --reload
+   ```
 
-## Running the Application
+## Environment Variables
 
-To run the backend locally:
-
-```bash
-cd backend
-python -m src.main
-```
-
-Or using uvicorn directly:
-
-```bash
-cd backend
-uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-The API will be available at `http://localhost:8000`.
-
-## API Documentation
-
-Interactive API documentation is automatically available at:
-- `http://localhost:8000/docs` (Swagger UI)
-- `http://localhost:8000/redoc` (ReDoc)
-
-## Services Architecture
-
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Frontend      │───▶│   FastAPI        │───▶│  Google Gemini  │
-│   (Docusaurus)  │    │   Backend        │    │   (LLM)         │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                            │    │
-                            │    ▼
-                            │ ┌──────────────┐
-                            │ │   Qdrant     │
-                            │ │ (Vector DB)  │
-                            │ └──────────────┘
-                            ▼
-                       ┌─────────────────┐
-                       │   PostgreSQL    │
-                       │  (Relational   │
-                       │   Database)     │
-                       └─────────────────┘
-```
-
-The system implements a RAG (Retrieval-Augmented Generation) pipeline where user queries are matched against textbook content using vector similarity search, and the most relevant content is passed to the LLM to generate contextual responses.
+- `PORT`: Port to run the server on (default: 8000)
+- `QDRANT_URL`: URL for Qdrant vector database (default: http://localhost:6333)
+- `COHERE_API_KEY`: Your Cohere API key (optional if using Hugging Face)
+- `HF_EMBEDDING_MODEL`: Hugging Face model for embeddings
+- `HF_GENERATION_MODEL`: Hugging Face model for text generation
+- `EMBEDDING_PROVIDER`: Provider for embeddings ("cohere" or "huggingface")
+- `GENERATION_PROVIDER`: Provider for generation ("cohere" or "huggingface")
+- `DATABASE_URL`: PostgreSQL database URL
+- `AUTH_SECRET`: Secret for authentication

@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 # Include API routes
-from api import router as api_router
+from api.router import router as api_router
 app.include_router(api_router, prefix="/api/v1")
 
 @app.get("/")
