@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem; /* Reduced padding for mobile */
 }
 
 /* Animation keyframes */
@@ -102,47 +102,78 @@
 }
 
 /* Animation variants for staggered effects */
-.arc:nth-child(1) { 
-  top: 10%; 
-  left: 0; 
-  width: 200px; 
-  height: 2px; 
+.arc:nth-child(1) {
+  top: 10%;
+  left: 0;
+  width: 200px;
+  height: 2px;
   animation: arcFlow 8s linear infinite;
   animation-delay: 0s;
 }
 
-.arc:nth-child(2) { 
-  top: 30%; 
-  left: 0; 
-  width: 150px; 
-  height: 1.5px; 
+.arc:nth-child(2) {
+  top: 30%;
+  left: 0;
+  width: 150px;
+  height: 1.5px;
   animation: arcFlow 10s linear infinite;
   animation-delay: 1s;
 }
 
-.arc:nth-child(3) { 
-  top: 50%; 
-  left: 0; 
-  width: 180px; 
-  height: 1.8px; 
+.arc:nth-child(3) {
+  top: 50%;
+  left: 0;
+  width: 180px;
+  height: 1.8px;
   animation: arcFlow 12s linear infinite;
   animation-delay: 0.5s;
 }
 
-.arc:nth-child(4) { 
-  top: 70%; 
-  left: 0; 
-  width: 160px; 
-  height: 1.2px; 
+.arc:nth-child(4) {
+  top: 70%;
+  left: 0;
+  width: 160px;
+  height: 1.2px;
   animation: arcFlow 9s linear infinite;
   animation-delay: 1.5s;
 }
 
-.arc:nth-child(5) { 
-  top: 85%; 
-  left: 0; 
-  width: 220px; 
-  height: 2.2px; 
+.arc:nth-child(5) {
+  top: 85%;
+  left: 0;
+  width: 220px;
+  height: 2.2px;
   animation: arcFlow 11s linear infinite;
   animation-delay: 0.8s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroContainer {
+    min-height: 70vh; /* Ensure adequate height on mobile */
+  }
+
+  .content {
+    padding: 1rem; /* Further reduced padding on small screens */
+  }
+
+  /* Reduce animation intensity on mobile to improve performance */
+  .arc {
+    opacity: 0.4; /* Reduce opacity to improve performance */
+  }
+
+  .ionizedDrop {
+    width: 2px; /* Slightly thinner drops on mobile */
+    height: 10px; /* Shorter drops on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContainer {
+    min-height: 60vh; /* Adjust height for very small screens */
+  }
+
+  .content {
+    padding: 0.75rem; /* Further reduced padding on very small screens */
+  }
 }

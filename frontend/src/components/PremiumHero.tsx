@@ -48,7 +48,7 @@ function PremiumHero() {
               fontFamily: 'Sora, sans-serif',
               fontWeight: 800,
               letterSpacing: '-0.03em',
-              fontSize: '4rem',
+              fontSize: 'clamp(2rem, 6vw, 4rem)', // Responsive font size
               lineHeight: 1.1,
               textShadow: '0 0 20px rgba(176, 224, 230, 0.7)',
               background: 'linear-gradient(90deg, #b0e0e6, #ffffff, #b0e0e6)',
@@ -66,11 +66,11 @@ function PremiumHero() {
             variants={itemVariants}
             style={{
               fontFamily: 'Inter, sans-serif',
-              fontSize: '1.4rem',
+              fontSize: 'clamp(1rem, 3vw, 1.4rem)', // Responsive font size
               lineHeight: '1.6',
               color: '#e0f0f0',
               textShadow: '0 0 10px rgba(176, 224, 230, 0.5)',
-              maxWidth: '700px',
+              maxWidth: '90%', // Increased max width for mobile
               margin: '1.5rem auto',
             }}
           >
@@ -80,7 +80,7 @@ function PremiumHero() {
             className={styles.buttonContainer}
             variants={itemVariants}
           >
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}> {/* Changed to column layout on small screens */}
               <motion.div
                 whileHover={{
                   scale: 1.05,
@@ -95,13 +95,14 @@ function PremiumHero() {
                   style={{
                     fontFamily: 'Sora, sans-serif',
                     fontWeight: 700,
-                    fontSize: '14px',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 14px)', // Responsive font size
                     textTransform: 'uppercase',
-                    letterSpacing: '4px',
+                    letterSpacing: '2px', // Reduced letter spacing for mobile
                     position: 'relative',
                     overflow: 'hidden',
                     zIndex: 20,
                     textDecoration: 'none',
+                    padding: '12px 24px', // Made padding more responsive
                   }}
                 >
                   Explore Content
@@ -121,13 +122,14 @@ function PremiumHero() {
                   style={{
                     fontFamily: 'Sora, sans-serif',
                     fontWeight: 700,
-                    fontSize: '14px',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 14px)', // Responsive font size
                     textTransform: 'uppercase',
-                    letterSpacing: '4px',
+                    letterSpacing: '2px', // Reduced letter spacing for mobile
                     position: 'relative',
                     overflow: 'hidden',
                     zIndex: 20,
                     textDecoration: 'none',
+                    padding: '12px 24px', // Made padding more responsive
                   }}
                 >
                   Read Book
