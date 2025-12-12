@@ -11,6 +11,29 @@ qdrant_client = QdrantClient(url=QDRANT_URL)
 # Define collection name
 TEXTBOOK_COLLECTION = "textbook_content"
 
+def get_embedding_dimension():
+    """
+    Determine the embedding dimension based on the configured provider
+    """
+    EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "huggingface").lower()
+
+    # Common embedding dimensions for different models
+    if EMBEDDING_PROVIDER == "cohere":
+        return 1024  # Cohere's embed-english-v3.0 has 1024 dimensions
+    elif EMBEDDING_PROVIDER == "huggingface":
+        # Different Hugging Face models have different dimensions
+        # all-MiniLM-L6-v2 has 384 dimensions
+        HF_EMBEDDING_MODEL = os.getenv("HF_EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+        model_dims = {
+            "all-MiniLM-L6-v2": 384,
+            "all-mpnet-base-v2": 768,
+            "multi-qa-mpnet-base-dot-v1": 768,
+            "all-distilroberta-v1": 768
+        }
+        return model_dims.get(HF_EMBEDDING_MODEL, 384)  # Default to 384
+    else:
+        return 384  # Default dimension
+
 def initialize_qdrant_collection():
     """
     Initialize the Qdrant collection for textbook content
@@ -19,22 +42,23 @@ def initialize_qdrant_collection():
         # Check if collection exists
         collections = qdrant_client.get_collections()
         collection_names = [c.name for c in collections.collections]
-        
+
         if TEXTBOOK_COLLECTION not in collection_names:
-            # Create collection with appropriate vector size (Cohere embeddings are 1024-dim)
+            # Create collection with appropriate vector size based on configuration
+            embedding_size = get_embedding_dimension()
             qdrant_client.create_collection(
                 collection_name=TEXTBOOK_COLLECTION,
-                vectors_config=models.VectorParams(size=1024, distance=models.Distance.COSINE)
+                vectors_config=models.VectorParams(size=embedding_size, distance=models.Distance.COSINE)
             )
-            
+
             # Create payload index for faster filtering
             qdrant_client.create_payload_index(
                 collection_name=TEXTBOOK_COLLECTION,
                 field_name="module",
                 field_schema=models.PayloadSchemaType.KEYWORD
             )
-            
-            logging.info(f"Created Qdrant collection: {TEXTBOOK_COLLECTION}")
+
+            logging.info(f"Created Qdrant collection: {TEXTBOOK_COLLECTION} with dimension {embedding_size}")
         else:
             logging.info(f"Qdrant collection {TEXTBOOK_COLLECTION} already exists")
     except Exception as e:
