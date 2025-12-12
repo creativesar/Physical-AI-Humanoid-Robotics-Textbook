@@ -1,11 +1,11 @@
 # Physical AI & Humanoid Robotics Textbook Backend
 
-This backend serves the Physical AI & Humanoid Robotics Textbook platform, providing RAG (Retrieval-Augmented Generation) functionality using either Cohere or Hugging Face models.
+This backend serves the Physical AI & Humanoid Robotics Textbook platform, providing RAG (Retrieval-Augmented Generation) functionality using Cohere models.
 
 ## Features
 
 - RAG functionality with vector storage in Qdrant
-- Support for both Cohere and Hugging Face models
+- Support for Cohere models
 - API endpoints for embedding, querying, and chatting
 - Metadata management for textbook modules and counters
 
@@ -21,58 +21,65 @@ Qdrant Vector Database
 PostgreSQL (Metadata)
 ```
 
-## Hugging Face Integration
-
-This backend now supports both Cohere and Hugging Face models for:
-1. **Embedding Generation**: Creating vector representations of text content
-2. **Text Generation**: Generating responses to user queries
-
-### Configuration
-
-You can configure which provider to use for each function through environment variables:
-
-- `EMBEDDING_PROVIDER`: Either "cohere" or "huggingface" (default: huggingface)
-- `GENERATION_PROVIDER`: Either "cohere" or "huggingface" (default: cohere)
-- `HF_EMBEDDING_MODEL`: Hugging Face model for embeddings (default: all-MiniLM-L6-v2)
-- `HF_GENERATION_MODEL`: Hugging Face model for text generation (default: microsoft/DialoGPT-medium)
-
-## API Endpoints
-
-- `GET /`: Health check
-- `GET /health`: Health check
-- `POST /api/v1/chat`: Chat with RAG
-- `POST /api/v1/embed`: Generate embeddings
-- `POST /api/v1/ingest`: Ingest documents
-- `POST /api/v1/query`: Query documents
-- `GET /api/v1/metadata/modules`: Get module metadata
-- `GET /api/v1/metadata/counters`: Get platform counters
-
 ## Setup
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. Set up environment variables:
+1. Clone the repository
+2. Navigate to the backend directory: `cd backend`
+3. Create a virtual environment: `python -m venv venv`
+4. Activate the virtual environment:
+   - On Windows: `venv\Scripts\activate`
+   - On macOS/Linux: `source venv/bin/activate`
+5. Install dependencies: `pip install -r requirements.txt`
+6. Set up environment variables:
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
+7. Run the server: `python main.py`
 
-3. Run the server:
-   ```bash
-   uvicorn main:app --reload
-   ```
+## Configuration
+
+The application requires several environment variables to be set. See `.env.example` for a template of all required variables.
+
+You can configure the application through environment variables:
+
+- `SECRET_KEY`: Secret key for JWT token generation
+- `COHERE_API_KEY`: Your Cohere API key
+- `QDRANT_URL`: URL for Qdrant vector database
+- `QDRANT_API_KEY`: API key for Qdrant
+- `DATABASE_URL`: PostgreSQL database URL
+- `BETTER_AUTH_API_URL`: URL for Better Auth integration (optional)
+- `FRONTEND_PATH`: Path to frontend directory for ingestion
+- `BACKEND_CORS_ORIGINS`: CORS origins (JSON array format)
+
+## API Endpoints
+
+The backend exposes several API endpoints:
+
+- `POST /api/v1/chat` - Chat with the RAG system
+- `POST /api/v1/embed` - Generate embeddings for text
+- `POST /api/v1/ingest` - Ingest documents into the vector database
+- `POST /api/v1/query` - Query the vector database
+- `GET /api/v1/metadata/modules` - Get textbook module metadata
+- `GET /api/v1/metadata/counters` - Get platform counters
+
+Example usage:
+```bash
+curl -X POST "http://localhost:8000/api/v1/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"user_message": "What is SLAM in robotics?"}'
+```
+
+## Running with Docker
+
+To run the backend using Docker:
+
+1. Build the image: `docker build -t physical-ai-backend .`
+2. Run the container: `docker run -p 8000:8000 physical-ai-backend`
 
 ## Environment Variables
 
 - `PORT`: Port to run the server on (default: 8000)
-- `QDRANT_URL`: URL for Qdrant vector database (default: http://localhost:6333)
-- `COHERE_API_KEY`: Your Cohere API key (optional if using Hugging Face)
-- `HF_EMBEDDING_MODEL`: Hugging Face model for embeddings
-- `HF_GENERATION_MODEL`: Hugging Face model for text generation
-- `EMBEDDING_PROVIDER`: Provider for embeddings ("cohere" or "huggingface")
-- `GENERATION_PROVIDER`: Provider for generation ("cohere" or "huggingface")
+- `COHERE_API_KEY`: Your Cohere API key
 - `DATABASE_URL`: PostgreSQL database URL
 - `AUTH_SECRET`: Secret for authentication

@@ -44,7 +44,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'PhysicalAI', // Usually your GitHub org/user name.
+  organizationName: 'creativesar', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics-Textbook', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -66,7 +66,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/PhysicalAI/Physical-AI-Humanoid-Robotics-Textbook/tree/main/frontend/',
+            'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook/tree/main/frontend/',
         },
         blog: false, // Disable blog for now, we'll focus on textbook content
         theme: {
@@ -151,7 +151,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/PhysicalAI/Physical-AI-Humanoid-Robotics-Textbook',
+          href: 'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook'
           label: 'GitHub',
           position: 'right',
         },

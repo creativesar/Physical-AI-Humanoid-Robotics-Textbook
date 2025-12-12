@@ -25,7 +25,7 @@ This educational platform provides comprehensive resources for learning about Ph
 
 - **Frontend**: Docusaurus with React
 - **Backend**: FastAPI with RAG pipeline
-- **AI Services**: Cohere and Hugging Face models
+- **AI Services**: Cohere models
 - **Vector Store**: Qdrant
 - **Database**: PostgreSQL
 

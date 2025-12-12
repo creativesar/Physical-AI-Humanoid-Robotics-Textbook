@@ -34,6 +34,8 @@ def read_root():
 def health_check():
     return {"status": "healthy"}
 
+# Hugging Face Spaces entry point
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
