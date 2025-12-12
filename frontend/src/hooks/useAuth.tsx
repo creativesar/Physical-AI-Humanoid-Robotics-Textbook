@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 
+const BACKEND_URL = 'http://localhost:8000'; // Added backend URL
+
 interface AuthContextType {
   token: string | null;
   user: any | null; // Replace 'any' with proper User type
@@ -31,7 +33,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const login = async (username: string, password: string) => {
     try {
-      const response = await fetch('/auth/token', {
+      const response = await fetch(`${BACKEND_URL}/auth/token`, { // Updated to use full backend URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -59,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const register = async (username: string, email: string, password: string) => {
     try {
-      const response = await fetch('/auth/register', {
+      const response = await fetch(`${BACKEND_URL}/auth/register`, { // Updated to use full backend URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

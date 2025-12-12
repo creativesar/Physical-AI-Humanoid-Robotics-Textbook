@@ -8,14 +8,12 @@ import { AuthProvider } from '@site/src/hooks/useAuth';
 export default function LayoutWrapper(props) {
   return (
     <AuthProvider>
-      <AuthProvider>
-        <Header />
-        <Layout {...props}>
-          {props.children}
-          <Chatbot />
-        </Layout>
-        <Footer />
-      </AuthProvider>
+      <Header />
+      <Layout {...props}>
+        {props.children}
+        <Chatbot />
+      </Layout>
+      <Footer />
     </AuthProvider>
   );
 }

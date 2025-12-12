@@ -208,10 +208,3 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
-
-## Active Technologies
-- Python 3.10+ (for backend), MDX/Markdown (for textbook content), JavaScript/TypeScript (Docusaurus internals) + FastAPI, OpenAI SDK, Qdrant client, Postgres client, Docusaurus, Mermaid, Prism/Shiki, Better-Auth (optional) (001-physical-ai-textbook)
-- Neon Serverless Postgres (User logs, analytics, personalization), Qdrant Cloud (Vector DB for embeddings + retrieval) (001-physical-ai-textbook)
-
-## Recent Changes
-- 001-physical-ai-textbook: Added Python 3.10+ (for backend), MDX/Markdown (for textbook content), JavaScript/TypeScript (Docusaurus internals) + FastAPI, OpenAI SDK, Qdrant client, Postgres client, Docusaurus, Mermaid, Prism/Shiki, Better-Auth (optional)

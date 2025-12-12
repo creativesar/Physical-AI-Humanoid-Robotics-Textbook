@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@@/hooks/useAuth'; // Assuming you have an auth hook
 
+const BACKEND_URL = 'http://localhost:8000'; // Added backend URL
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -27,7 +29,7 @@ const Chatbot = () => {
 
     try {
       // Call backend API to get response
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${BACKEND_URL}/api/v1/chat`, { // Updated to use full backend URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
