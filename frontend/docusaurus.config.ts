@@ -151,7 +151,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook'
+          href: 'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook',
           label: 'GitHub',
           position: 'right',
         },
@@ -159,59 +159,7 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Textbook',
-          items: [
-            {
-              label: 'Introduction',
-              to: '/docs/intro',
-            },
-            {
-              label: 'Robotics Fundamentals',
-              to: '/docs/robotics-mechatronics-fundamentals',
-            },
-            {
-              label: 'ROS 2 Foundations',
-              to: '/docs/ros2-foundations',
-            },
-          ],
-        },
-        {
-          title: 'Resources',
-          items: [
-            {
-              label: 'ROS 2 Documentation',
-              href: 'https://docs.ros.org/en/humble/',
-            },
-            {
-              label: 'Gazebo Simulator',
-              href: 'https://gazebosim.org/',
-            },
-            {
-              label: 'NVIDIA Isaac',
-              href: 'https://developer.nvidia.com/isaac',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Robotics Stack Exchange',
-              href: 'https://robotics.stackexchange.com/',
-            },
-            {
-              label: 'ROS Discourse',
-              href: 'https://discourse.ros.org/',
-            },
-            {
-              label: 'AI & Robotics Discord',
-              href: 'https://discord.gg/robotics',
-            },
-          ],
-        },
-      ],
+      links: [],
       copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
     },
     prism: {
