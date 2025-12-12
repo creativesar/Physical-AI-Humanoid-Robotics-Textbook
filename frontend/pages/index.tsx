@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import { motion } from 'framer-motion';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Chatbot from '@site/src/components/Chatbot';
+
 import WhatWeDoPremium from '@site/src/components/WhatWeDoCompact';
 import PremiumHero from '@site/src/components/PremiumHero';
 
@@ -73,7 +73,7 @@ function ModuleGridSection() {
 function CounterSection() {
   return (
     <section className={clsx(styles.section, 'margin-vert--lg', 'padding-vert--md')}
-             style={{ backgroundColor: 'transparent', borderRadius: '8px', margin: '20px 0' }}>
+      style={{ backgroundColor: 'transparent', borderRadius: '8px', margin: '20px 0' }}>
       <div className="container">
         <div className="row">
           <div className="col col--6 col--md-3 text--center"> {/* Made responsive - 2 cols on mobile, 3 on medium, 3 on large */}
@@ -459,7 +459,7 @@ export default function Home(): ReactElement {
         <TrustedPartnersSection />
         <FAQSection />
         <GetConnectSection />
-        <Chatbot />
+
       </main>
     </Layout>
   );
