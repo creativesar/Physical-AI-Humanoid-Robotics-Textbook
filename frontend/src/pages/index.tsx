@@ -206,7 +206,7 @@ function AnimatedBackground({ parallaxOffset = 0 }: { parallaxOffset?: number })
             left: `${50 + Math.sin(i) * 10}%`,
             width: '8px',
             height: '8px',
-            background: `radial-gradient(circle, rgba(0, ${200 - i*30}, 255, 0.4) 0%, rgba(0, ${150 - i*20}, 200, 0.2) 70%, transparent)`,
+            background: `radial-gradient(circle, rgba(0, ${200 - i * 30}, 255, 0.4) 0%, rgba(0, ${150 - i * 20}, 200, 0.2) 70%, transparent)`,
             borderRadius: '50%',
             zIndex: 1,
           }}
@@ -426,6 +426,39 @@ function AnimatedBackground({ parallaxOffset = 0 }: { parallaxOffset?: number })
 
 // Services Section - Premium Robotics Lab Interface
 function ServicesSection() {
+  const services = [
+    {
+      title: 'Interactive Learning',
+      features: [
+        'Structured modules',
+        'Practical tasks & assessments',
+        'Real-time progress analytics'
+      ],
+      icon: '⚙️',
+      color: '#0FE3C0'
+    },
+    {
+      title: 'Expert Support',
+      features: [
+        'AI research assistant',
+        'Instant problem solving',
+        '24/7 technical guidance'
+      ],
+      icon: '🤖',
+      color: '#0F96E3'
+    },
+    {
+      title: 'Academic Resources',
+      features: [
+        'Research references',
+        'Verified scientific explanations',
+        'Case-based learning models'
+      ],
+      icon: '📚',
+      color: '#A87EE5'
+    },
+  ];
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -438,163 +471,154 @@ function ServicesSection() {
       }}
     >
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{
-              fontFamily: 'Sora, sans-serif',
-              color: '#ffffff',
-              fontSize: '3rem',
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              fontWeight: 800,
-            }}
-          >
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '5rem' }}
+        >
+          <h2 style={{
+            fontFamily: 'Sora, sans-serif',
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: 800,
+            background: 'linear-gradient(135deg, #ffffff 0%, #b0e0e6 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '1.5rem',
+            lineHeight: 1.2
+          }}>
             Our Services
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              color: '#c0c0c0',
-              fontSize: '1.2rem',
-              maxWidth: '700px',
-              margin: '0 auto',
-              lineHeight: '1.7',
-              fontWeight: 500,
-            }}
-          >
-            Comprehensive solutions for academic excellence and technical innovation in Physical AI and Humanoid Robotics
-          </motion.p>
-        </div>
+          </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2.5rem' }}>
-          {[
-            {
-              title: 'Interactive Learning',
-              features: [
-                'Structured modules',
-                'Practical tasks & assessments',
-                'Real-time progress analytics'
-              ],
-              icon: '⚙️',
-              color: '#0FE3C0'
-            },
-            {
-              title: 'Expert Support',
-              features: [
-                'AI research assistant',
-                'Instant problem solving',
-                '24/7 technical guidance'
-              ],
-              icon: '🤖',
-              color: '#0F96E3'
-            },
-            {
-              title: 'Academic Resources',
-              features: [
-                'Research references',
-                'Verified scientific explanations',
-                'Case-based learning models'
-              ],
-              icon: '📚',
-              color: '#A87EE5'
-            },
-          ].map((service, idx) => (
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            color: '#c0c0c0',
+            fontSize: '1.2rem',
+            maxWidth: '800px',
+            margin: '0 auto',
+            lineHeight: '1.8',
+            fontWeight: 400,
+          }}>
+            Comprehensive solutions for academic excellence and technical innovation in Physical AI and Humanoid Robotics
+          </p>
+        </motion.div>
+
+        {/* Service Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1400px',
+          margin: '0 auto'
+        }}>
+          {services.map((service, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              transition={{ delay: idx * 0.15, duration: 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.08 }}
+              whileHover={{
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
               style={{
-                background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
+                background: 'linear-gradient(145deg, rgba(15, 15, 15, 0.9), rgba(10, 10, 10, 0.8))',
                 backdropFilter: 'blur(20px)',
-                padding: '2.8rem',
+                padding: '2.5rem',
                 borderRadius: '20px',
-                border: '1px solid rgba(80, 80, 80, 0.3)',
-                transition: 'all 0.4s ease',
-                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
+                border: '1px solid rgba(176, 224, 230, 0.15)',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
                 position: 'relative',
                 overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
               }}
             >
-              {/* Premium gradient accent */}
+              {/* Top accent line with service color */}
               <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
-                height: '4px',
-                background: `linear-gradient(90deg, ${service.color} 0%, ${service.color}80 100%)`,
+                height: '3px',
+                background: `linear-gradient(90deg, ${service.color} 0%, transparent 100%)`,
               }} />
 
-              <div style={{
-                position: 'absolute',
-                top: '25px',
-                right: '25px',
-                fontSize: '2.5rem',
-                opacity: 0.1
-              }}>
+              {/* Icon container */}
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 3 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '16px',
+                  background: `linear-gradient(135deg, ${service.color}33 0%, ${service.color}0D 100%)`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1.5rem',
+                  border: `1px solid ${service.color}33`,
+                  fontSize: '1.8rem'
+                }}
+              >
                 {service.icon}
-              </div>
+              </motion.div>
 
+              {/* Title */}
               <h3 style={{
                 fontFamily: 'Sora, sans-serif',
-                color: service.color,
-                fontSize: '1.6rem',
-                marginBottom: '1.8rem',
+                margin: '0 0 1.5rem 0',
+                fontSize: '1.4rem',
                 fontWeight: 700,
-                position: 'relative',
-                zIndex: 1
+                color: service.color,
+                lineHeight: 1.3
               }}>
                 {service.title}
               </h3>
 
+              {/* Features List */}
               <ul style={{
                 fontFamily: 'Inter, sans-serif',
                 color: '#E0E0E0',
                 lineHeight: '1.8',
                 listStyle: 'none',
                 padding: 0,
-                position: 'relative',
-                zIndex: 1
+                margin: 0
               }}>
                 {service.features.map((feature, i) => (
                   <li key={i} style={{
-                    marginBottom: '1.2rem',
+                    marginBottom: '1rem',
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: '1rem',
-                    fontWeight: 500,
-                    paddingTop: '0.2rem'
+                    gap: '0.8rem',
+                    fontSize: '1rem'
                   }}>
                     <span style={{
                       color: service.color,
-                      fontSize: '1.3rem',
+                      fontSize: '1.2rem',
                       fontWeight: 700,
-                      display: 'inline-block',
-                      marginTop: '0.1rem',
-                      minWidth: '1.3rem',
-                      textAlign: 'center'
+                      minWidth: '1.2rem',
+                      marginTop: '0.1rem'
                     }}>✓</span>
-                    <span style={{ color: '#E0E0E0', lineHeight: '1.7' }}>{feature}</span>
+                    <span style={{ color: '#c0c0c0', lineHeight: '1.6' }}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Subtle bottom accent */}
+              {/* Background decoration */}
               <div style={{
                 position: 'absolute',
-                bottom: 0,
-                left: 0,
-                width: '100%',
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(200,200,200,0.1), transparent)',
+                bottom: '-50px',
+                right: '-50px',
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                background: `radial-gradient(circle, ${service.color}14 0%, transparent 70%)`,
+                pointerEvents: 'none'
               }} />
             </motion.div>
           ))}
@@ -696,9 +720,9 @@ function TestimonialSection() {
     return (
       <div style={{ display: 'flex', marginBottom: '1rem' }}>
         {[...Array(5)].map((_, i) => (
-          <span 
-            key={i} 
-            style={{ 
+          <span
+            key={i}
+            style={{
               color: i < rating ? '#0FE3C0' : '#444',
               fontSize: '1.2rem',
               marginRight: '0.2rem'
@@ -743,7 +767,7 @@ function TestimonialSection() {
         background: 'radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)',
         filter: 'blur(30px)',
       }} />
-      
+
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <motion.h2
@@ -789,8 +813,8 @@ function TestimonialSection() {
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ 
-                y: -12, 
+              whileHover={{
+                y: -12,
                 transition: { duration: 0.3 },
                 boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(15, 227, 192, 0.3)'
               }}
@@ -822,18 +846,18 @@ function TestimonialSection() {
                 justifyContent: 'center',
                 border: '1px solid rgba(15, 227, 192, 0.2)',
               }}>
-                <span style={{ 
-                  color: '#0FE3C0', 
+                <span style={{
+                  color: '#0FE3C0',
                   fontSize: '1.5rem',
                   transform: 'rotate(180deg)',
                   display: 'block'
                 }}>❝</span>
               </div>
-              
+
               {/* Avatar and rating */}
-              <div style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
                 marginBottom: '1.5rem',
                 position: 'relative',
                 zIndex: 2
@@ -895,9 +919,9 @@ function TestimonialSection() {
                   {testimonial.role}
                 </p>
               </div>
-              
+
               {/* Subtle animated wave effect at bottom */}
-              <motion.div 
+              <motion.div
                 style={{
                   position: 'absolute',
                   bottom: 0,
@@ -907,10 +931,10 @@ function TestimonialSection() {
                   background: 'linear-gradient(90deg, transparent, #0FE3C0, transparent)',
                   opacity: 0.3
                 }}
-                animate={{ 
-                  x: ['-100%', '100%'] 
+                animate={{
+                  x: ['-100%', '100%']
                 }}
-                transition={{ 
+                transition={{
                   duration: 3,
                   repeat: Infinity,
                   repeatType: "loop",
@@ -920,9 +944,9 @@ function TestimonialSection() {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Call to action */}
-        <motion.div 
+        <motion.div
           style={{
             textAlign: 'center',
             marginTop: '4rem'
@@ -931,8 +955,8 @@ function TestimonialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <motion.a 
-            href="#contact" 
+          <motion.a
+            href="#contact"
             style={{
               display: 'inline-block',
               padding: '1rem 2.5rem',
@@ -946,7 +970,7 @@ function TestimonialSection() {
               boxShadow: '0 10px 25px rgba(15, 227, 192, 0.4)',
               transition: 'all 0.3s ease'
             }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               boxShadow: '0 15px 30px rgba(15, 227, 192, 0.6)'
             }}
@@ -1368,142 +1392,169 @@ const Counter = ({ target, prefix = '', suffix = '', duration = 2000 }) => {
 // Statistics Section - Premium Real-time Counters
 function StatsSection() {
   const stats = [
-    { end: 19, label: 'Comprehensive Modules', description: 'From fundamentals to advanced robotics systems.', icon: '📚', prefix: '', suffix: '' },
-    { end: 100, label: 'Learning Objectives', description: 'Clear, measurable academic outcomes.', icon: '🎯', prefix: '', suffix: '+' },
-    { end: 1000, label: 'Technical Concepts', description: 'Documented, visualized, and explained.', icon: '⚙️', prefix: '', suffix: '+' },
+    { end: 19, label: 'Comprehensive Modules', description: 'From fundamentals to advanced robotics systems', icon: '📚', prefix: '', suffix: '' },
+    { end: 100, label: 'Learning Objectives', description: 'Clear, measurable academic outcomes', icon: '🎯', prefix: '', suffix: '+' },
+    { end: 1000, label: 'Technical Concepts', description: 'Documented, visualized, and explained', icon: '⚙️', prefix: '', suffix: '+' },
   ];
-
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
   return (
     <motion.section
-      ref={ref}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
       style={{
         background: 'transparent',
         padding: '8rem 0',
-        borderBottom: 'none',
         position: 'relative',
-        scale,
       }}
     >
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{
-              fontFamily: 'Sora, sans-serif',
-              color: '#fff',
-              fontSize: '3rem',
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              fontWeight: 800,
-            }}
-          >
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '5rem' }}
+        >
+          <h2 style={{
+            fontFamily: 'Sora, sans-serif',
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: 800,
+            background: 'linear-gradient(135deg, #ffffff 0%, #b0e0e6 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '1.5rem',
+            lineHeight: 1.2
+          }}>
             Platform Overview
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              color: '#c0c0c0',
-              fontSize: '1.2rem',
-              maxWidth: '700px',
-              margin: '0 auto',
-              lineHeight: '1.7',
-              fontWeight: 500,
-            }}
-          >
-            Real-time metrics showcasing our comprehensive educational platform
-          </motion.p>
-        </div>
+          </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            color: '#c0c0c0',
+            fontSize: '1.2rem',
+            maxWidth: '800px',
+            margin: '0 auto',
+            lineHeight: '1.8',
+            fontWeight: 400,
+          }}>
+            Real-time metrics showcasing our comprehensive educational platform
+          </p>
+        </motion.div>
+
+        {/* Stats Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1400px',
+          margin: '0 auto'
+        }}>
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.15, duration: 0.6 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.08 }}
+              whileHover={{
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
               style={{
-                background: 'linear-gradient(145deg, #0f0f0f, #0a0a0a)',
+                background: 'linear-gradient(145deg, rgba(15, 15, 15, 0.9), rgba(10, 10, 10, 0.8))',
                 backdropFilter: 'blur(20px)',
-                padding: '2.8rem 2rem',
+                padding: '3rem 2.5rem',
                 borderRadius: '20px',
-                border: '1px solid rgba(80, 80, 80, 0.3)',
-                textAlign: 'center',
-                transition: 'all 0.4s ease',
+                border: '1px solid rgba(176, 224, 230, 0.15)',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
                 position: 'relative',
                 overflow: 'hidden',
-                boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(80, 80, 80, 0.2)',
+                textAlign: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
               }}
             >
-              {/* Premium radial glow */}
+              {/* Top accent line */}
               <div style={{
                 position: 'absolute',
-                top: '-50%',
-                left: '-50%',
-                width: '200%',
-                height: '200%',
-                background: `radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)`,
-                zIndex: 0,
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '3px',
+                background: 'linear-gradient(90deg, rgba(176, 224, 230, 0.5) 0%, transparent 100%)',
               }} />
 
-              <div style={{
-                position: 'relative',
-                zIndex: 1,
-                marginBottom: '1.8rem',
-                fontSize: '2.8rem'
-              }}>
+              {/* Icon */}
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{
+                  fontSize: '3rem',
+                  marginBottom: '1.5rem',
+                  display: 'inline-block'
+                }}
+              >
                 {stat.icon}
-              </div>
+              </motion.div>
 
+              {/* Counter Display */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 style={{
                   fontFamily: 'Sora, sans-serif',
-                  fontSize: '4.8rem',
-                  color: '#0FE3C0',
-                  fontWeight: 800,
-                  marginBottom: '1.2rem',
-                  lineHeight: '1.1',
-                  position: 'relative',
-                  zIndex: 1
+                  fontSize: 'clamp(3.5rem, 6vw, 5rem)',
+                  fontWeight: 900,
+                  background: 'linear-gradient(135deg, #b0e0e6 0%, #80c0d0 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  marginBottom: '1.5rem',
+                  lineHeight: 1,
+                  letterSpacing: '-0.02em'
                 }}
               >
                 <Counter target={stat.end} prefix={stat.prefix} suffix={stat.suffix} />
               </motion.div>
 
+              {/* Label */}
               <h3 style={{
                 fontFamily: 'Sora, sans-serif',
-                color: '#fff',
-                fontSize: '1.6rem',
-                marginBottom: '1.2rem',
+                color: '#ffffff',
+                fontSize: '1.4rem',
+                marginBottom: '1rem',
                 fontWeight: 700,
-                position: 'relative',
-                zIndex: 1
+                lineHeight: 1.3
               }}>
                 {stat.label}
               </h3>
 
+              {/* Description */}
               <p style={{
                 fontFamily: 'Inter, sans-serif',
-                color: '#a8a8a8',
+                color: '#b0c0c0',
                 fontSize: '1rem',
-                fontWeight: 500,
-                position: 'relative',
-                zIndex: 1
+                margin: 0,
+                lineHeight: '1.6'
               }}>
                 {stat.description}
               </p>
+
+              {/* Background decoration */}
+              <div style={{
+                position: 'absolute',
+                bottom: '-50px',
+                right: '-50px',
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(176, 224, 230, 0.08) 0%, transparent 70%)',
+                pointerEvents: 'none'
+              }} />
             </motion.div>
           ))}
         </div>
@@ -1716,7 +1767,7 @@ function ModuleGrid() {
               <p style={{ fontFamily: 'Inter, sans-serif', color: '#a8a8a8', fontSize: '0.98rem', marginBottom: '1.5rem', lineHeight: '1.7', fontWeight: 500 }}>
                 {module.description}
               </p>
-                  <motion.div
+              <motion.div
                 whileHover={{ x: 6 }}
                 transition={{ duration: 0.3 }}
               >
@@ -1734,7 +1785,7 @@ function ModuleGrid() {
                     letterSpacing: '0.5px',
                   }}
                 >
-                  Explore → 
+                  Explore →
                 </Link>
               </motion.div>
             </motion.div>

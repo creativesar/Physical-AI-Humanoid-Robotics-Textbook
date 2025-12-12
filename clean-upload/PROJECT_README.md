@@ -1,13 +1,3 @@
----
-license: mit
-tags:
-- robotics
-- ai
-- education
-- physical-ai
-- humanoid
----
-
 # Physical AI & Humanoid Robotics Textbook
 
 This repository contains the code and content for the Physical AI & Humanoid Robotics Textbook platform.

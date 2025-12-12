@@ -100,7 +100,7 @@ const Header = () => {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}
-            href="https://github.com/PhysicalAI/Physical-AI-Humanoid-Robotics-Textbook"
+            href="https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook"
             target="_blank"
             rel="noopener noreferrer"
           >

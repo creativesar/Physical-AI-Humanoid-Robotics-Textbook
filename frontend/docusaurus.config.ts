@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -44,7 +44,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'PhysicalAI', // Usually your GitHub org/user name.
+  organizationName: 'creativesar', // Usually your GitHub org/user name.
   projectName: 'Physical-AI-Humanoid-Robotics-Textbook', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -66,7 +66,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/PhysicalAI/Physical-AI-Humanoid-Robotics-Textbook/tree/main/frontend/',
+            'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook/tree/main/frontend/',
         },
         blog: false, // Disable blog for now, we'll focus on textbook content
         theme: {
@@ -151,69 +151,13 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/PhysicalAI/Physical-AI-Humanoid-Robotics-Textbook',
+          href: 'https://github.com/creativesar/Physical-AI-Humanoid-Robotics-Textbook',
           label: 'GitHub',
           position: 'right',
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Textbook',
-          items: [
-            {
-              label: 'Introduction',
-              to: '/docs/intro',
-            },
-            {
-              label: 'Robotics Fundamentals',
-              to: '/docs/robotics-mechatronics-fundamentals',
-            },
-            {
-              label: 'ROS 2 Foundations',
-              to: '/docs/ros2-foundations',
-            },
-          ],
-        },
-        {
-          title: 'Resources',
-          items: [
-            {
-              label: 'ROS 2 Documentation',
-              href: 'https://docs.ros.org/en/humble/',
-            },
-            {
-              label: 'Gazebo Simulator',
-              href: 'https://gazebosim.org/',
-            },
-            {
-              label: 'NVIDIA Isaac',
-              href: 'https://developer.nvidia.com/isaac',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Robotics Stack Exchange',
-              href: 'https://robotics.stackexchange.com/',
-            },
-            {
-              label: 'ROS Discourse',
-              href: 'https://discourse.ros.org/',
-            },
-            {
-              label: 'AI & Robotics Discord',
-              href: 'https://discord.gg/robotics',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
-    },
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,

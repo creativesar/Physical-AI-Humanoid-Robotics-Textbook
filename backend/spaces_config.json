@@ -1,0 +1,13 @@
+{
+  "app_name": "physical-ai-humanoid-robotics-textbook-backend",
+  "sdk": "docker",
+  "sdk_version": "3.11",
+  "ports": {
+    "8000": "streamlit"
+  },
+  "environment_variables": {
+    "COHERE_API_KEY": "",
+    "QDRANT_URL": "",
+    "DATABASE_URL": ""
+  }
+}
