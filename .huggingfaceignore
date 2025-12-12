@@ -1,0 +1,36 @@
+# Node modules (recursive)
+node_modules/
+**/node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Cache directories
+.cache/
+**/.cache/
+**/__pycache__/
+*.pyc
+
+# Environment variables
+.env
+.env.*
+
+# Git
+.git/
+**/.git/
+
+# Bytecode
+*.pyc
+*.pyo
+*.pyd
+
+# Dependencies
+venv/
+.venv/
+**/venv/
+**/.venv/
+
+# Build dirs
+dist/
+build/
+.next/
+.nuxt/
