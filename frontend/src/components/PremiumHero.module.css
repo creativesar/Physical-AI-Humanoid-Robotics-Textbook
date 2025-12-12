@@ -3,15 +3,18 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 100vh; /* Full viewport height for dramatic effect */
-  min-height: 700px; /* Minimum height to ensure visibility */
+  height: 100vh;
+  /* Full viewport height for dramatic effect */
+  min-height: 700px;
+  /* Minimum height to ensure visibility */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .textContainer {
-  z-index: 20; /* Ensure text is above all background effects */
+  z-index: 20;
+  /* Ensure text is above all background effects */
   position: relative;
   max-width: 800px;
   padding: 2rem;
@@ -59,7 +62,8 @@
   text-decoration: none;
   letter-spacing: 4px;
   color: transparent;
-  border: 3px solid #b0e0e6; /* Using the blue-white glow color */
+  border: 3px solid #b0e0e6;
+  /* Using the blue-white glow color */
   font-size: 14px;
   position: relative;
   font-family: inherit;
@@ -76,8 +80,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000; /* Black background */
-  color: #b0e0e6; /* Blue-white glow color */
+  background-color: #000;
+  /* Black background */
+  color: #b0e0e6;
+  /* Blue-white glow color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,8 +103,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #000; /* Black background */
-  color: #b0e0e6; /* Blue-white glow color */
+  background-color: #000;
+  /* Black background */
+  color: #b0e0e6;
+  /* Blue-white glow color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,9 +133,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

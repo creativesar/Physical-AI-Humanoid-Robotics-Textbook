@@ -62,175 +62,145 @@ const WhatWeDoPremium = () => {
   ];
 
   return (
-    <section className={clsx(styles.section, 'margin-vert--lg')}>
-      <div className="container padding-horiz--md">
-        <div className="row">
-          <div className="col col--12 text--center">
+    <section style={{
+      padding: '8rem 0',
+      background: 'transparent',
+      position: 'relative'
+    }}>
+      <div className="container">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '5rem' }}
+        >
+          <h2 style={{
+            fontFamily: 'Sora, sans-serif',
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: 800,
+            background: 'linear-gradient(135deg, #ffffff 0%, #b0e0e6 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '1.5rem',
+            lineHeight: 1.2
+          }}>
+            What We Do
+          </h2>
+
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            color: '#c0c0c0',
+            lineHeight: '1.8',
+            fontSize: '1.2rem',
+            fontWeight: 400,
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            We structure academically rigorous, research-driven frameworks that bridge theoretical AI, embodied intelligence, and practical humanoid robotics engineering. Our work combines deep scientific foundations with real-world robotic implementations.
+          </p>
+        </motion.div>
+
+        {/* Feature Cards Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1400px',
+          margin: '0 auto'
+        }}>
+          {features.map((feature, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-            >
-              <div style={{ position: 'relative', display: 'inline-block' }}>
-                <h2 style={{ 
-                  fontFamily: 'Sora, sans-serif', 
-                  fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                  fontWeight: 800,
-                  background: 'linear-gradient(135deg, #ffffff 0%, #a0f0e0 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  marginBottom: '1.5rem',
-                  lineHeight: 1.2,
-                  position: 'relative',
-                  zIndex: 2
-                }}>
-                  What We Do
-                </h2>
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '150%',
-                  height: '150%',
-                  background: 'radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)',
-                  zIndex: 1,
-                  borderRadius: '50%',
-                  filter: 'blur(20px)'
-                }} />
-              </div>
-              
-              <div style={{ 
-                maxWidth: '800px', 
-                margin: '0 auto 4rem',
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              whileHover={{
+                y: -8,
+                transition: { duration: 0.3 }
+              }}
+              style={{
+                background: 'linear-gradient(145deg, rgba(15, 15, 15, 0.9), rgba(10, 10, 10, 0.8))',
+                backdropFilter: 'blur(20px)',
+                padding: '2.5rem',
+                borderRadius: '20px',
+                border: '1px solid rgba(176, 224, 230, 0.15)',
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
                 position: 'relative',
-                zIndex: 2
+                overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              {/* Top accent line */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '3px',
+                background: 'linear-gradient(90deg, rgba(176, 224, 230, 0.5) 0%, transparent 100%)',
+              }} />
+
+              {/* Icon container */}
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 3 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, rgba(176, 224, 230, 0.2) 0%, rgba(176, 224, 230, 0.05) 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1.5rem',
+                  border: '1px solid rgba(176, 224, 230, 0.2)',
+                  color: '#b0e0e6'
+                }}
+              >
+                {feature.icon}
+              </motion.div>
+
+              {/* Title */}
+              <h3 style={{
+                fontFamily: 'Sora, sans-serif',
+                margin: '0 0 1rem 0',
+                fontSize: '1.4rem',
+                fontWeight: 700,
+                color: '#ffffff',
+                lineHeight: 1.3
               }}>
-                <motion.p 
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif', 
-                    color: '#c9d6d6',
-                    lineHeight: '1.8',
-                    fontSize: '1.2rem',
-                    fontWeight: 300,
-                    margin: 0
-                  }}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  We structure academically rigorous, research-driven frameworks that bridge theoretical AI, embodied intelligence, and practical humanoid robotics engineering. Our work combines deep scientific foundations with real-world robotic implementations.
-                </motion.p>
-              </div>
+                {feature.title}
+              </h3>
+
+              {/* Description */}
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '1rem',
+                color: '#b0c0c0',
+                margin: 0,
+                lineHeight: '1.7'
+              }}>
+                {feature.description}
+              </p>
+
+              {/* Background decoration */}
+              <div style={{
+                position: 'absolute',
+                bottom: '-50px',
+                right: '-50px',
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(176, 224, 230, 0.08) 0%, transparent 70%)',
+                pointerEvents: 'none'
+              }} />
             </motion.div>
-            
-            <div className="row">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="col col--12 col--md-6 col--lg-4 padding--sm" // Updated to be responsive: full width on mobile, 6 cols on medium, 4 cols on large
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                >
-                  <motion.div
-                    style={{
-                      padding: '2rem 1.5rem', // Reduced padding for smaller screens
-                      borderRadius: '28px',
-                      backgroundColor: 'rgba(10, 20, 30, 0.6)',
-                      height: '100%',
-                      backdropFilter: 'blur(12px)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
-                    }}
-                    whileHover={{
-                      y: -12,
-                      boxShadow: '0 35px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(15, 227, 192, 0.3)'
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  >
-                    <div style={{
-                      position: 'absolute',
-                      top: '-1px',
-                      left: '-1px',
-                      right: '-1px',
-                      bottom: '-1px',
-                      borderRadius: '28px',
-                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                      zIndex: -1
-                    }} />
-
-                    <div style={{
-                      position: 'absolute',
-                      top: '20px',
-                      right: '20px',
-                      width: '50px', // Reduced size for mobile
-                      height: '50px', // Reduced size for mobile
-                      borderRadius: '50%',
-                      background: 'radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)',
-                      zIndex: 0
-                    }} />
-
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'column', // Stack icon and text vertically on small screens
-                      alignItems: 'flex-start',
-                      marginBottom: '1.5rem',
-                      position: 'relative',
-                      zIndex: 1
-                    }}>
-                      <motion.div
-                        style={{
-                          color: '#0fe3c0',
-                          marginBottom: '1rem', // Margin for spacing when stacked
-                          flexShrink: 0,
-                          padding: '10px', // Reduced padding for mobile
-                          borderRadius: '16px',
-                          background: 'rgba(15, 227, 192, 0.1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        }}
-                        whileHover={{
-                          scale: 1.1,
-                          rotate: 5
-                        }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        {feature.icon}
-                      </motion.div>
-                      <h3 style={{
-                        fontFamily: 'Sora, sans-serif',
-                        margin: 0,
-                        fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', // Responsive font size
-                        fontWeight: 700,
-                        color: '#ffffff',
-                        lineHeight: 1.3
-                      }}>
-                        {feature.title}
-                      </h3>
-                    </div>
-                    <p style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', // Responsive font size
-                      color: '#b0c0c0',
-                      margin: 0,
-                      lineHeight: '1.6', // Slightly reduced line height
-                      position: 'relative',
-                      zIndex: 1
-                    }}>
-                      {feature.description}
-                    </p>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

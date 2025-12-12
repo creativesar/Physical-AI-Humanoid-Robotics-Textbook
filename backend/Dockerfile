@@ -16,8 +16,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Expose port (Hugging Face Spaces will set the PORT environment variable)
-EXPOSE $PORT
+# Expose port 7860 (default for HF Spaces)
+EXPOSE 7860
 
-# Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+# Run the application - use shell form to properly expand PORT variable
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}

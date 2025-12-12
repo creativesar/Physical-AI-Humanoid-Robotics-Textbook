@@ -36,8 +36,11 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
+      // Use environment variable for API URL, fallback to localhost for development
+      const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+
       // Call the backend API
-      const response = await fetch('http://localhost:8000/api/v1/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/v1/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
