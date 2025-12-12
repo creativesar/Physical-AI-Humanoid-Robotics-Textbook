@@ -130,7 +130,7 @@ const WhatWeDoPremium = () => {
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="col col--4 padding--sm"
+                  className="col col--12 col--md-6 col--lg-4 padding--sm" // Updated to be responsive: full width on mobile, 6 cols on medium, 4 cols on large
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -138,7 +138,7 @@ const WhatWeDoPremium = () => {
                 >
                   <motion.div
                     style={{
-                      padding: '2.5rem 2rem',
+                      padding: '2rem 1.5rem', // Reduced padding for smaller screens
                       borderRadius: '28px',
                       backgroundColor: 'rgba(10, 20, 30, 0.6)',
                       height: '100%',
@@ -148,13 +148,13 @@ const WhatWeDoPremium = () => {
                       border: '1px solid rgba(255, 255, 255, 0.08)',
                       boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       y: -12,
                       boxShadow: '0 35px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(15, 227, 192, 0.3)'
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
-                    <div style={{ 
+                    <div style={{
                       position: 'absolute',
                       top: '-1px',
                       left: '-1px',
@@ -164,38 +164,39 @@ const WhatWeDoPremium = () => {
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)',
                       zIndex: -1
                     }} />
-                    
-                    <div style={{ 
+
+                    <div style={{
                       position: 'absolute',
                       top: '20px',
                       right: '20px',
-                      width: '60px',
-                      height: '60px',
+                      width: '50px', // Reduced size for mobile
+                      height: '50px', // Reduced size for mobile
                       borderRadius: '50%',
                       background: 'radial-gradient(circle, rgba(15, 227, 192, 0.15) 0%, transparent 70%)',
                       zIndex: 0
                     }} />
-                    
-                    <div style={{ 
-                      display: 'flex', 
-                      alignItems: 'flex-start', 
+
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column', // Stack icon and text vertically on small screens
+                      alignItems: 'flex-start',
                       marginBottom: '1.5rem',
                       position: 'relative',
                       zIndex: 1
                     }}>
-                      <motion.div 
-                        style={{ 
-                          color: '#0fe3c0', 
-                          marginRight: '1.5rem', 
+                      <motion.div
+                        style={{
+                          color: '#0fe3c0',
+                          marginBottom: '1rem', // Margin for spacing when stacked
                           flexShrink: 0,
-                          padding: '12px',
+                          padding: '10px', // Reduced padding for mobile
                           borderRadius: '16px',
                           background: 'rgba(15, 227, 192, 0.1)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center'
                         }}
-                        whileHover={{ 
+                        whileHover={{
                           scale: 1.1,
                           rotate: 5
                         }}
@@ -203,10 +204,10 @@ const WhatWeDoPremium = () => {
                       >
                         {feature.icon}
                       </motion.div>
-                      <h3 style={{ 
-                        fontFamily: 'Sora, sans-serif', 
+                      <h3 style={{
+                        fontFamily: 'Sora, sans-serif',
                         margin: 0,
-                        fontSize: '1.5rem',
+                        fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', // Responsive font size
                         fontWeight: 700,
                         color: '#ffffff',
                         lineHeight: 1.3
@@ -214,12 +215,12 @@ const WhatWeDoPremium = () => {
                         {feature.title}
                       </h3>
                     </div>
-                    <p style={{ 
-                      fontFamily: 'Inter, sans-serif', 
-                      fontSize: '1.05rem', 
-                      color: '#b0c0c0', 
+                    <p style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', // Responsive font size
+                      color: '#b0c0c0',
                       margin: 0,
-                      lineHeight: '1.7',
+                      lineHeight: '1.6', // Slightly reduced line height
                       position: 'relative',
                       zIndex: 1
                     }}>
