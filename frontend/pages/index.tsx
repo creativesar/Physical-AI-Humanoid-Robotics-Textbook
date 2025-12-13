@@ -17,6 +17,166 @@ function HomepageHeader() {
 
 // Additional sections that are not in HomepageFeatures
 function ModuleGridSection() {
+  const [modules, setModules] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    const fetchModules = async () => {
+      try {
+        // Fetch modules from the backend API via proxy
+        // The Docusaurus devServer proxy forwards /metadata to the backend
+        const response = await fetch('/metadata/modules', {
+          headers: {
+            'Accept': 'application/json',
+          },
+          credentials: 'include'  // Include cookies for auth if needed
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setModules(data.modules);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching modules:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchModules();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className={clsx(styles.section, 'margin-vert--lg')} id="module-grid">
+        <div className="container padding-horiz--md">
+          <div className="row">
+            <div className="col col--12 text--center">
+              <h2 style={{
+                fontFamily: 'Sora, sans-serif',
+                textAlign: 'center',
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)'
+              }}>Textbook Modules</h2>
+              <p style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)'
+              }}>Loading curriculum...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    console.warn('Error fetching modules from backend:', error);
+    // As a fallback, show the static modules from the filesystem
+    // This will read the directories in the /docs folder to create module listings
+    const staticModules = [
+      { module_id: '01-introduction-to-physical-ai', title: 'Introduction to Physical AI', description: 'Foundations of Physical AI and embodied intelligence' },
+      { module_id: '02-robotics-mechatronics-fundamentals', title: 'Robotics & Mechatronics', description: 'Core concepts in robotics and mechatronic systems' },
+      { module_id: '03-ros2-foundations', title: 'ROS 2 Foundations', description: 'Robot Operating System for advanced robotics' },
+      { module_id: '04-urdf-robot-description-models', title: 'URDF Robot Models', description: 'Unified Robot Description Format for modeling' },
+      { module_id: '05-kinematics', title: 'Kinematics', description: 'Forward and inverse kinematics for robotic systems' },
+      { module_id: '06-robot-dynamics-humanoid-control', title: 'Robot Dynamics', description: 'Dynamics and control for humanoid robots' },
+    ];
+
+    return (
+      <section className={clsx(styles.section, 'margin-vert--lg')} id="module-grid">
+        <div className="container padding-horiz--md">
+          <div className="row">
+            <div className="col col--12">
+              <h2 style={{
+                fontFamily: 'Sora, sans-serif',
+                textAlign: 'center',
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)' // Responsive font size
+              }}>Textbook Modules</h2>
+              <div className="text--center">
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  color: '#ff6b6b',
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)'
+                }}>Error loading modules: {error}</p>
+                <p style={{
+                  fontFamily: 'Inter, sans-serif',
+                  color: '#aaa',
+                  fontSize: 'clamp(0.8rem, 2vw, 1rem)'
+                }}>Displaying fallback static module list</p>
+              </div>
+              <div className="row">
+                {staticModules.map((module, idx) => (
+                  <motion.div
+                    key={module.module_id}
+                    className="col col--6 col--md-4 col--lg-2 padding--sm" // Responsive columns
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Link
+                      to={`/docs/${module.module_id}`}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        display: 'block'
+                      }}
+                    >
+                      <div
+                        style={{
+                          backgroundColor: 'transparent',
+                          border: '1px solid #555',
+                          borderRadius: '8px',
+                          padding: '15px',
+                          textAlign: 'center',
+                          minHeight: '120px', // Changed from fixed height to min-height
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          transition: 'all 0.3s ease',
+                          cursor: 'pointer'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = '#25c19f';
+                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 193, 159, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = '#555';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        <h3 style={{
+                          fontFamily: 'Sora, sans-serif',
+                          margin: 0,
+                          fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', // Responsive font size
+                          color: '#25c19f'
+                        }}>
+                          {module.title}
+                        </h3>
+                        <p style={{
+                          fontFamily: 'Inter, sans-serif',
+                          fontSize: 'clamp(0.7rem, 2vw, 0.8em)', // Responsive font size
+                          margin: '5px 0 0',
+                          color: '#aaa',
+                          overflow: 'hidden',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          height: '50px'
+                        }}>
+                          {module.description}
+                        </p>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={clsx(styles.section, 'margin-vert--lg')} id="module-grid">
       <div className="container padding-horiz--md">
@@ -31,37 +191,158 @@ function ModuleGridSection() {
               <p style={{
                 fontFamily: 'Inter, sans-serif',
                 fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' // Responsive font size
-              }}>Explore the complete 19-module curriculum</p>
+              }}>
+                {modules.length > 0
+                  ? `Explore the complete ${modules.length}-module curriculum`
+                  : 'Loading curriculum...'}
+              </p>
             </div>
             <div className="row">
-              {[...Array(6)].map((_, idx) => (
-                <div key={idx} className="col col--6 col--md-4 col--lg-2 padding--sm"> {/* Responsive columns */}
-                  <div
-                    style={{
-                      backgroundColor: 'transparent',
-                      border: '1px solid #555',
-                      borderRadius: '8px',
-                      padding: '15px',
-                      textAlign: 'center',
-                      minHeight: '120px', // Changed from fixed height to min-height
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center'
-                    }}
+              {modules.length > 0 ? (
+                modules.map((module, idx) => (
+                  <motion.div
+                    key={module.module_id}
+                    className="col col--6 col--md-4 col--lg-2 padding--sm" // Responsive columns
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <h3 style={{
-                      fontFamily: 'Sora, sans-serif',
-                      margin: 0,
-                      fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)' // Responsive font size
-                    }}>Module {idx + 1}</h3>
-                    <p style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: 'clamp(0.7rem, 2vw, 0.8em)', // Responsive font size
-                      margin: '5px 0 0'
-                    }}>Intro to Physical AI</p>
-                  </div>
-                </div>
-              ))}
+                    <Link
+                      to={`/docs/${module.module_id}`}
+                      style={{
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        display: 'block'
+                      }}
+                    >
+                      <div
+                        style={{
+                          backgroundColor: 'transparent',
+                          border: '1px solid #555',
+                          borderRadius: '8px',
+                          padding: '15px',
+                          textAlign: 'center',
+                          minHeight: '120px', // Changed from fixed height to min-height
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          transition: 'all 0.3s ease',
+                          cursor: 'pointer'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = '#25c19f';
+                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 193, 159, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = '#555';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        <h3 style={{
+                          fontFamily: 'Sora, sans-serif',
+                          margin: 0,
+                          fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', // Responsive font size
+                          color: '#25c19f'
+                        }}>
+                          {module.title || `Module ${idx + 1}`}
+                        </h3>
+                        <p style={{
+                          fontFamily: 'Inter, sans-serif',
+                          fontSize: 'clamp(0.7rem, 2vw, 0.8em)', // Responsive font size
+                          margin: '5px 0 0',
+                          color: '#aaa',
+                          overflow: 'hidden',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          height: '50px'
+                        }}>
+                          {module.description || `Intro to ${module.title || `Module ${idx + 1}`}`}
+                        </p>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))
+              ) : (
+                // Fallback to showing directories in the docs folder if no modules from API
+                [...Array(6)].map((_, idx) => {
+                  const moduleDirs = [
+                    '01-introduction-to-physical-ai',
+                    '02-robotics-mechatronics-fundamentals',
+                    '03-ros2-foundations',
+                    '04-urdf-robot-description-models',
+                    '05-kinematics',
+                    '06-robot-dynamics-humanoid-control'
+                  ];
+
+                  const titles = [
+                    'Introduction to Physical AI',
+                    'Robotics & Mechatronics',
+                    'ROS 2 Foundations',
+                    'URDF Robot Models',
+                    'Kinematics',
+                    'Robot Dynamics'
+                  ];
+
+                  const descriptions = [
+                    'Foundations of Physical AI and embodied intelligence',
+                    'Core concepts in robotics and mechatronic systems',
+                    'Robot Operating System for advanced robotics',
+                    'Unified Robot Description Format for modeling',
+                    'Forward and inverse kinematics for robotic systems',
+                    'Dynamics and control for humanoid robots'
+                  ];
+
+                  return (
+                    <div key={idx} className="col col--6 col--md-4 col--lg-2 padding--sm"> {/* Responsive columns */}
+                      <Link
+                        to={`/docs/${moduleDirs[idx]}`}
+                        style={{
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          display: 'block'
+                        }}
+                      >
+                        <div
+                          style={{
+                            backgroundColor: 'transparent',
+                            border: '1px solid #555',
+                            borderRadius: '8px',
+                            padding: '15px',
+                            textAlign: 'center',
+                            minHeight: '120px', // Changed from fixed height to min-height
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.borderColor = '#25c19f';
+                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 193, 159, 0.2)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.borderColor = '#555';
+                            e.currentTarget.style.boxShadow = 'none';
+                          }}
+                        >
+                          <h3 style={{
+                            fontFamily: 'Sora, sans-serif',
+                            margin: 0,
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', // Responsive font size
+                            color: '#25c19f'
+                          }}>{titles[idx]}</h3>
+                          <p style={{
+                            fontFamily: 'Inter, sans-serif',
+                            fontSize: 'clamp(0.7rem, 2vw, 0.8em)', // Responsive font size
+                            margin: '5px 0 0',
+                            color: '#aaa'
+                          }}>{descriptions[idx]}</p>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         </div>

@@ -47,13 +47,13 @@ class AIClientService:
             str: Generated text
         """
         if provider == "cohere" and self.cohere_client:
-            response = self.cohere_client.generate(
+            response = self.cohere_client.chat(
                 model='command-r-plus',
-                prompt=prompt,
+                message=prompt,
                 max_tokens=max_length,
                 temperature=0.7,
             )
-            return response.generations[0].text
+            return response.text
         else:
             raise ValueError(f"Provider {provider} not available or not supported")
 
@@ -70,10 +70,26 @@ class AIClientService:
         """
         if provider == "cohere" and self.cohere_client:
             # Convert messages to Cohere chat format
-            chat_message = " ".join([f"{msg.get('role', 'user')}: {msg.get('content', '')}" for msg in messages])
+            formatted_messages = []
+            for msg in messages:
+                role = msg.get('role', 'user')
+                content = msg.get('content', '')
+                # Map 'assistant' role to 'CHATBOT' as required by Cohere
+                cohere_role = "CHATBOT" if role == "assistant" else "USER"
+                formatted_messages.append({"role": cohere_role, "message": content})
+
+            # Use the chat API with the proper format
+            if formatted_messages:
+                current_message = formatted_messages[-1]["message"]  # Current message to respond to
+                chat_history = formatted_messages[:-1]  # Previous messages as history
+            else:
+                current_message = "Hello"
+                chat_history = []
+
             response = self.cohere_client.chat(
-                message=chat_message,
                 model="command-r-plus",
+                message=current_message,
+                chat_history=chat_history,
                 temperature=0.7,
             )
             return response.text
