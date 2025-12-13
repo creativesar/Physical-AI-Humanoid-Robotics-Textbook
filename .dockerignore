@@ -1,0 +1,105 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.conda/
+.venv/
+.Pipfile
+.Pipfile.lock
+pyproject.toml
+poetry.lock
+requirements.txt
+requirements-dev.txt
+requirements-test.txt
+.tox/
+.coverage
+.coverage.*
+.cache/
+.hypothesis/
+
+# Build outputs
+build/
+dist/
+*.egg
+*.egg-info/
+.eggs/
+.installed.cfg
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docusaurus
+.docusaurus/
+.cache-loader/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.cache/
+.yarn
+.pnp.cjs
+.pnp.loader.mjs
+.yarn-integrity
+.yarnrc.yml
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage/
+htmlcov/
+.pyup.yml
+renovate.json
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.db-journal
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+VolumeIcon.icns
+
+# Development
+.venv/
+venv/
+env/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore

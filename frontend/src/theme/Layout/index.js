@@ -1,19 +1,3 @@
-import React from 'react';
-import Layout from '@theme-original/Layout';
-import Header from '@site/src/components/Header';
-import Footer from '@site/src/components/Footer';
-import Chatbot from '@site/src/components/Chatbot';
-import { AuthProvider } from '@site/src/hooks/useAuth';
-
-export default function LayoutWrapper(props) {
-  return (
-    <AuthProvider>
-      <Header />
-      <Layout {...props}>
-        {props.children}
-        <Chatbot />
-      </Layout>
-      <Footer />
-    </AuthProvider>
-  );
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:51b0315d38d1a0e3df364043534f9986cd35e17dc79de9a7cc1b4808da035a43
+size 552
