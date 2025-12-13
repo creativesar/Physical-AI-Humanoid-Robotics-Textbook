@@ -4,10 +4,10 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import { motion } from 'framer-motion';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageFeatures from '../src/components/HomepageFeatures';
 
-import WhatWeDoPremium from '@site/src/components/WhatWeDoCompact';
-import PremiumHero from '@site/src/components/PremiumHero';
+import WhatWeDoPremium from '../src/components/WhatWeDoCompact';
+import PremiumHero from '../src/components/PremiumHero';
 
 import styles from './index.module.css';
 

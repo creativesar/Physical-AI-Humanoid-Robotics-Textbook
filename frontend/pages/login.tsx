@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '@site/src/hooks/useAuth';
+import { useAuth } from '../src/hooks/useAuth';
 import { useHistory, Redirect } from '@docusaurus/router';
 
 const LoginPage = () => {

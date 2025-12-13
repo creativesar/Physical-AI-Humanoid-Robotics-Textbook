@@ -1690,6 +1690,7 @@ function ModuleGrid() {
   return (
     <motion.section
       ref={ref}
+      id="module-grid"
       style={{
         background: 'transparent',
         padding: '8rem 0',
@@ -2070,7 +2071,7 @@ function CTASection() {
   );
 }
 
-export default function Home(): ReactElement {
+export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
@@ -2080,6 +2081,7 @@ export default function Home(): ReactElement {
       <HeroSection />
       <AboutSection />
       <WhatWeDoCompact />
+      <ModuleGrid />
       <ServicesSection />
       <StatsSection />
       <TestimonialSection />
