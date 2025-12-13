@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:daf3a4a5b2ed011e927e0a2bc259f6db4fa124690b98c11b7410a327e6103771
-size 260
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.0.3
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+qdrant-client==1.7.0
+cohere==4.37
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+python-dotenv==1.0.0

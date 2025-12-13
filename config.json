@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ddd8f49f06cd97f8868790258cb57e4d1e6f5c060de9c31f487a5ed21cfd8fe5
-size 576
+{
+  "model_type": "multi-modal",
+  "task": "question-answering",
+  "architecture": "RAG-based question answering system",
+  "intended_use": "Educational Q&A for Physical AI and Robotics concepts",
+  "language": ["en"],
+  "license": "cc-by-nc-4.0",
+  "tags": [
+    "textbook",
+    "ai",
+    "robotics",
+    "physical-ai",
+    "humanoid",
+    "rag",
+    "question-answering"
+  ],
+  "datasets": [
+    "Physical-AI-Humanoid-Robotics-Textbook"
+  ],
+  "co2_eq_emissions": {
+    "value": 0,
+    "unit": "lbs",
+    "comment": "Model trained by third-party, values not available"
+  }
+}

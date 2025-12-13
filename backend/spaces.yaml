@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7286e260de4b0dd3e79236a87435322da98135740319e0db3525cccd7b062f7b
-size 434
+# Hugging Face Space configuration
+runtime:
+  version: "3.9"
+  cpu: "cpu-basic"
+  memory: "3GiB"
+  storage: "50GiB"
+  
+env:
+  # These will need to be set in the Hugging Face Space secrets
+  SECRET_KEY: ${SECRET_KEY}
+  DATABASE_URL: ${DATABASE_URL}
+  QDRANT_URL: ${QDRANT_URL}
+  QDRANT_API_KEY: ${QDRANT_API_KEY}
+  COHERE_API_KEY: ${COHERE_API_KEY}
+  
+ports:
+  - 7860
+  
+health_check:
+  path: "/health"
+  port: 7860
